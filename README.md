@@ -1,0 +1,1 @@
+# szovegbanyaszat_javitasok
