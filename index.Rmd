@@ -1,0 +1,17 @@
+---
+title: "Szövegbányászat és mesterséges intelligencia R-ben"
+author: "Sebők Miklós, Ring Orsolya, Máté Ákos"
+date: "2021"
+site: bookdown::bookdown_site
+documentclass: book
+
+link-citations: true
+csl: american-political-science-association.csl
+bibliography: references.bib
+description: "Szövegbányászat és mesterséges intelligencia R-ben"
+---
+
+# Üdvözöljük! {-}
+<img src="figures/konyv_borito_final.png" width="250" height="328" align="right" alt="Cover image"/>
+
+A tankonyv javitott verziojanak roviditett indexe.

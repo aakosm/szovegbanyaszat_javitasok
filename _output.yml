@@ -1,0 +1,10 @@
+bookdown::gitbook:
+  split_bib: no
+  css: konyv_style.css
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">Szövegbányászat R-ben</a></li>
+      after:  |
+        <li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
