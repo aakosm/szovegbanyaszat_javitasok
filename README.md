@@ -29,7 +29,4 @@ A githubra ugy tudod feltolteni a javitasokat, hogy az RStudio kis git ablakaban
 
 ## Ha valami nem megy
 
-1. Google
-2. Google
-3. Google
-4. Akos
+Akkor kerdezz nyugodtan :)
