@@ -7,6 +7,8 @@ library(dplyr)
 library(kableExtra)
 ```
 
+
+
 ## Elméleti alapok
 
 A szövegek géppel való feldolgozása és elemzése módszertanának számos megnevezése létezik. A szövegelemzés, kvantitatív szövegelemzés, szövegbányászat, természetes nyelvfeldolgozás, automatizált szövegelemzés, automatizált tartalomelemzés és hasonló fogalmak között nincs éles tartalami különbség. Ezek a kifejezések jellemzően ugyanarra az általánosabb kutatási irányra reflektálnak, csupán hangsúlybeli eltolódások vannak köztük, így gyakran szinonimaként is használják őket. 

@@ -5,7 +5,8 @@ language:
     tab: 'Táblázat '
 rmd_files: [
    "index.Rmd", 
-#   "02_alapfogalmak.Rmd",
+#   "01_bevezetes.Rmd"
+   "02_alapfogalmak.Rmd"
 #   "03_adatkezeles.Rmd",
 #   "04_korpuszepites_szovegelokeszites.Rmd",
 #   "05_leiro_statisztika.Rmd",
