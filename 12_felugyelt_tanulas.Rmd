@@ -51,6 +51,12 @@ Ezt követi a szövegelőkészítésen és tisztításon már átesett adatok be
 Data_NOL_MNO <- HunMineR::data_nol_mno_clean
 ```
 
+Jelen esetben is vethetünk egy pillantást az objektum tartalmára a glimpse funkció segítségével, és láthatjuk, hogy valóban a korábban említett öt változót tartalmazza.
+
+```{r}
+glimpse(Data_NOL_MNO)
+```
+
 A következő lépésben eltávolítjuk a szöveges adatot nem tartalmazó (a text változóra semmilyen értéket nem adó) sorokat az adatbázisból.
 
 ```{r include = TRUE}
