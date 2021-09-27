@@ -61,6 +61,12 @@ mn_clean <- mn %>%
   )
 ```
 
+A glimpse funkció segítségével belepillanthatunk mind a két corpusba és láthatjuk, hogy sikeres volt a tisztítása, valamint azt is, hogy jelenleg egyetlen metaadatunk a dokumentumok azonosítója.
+
+```{r}
+glimpse(mn)
+glimpse(mn_clean)
+```
 
 Fontos különbség, hogy az eddigi munkafolyamatokkal ellentétben a GloVe algoritmus nem egy dokumentum-kifejezés mátrixon dolgozik, hanem egy kifejezések együttes előfordulását tartalmazó mátrixot (*feature co-occurence matrix*) kell készíteni inputként. Ezt a `quanteda` `fcm()` függvényével tudjuk előállítani, ami a tokenekből készíti el a mátrixot. A tokenek sorrendiségét úgy tudjuk megőrizni, hogy egy `dfm` objektumból csak a kifejezéseket tartjuk meg a `featnames()` függvény segítségével, majd a teljes token halmazból a `tokens_select()` függvénnyel kiválasztjuk őket.
 
@@ -184,7 +190,7 @@ embedding_plot <- function(data, keywords) {
 }
 ```
 
-Példaként néhány településnevet megvizsgálva, azt látjuk, hogy a magyar városok közel helyezkednek el egymáshoz, ám "washington" és "moszkva" távolsága nagyobb. Ennek az oka az lehet hogy a két magyar nagyváros gyakrabban szerepel hasonló kontextusban a belföldi hírekben, míg a két külföldi főváros valószínűleg eltérő külpolitikai környezetben jelenik meg.
+Példaként néhány településnevet megvizsgálva, azt látjuk, hogy a megadott szavak, jelen esetben "budapest", "debrecen", "washington", "moszkva" milyen közel vagy távol vannak egymástól, vagyis milyen gyakorisággal fordulnak elő ugyanazon szavak társaságában. A magyar városok közel helyezkednek el egymáshoz, ám "washington" és "moszkva" távolsága nagyobb. Ennek az oka az lehet hogy a két magyar nagyváros gyakrabban szerepel hasonló kontextusban a belföldi hírekben, míg a két külföldi főváros valószínűleg eltérő külpolitikai környezetben jelenik meg.
 
 
 ```{r}
