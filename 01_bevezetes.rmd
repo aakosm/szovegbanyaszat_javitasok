@@ -8,13 +8,15 @@ source("_common.R")
 
 ## A kötet témái
 
-A szövegek adatként való értelmezése (*text as data*) és kvantitatív elemzése (*quantitative text analysis*), avagy a szövegbányászat (*text mining*) a nemzetközi társadalomtudományi kutatások egyik leggyorsabban fejlődő irányzata. A szövegek és más kvalitatív adatok (filmek, képek) elemzése annyiban különbözik a mennyiségi (kvantitatív) adatokétól, hogy nyers formájukban még nem alkalmasak statisztikai, illetve ökonometriai elemzésre. Ezért van szükség az ezzel összefüggő módszertani problémák speciális tárgyalására.
+A szövegek adatként való értelmezése (*text as data*) és kvantitatív elemzése (*quantitative text analysis*), avagy a szövegbányászat (*text mining*) a nemzetközi társadalomtudományi kutatások egyik leggyorsabban fejlődő irányzata. A szövegbányászat egy olyan folyamat, amely során nyers, strukturálatlan szövegeket (pl.: beszédek, felszólalások, újságcikkek) egy strukturált formátumba alakítunk, hogy így új, korábban ismeretlen információkhoz tudjunk hozzájutni, mint trendekhez, mintázatokhoz összefüggésekhez stb. A szövegek és más kvalitatív adatok (filmek, képek) elemzése annyiban különbözik a mennyiségi (kvantitatív) adatokétól, hogy nyers formájukban még nem alkalmasak statisztikai, illetve ökonometriai elemzésre. Ezért van szükség az ezzel összefüggő módszertani problémák speciális tárgyalására.
 
 Jelen kötet bevezeti az érdeklődőket a szövegbányászat és a mesterséges intelligencia társadalomtudományi alkalmazásának ilyen speciális problémáiba, valamint ezek gyakorlati megoldásába. Közvetlen előzménynek tekinthető a témában a Sebők Miklós által szerkesztett [*Kvantitatív szövegelemzés és szövegbányászat a politikatudományban*](https://poltextlab.tk.hu/uploads/files/Kvantitativ_szovegelemzes_keszpdf.pdf) címmel megjelent könyv, amely a magyar tudományos diskurzusban kevésbé bevett alapfogalmakat és eljárásokat mutatta be [@sebokKvantitativSzovegelemzesEs2016]. A hangsúly az elméleten volt, bár számos fejezet foglalkozott konkrét kódrészletek elemzésével. Míg az előző kötet az egyes kódolási eljárásokat, illetve ezek kutatásmódszertani előnyeit és hátrányait ismertette, ezúttal a társadalomtudományi elemzések során használható kvantitatív szövegelemzés legfontosabb gyakorlati feladatait vesszük sorra.
 
+![A szövegbányászat egyes módszerei](figures/01_modszerek.jpg)
+
 Könyvünk a magyar tankönyvpiacon elsőként ismerteti lépésről-lépésre a nemzetközi társadalomtudományban használatos kvantitatív szövegelemzési eljárásokat. A módszereink bemutatására szolgáló elemzéseket az R programnyelv segítségével végeztük el, mely a nemzetközi társadalomtudományi vizsgálatok során egyik leggyakrabban használt környezet a Python mellett. A kötetben igyekeztünk magyar szakkifejezéseket használni, de mivel a szövegbányászat nyelve az angol, mindig megadtuk, azok angol megfelelőjét is. Kivételt képeznek azok az esetek, ahol nincs használatban megfelelő magyar terminológia, ezeknél megtartottuk az angol kifejezéseket, de magyarázattal láttuk el azokat.
 
-Az Olvasó a két kötet együttes használatával olyan ismeretek birtokába jut, melyek révén képes lesz alkalmazni a kvantitatív szövegelemzés és szövegbányászat legalapvetőbb eljárásait saját kutatásaiban. Deduktív vagy induktív felfedező logikája szerint dönthet az adatelemzés módjáról, és a felkínált menüből kiválaszthatja a kutatási tervéhez legjobban illeszkedő megoldásokat. A bemutatott konkrét példák segítségével pedig akár reprodukálhatja is ezen eljárásokat saját kutatásában. Mindezt a kötet fejezeteiben bőséggel tárgyalt *R-scriptek* (kódok) részletes leírása is segíti. Ennek alapján a kötet két fő célcsoportja a társadalomtudományi kutatói és felsőoktatási hallgatói-oktatói közösség. Az oktatási alkalmazást segítheti a fontosabb fogalmak magyar és angol nyelvű tárgymutatója, valamint több helyen a további olvasásra ajánlott szakirodalom felsorolása. A kötet honlapján ([https://tankonyv.poltextlab.com](https://tankonyv.poltextlab.com)) közvetlenül is elérhetőek a felhasznált adatbázisok és kódok.
+Az olvasó a két kötet együttes használatával olyan ismeretek birtokába jut, melyek révén képes lesz alkalmazni a kvantitatív szövegelemzés és szövegbányászat legalapvetőbb eljárásait saját kutatásaiban. Deduktív vagy induktív felfedező logikája szerint dönthet az adatelemzés módjáról, és a felkínált menüből kiválaszthatja a kutatási tervéhez legjobban illeszkedő megoldásokat. A bemutatott konkrét példák segítségével pedig akár reprodukálhatja is ezen eljárásokat saját kutatásában. Mindezt a kötet fejezeteiben bőséggel tárgyalt *R-scriptek* (kódok) részletes leírása is segíti. Ennek alapján a kötet két fő célcsoportja a társadalomtudományi kutatói és felsőoktatási hallgatói-oktatói közösség. Az oktatási alkalmazást segítheti a fontosabb fogalmak magyar és angol nyelvű tárgymutatója, valamint több helyen a további olvasásra ajánlott szakirodalom felsorolása. A kötet honlapján ([https://tankonyv.poltextlab.com](https://tankonyv.poltextlab.com)) közvetlenül is elérhetőek a felhasznált adatbázisok és kódok.
 
 Kötetünk négy logikai egységből épül fel. Az első négy fejezet bemutatja azokat a fogalmakat és eljárásokat, amelyek elengedhetetlenek egy szövegbányászati kutatás során, valamint itt kerül sor a szöveges adatforrásokkal való munkafolyamat ismertetésére, a szövegelőkészítés és a korpuszépítés technikáinak bemutatására. A második blokkban az egyszerűbb elemzési módszereket tárgyaljuk, így a leíró statisztikák készítését, a szótár alapú elemzést, valamint érzelemelemzést. A kötet harmadik blokkját a mesterséges intelligencia alapú megközelítéseknek szenteljük, melynek során az olvasó a felügyelt és felügyelet nélküli tanulás fogalmával ismerkedhet meg. A felügyelet nélküli módszerek közül a topik-modellezést, szóbeágyazást és a szövegskálázás wordfish módszerét mutatjuk be, a felügyelt elemzések közül pedig az osztályozással foglalkozunk részletesebben. Végezetül kötetünket egy függelék zárja, melyben a kezdő RStudió felhasználóknak adunk gyakorlati iránymutatást a programfelülettel való megismerkedéshez, használatának elsajátításához.
 
@@ -77,6 +79,84 @@ data(package = "HunMineR")
 # A miniszterelnöki beszédek minta adatbázisának részletei
 ?data_miniszterelnokok
 ```
+
+
+## Egy gyakorlati példa az R programmal való szövegbányászatra 
+
+A következőkben egy példát mutatunk be a szövegbányászat gyakorlati alkalmazására vonatkozóan, amely során Ady Endre és Petőfi Sándor verseinek szóhasználatát hasonlítjuk össze, az eredményekhez pedig szemléletes ábrázolást is készítünk. A jelen példában alkalmazott eljárásokat a későbbi fejezetekben részletesen is kifejtjük itt csupán szemléltetni kívánjuk velük, hogy milyen jellegű elemzéseket sajátíthat majd el az olvasó a könyv segítségével.
+
+ Az R számos kiegészítő csomaggal rendelkezik, amelyek hasznos funkcióit úgy érhetünk el, ha telepítjük az őket tartalmazó csomagot. Ezt az `install.packages` paranccsal tehetjük meg, ha már korábban egyszer elvégeztük, akkor nem szükséges egy csomaggal megismételni.
+ 
+```{r eval=FALSE}
+install.packages("quanteda")
+install.packages("readtext")
+install.packages("wordcloud2")
+install.packages("dplyr")
+```
+
+A `library()` paranccsal pedig betölteni tudjuk a már telepített csomagjainkat, ezt minden alkalommal el kell, hogy végezzük, hogyha ezek egy funkcióját kívánjuk használni. Itt láthatjuk, hogy a két csomag után a HunMineR betöltése is szükséges, viszont annak ellenére, hogy ugyanazzal a funkcióval hívjuk elő a HunMiner nem egy csomag, hanem egy *repository* (adattár) így a telepítése egy eltérő eljárással zajlik, amelyet az előző alfejezetben írtunk le.
+
+```{r include = TRUE}
+library(readtext)
+library(quanteda)
+library(quanteda.textstats)
+library(quanteda.textplots)
+library(ggplot2)
+```
+
+Ezt követően betöltjük a szükséges adatokat, jelen esetben a HunMiner adattárából.
+
+```{r}
+ady <- readtext("data/ady.txt")
+petofi <- readtext("data/petofi.txt")
+```
+
+Ahhoz, hogy adatokat használni tudjunk azokon először mindig úgynevezett tisztítási folyamatokat kell elvégeznünk, ezek segítségével tudjuk előkészíteni a szövegeket, ha nem végezzük el őket, vagy elvégezzük, de kellő alaposság nélkül akkor az eredményeink félrevezetőek lesznek.
+
+```{r}
+ady_corpus <- corpus(ady)
+
+ady_tok <- tokens(ady_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
+  tokens_tolower() %>% 
+  tokens_remove(stopwords("hungarian")) %>% 
+  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő")) %>%
+  tokens_wordstem()
+
+adydfm <- dfm(ady_tok, tolower = TRUE, remove = stopwords("hungarian"), stem = TRUE, remove_punct = TRUE, remove_symbols = TRUE, remove_numbers = TRUE)
+
+
+petofi_corpus <-corpus(petofi)
+
+petofi_tok <- tokens(petofi_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
+  tokens_tolower() %>% 
+  tokens_remove(stopwords("hungarian")) %>% 
+  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő")) %>%
+  tokens_wordstem()
+
+petofidfm <- dfm(petofi_corpus, tolower = TRUE, remove = stopwords("hungarian"), stem = TRUE, remove_punct = TRUE, remove_symbols = TRUE, remove_numbers = TRUE)
+
+petofidfm
+
+head(petofidfm, 2)
+
+
+
+
+dfm_trim(petofidfm, min_termfreq = 50, min_docfreq = 2)
+
+dfm_trim(petofidfm, max_termfreq = 5, max_docfreq = 2)
+
+```
+
+Végül pedig az R programon belül ábrázolhatjuk is az eredményeinket. Jelen esetben nem végeztünk el számítást, hanem a megtisztított szövegeink szavaiból generáltunk szófelhőket.
+
+```{r}
+textplot_wordcloud(petofidfm)
+textplot_wordcloud(adydfm)
+```
+
+
+Az így kapott ábrákon az ady és petofi versek szavait láthatjuk egy úgynevezett szófelhőben összegyűjtve. Annál nagyobb méretben jelenít meg az ábránk egy kifejezést, minél gyakrabban fordul az elő a szövegünkben, amely jelen esetben a két költő összes verse. Ugyan a szófelhő nem egy statisztikai számítás, amely alapján következtetéseket vonhatnánk le a vizsgált szövegekről, de egy hasznos és látványos ábrázolási módszer, illetve jelen esetben jól példázza az R egy jelentős előnyét, hogy a segítségével az eredményeinket gyorsan és egyszerűen tudjuk ábrázolni.
 
 ## Köszönetnyilvánítás
 
