@@ -10,7 +10,7 @@ source("_common.R")
 ## Fogalmi alapok
 
 
-A felügyelet nélküli tanulási során az alkalmazott algoritmus a dokumentum tulajdonságait és a modell becsléseit felhasználva végez csoportosítást, azaz hoz létre különböző kategóriákat, melyekhez később hozzárendeli a szöveget. Jelen fejezetben a felügyelet nélküli módszerek közül a topikmodellezést tár- gyaljuk részletesen, majd a következőkben bemutatjuk a szintén ide sorolható szóbeágyazást és a szövegskálázás wordfish módszerét is.
+A felügyelet nélküli tanulási során az alkalmazott algoritmus a dokumentum tulajdonságait és a modell becsléseit felhasználva végez csoportosítást, azaz hoz létre különböző kategóriákat, melyekhez később hozzárendeli a szöveget. Jelen fejezetben a felügyelet nélküli módszerek közül a topikmodellezést tárgyaljuk részletesen, majd a következőkben bemutatjuk a szintén ide sorolható szóbeágyazást és a szövegskálázás wordfish módszerét is.
 
 
 ## K-közép klaszterezés
@@ -54,6 +54,12 @@ beszedek_dfm <- beszedek_corpus %>%
   dfm()
 ```
 
+A glimpse funkció segítségével ismét megtekinthetjük az adatainkat és láthatjuk, hogy a 4 változó a miniszterelnökök neve, az év, a dokumentum azonosító, amely az előző két változó kombinációja, valamint maguk a beszédek szövegei.
+
+```{r}
+glimpse(data_miniszterelnokok)
+```
+
 A beszédek klaszterekbe rendezését az R egyik alapfüggvénye, a `kmeans()` végzi. Első lépésben 2 klasztert készítünk. A `table()` függvénnyel megnézhetjük, hogy egy-egy csoportba hány dokumentum került.
 
 ```{r}
@@ -90,6 +96,8 @@ factoextra::fviz_cluster(
   theme(legend.position = "none")
 ```
 
+Az így kapott ábrán láthatjuk nem csak a két klaszter középpontjainak egymáshoz viszonyított pozícióját, de a klaszterek elemeinek egymáshoz viszonyított pozícióját is. Ez alapján láthatjuk, hogy a 2 klaszterünk nem ugyanakkora elemszámból állnak, valamint a belső hasonlóságuk is eltérő. valamint a klaszter elemek neveiből láthatjuk, hogy nem vált be a hipotézisünk arra vonatkozóan, hogy két klaszter beállítása esetén azok a jobb és baloldaliságot fogják tükrözni, ez valószínűleg azért van így mert a corpusokat ebben az esetben nem tisztítottuk, tehát stopszavazást sem végeztünk rajtuk, ebből kifolyólag pedig a politikai pozíciók mellett a szövegek hasonlósága és különbözősége sok más tényezőt is tükröz (pl: hogy mennyire összetetten vagy egyszerűen fogalmaz az illető, vagy a beszéd elhangzásának idején különös relevanciával bíró közpolitikákat)
+
 ## LDA topikmodellek[^lda1]
 
 [^lda1]: A kód részben az alábbiakon alapul: [tidytextmining.com/topicmodeling.html](tidytextmining.com/topicmodeling.html). Az általunk is használt `topicmodels` csomag interfészt biztosít az LDA modellek és a korrelált témamodellek (CTM) C kódjához, valamint az LDA modellek illesztéséhez szükséges C ++ kódhoz.
@@ -111,6 +119,12 @@ Töltsük be az elemezni kívánt csv fájlt, megadva az elérési útvonalát.
 ```{r warning=FALSE, message=FALSE}
 torvenyek <- HunMineR::data_lawtext_1998_2006
 ```
+
+```{r}
+glimpse(torvenyek)
+```
+
+Láthatjuk, hogy ezek az objektum a dokumentum azonosítón kívül (amely a törvény évét és számát tartalmazza) nem rendelkezik egyéb metaadatokkal.
 
 Az előző fejezetekben láthattuk, hogyan lehet használni a `stringr` csomagot a szövegtisztításra. A lépések a már megismert sztenderd folyamatot követik: számok, központozás, sortörések, extra szóközök eltávolítása, illetve a szöveg kisbetűsítése. Az eddigieket további szövegtisztító lépésekkel is kiegészíthetjük. Olyan elemek esetében, amelyek nem feltétlenül különálló szavak és el akarjuk távolítani őket a korpuszból, szintén a `str_remove_all()` a legegyszerűbb megoldás.
 
