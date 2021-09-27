@@ -39,6 +39,7 @@ library(topicmodels)
 library(factoextra)
 library(stm)
 library(igraph)
+library(plotly)
 library(HunMineR)
 ```
 
@@ -71,11 +72,13 @@ table(beszedek_klaszter$cluster)
 A felügyelet nélküli klasszifikáció nagy kérdése, hány klasztert alakítsunk ki, hogy megközelítsük a valóságot, és ne csak mesterségesen kreáljunk csoportokat. Ez ugyanis azzal a kockázattal jár, hogy ténylegesen nem létező csoportok is létrejönnek. A klaszterek optimális számának meghatározására kvalitatív és kvantitatív lehetőségeink is vannak. A következőkben az utóbbira mutatunk példát, amihez a `factoextra` csomagot használjuk. A \@ref(fig:optclus).-es ábra azt mutatja, hogy a klasztereken belüli négyzetösszegek hogyan változnak a *k* paraméter változásának függvényében. Minél kisebb a klasztereken belüli négyzetösszegek értéke, annál közelebbi pontok tartoznak össze, így a kisebb értékekkel definiált klasztereket kapunk. Az ábra alapján tehát az ideális *k* 4 vagy 2, attól fuggően, hogy milyen feltevésekkel élünk a kutatásunk során. A 2-es érték azért lehet jó, mert a $k > 2$ értékek esetén a négyzetösszegek értéke nem csökken drasztikusan és a korpuszunk alapján a két („jobb-bal") klaszter kvalitativ alapon is jól definiálható. A $k = 4$ pedig azért lehet jó, mert utánna gyakorlatilag nem változik a kapott négyzetösszeg, ami azt jelzi, hogy a további klaszterek hozzáadásával nem lesz pontosabb a csoportosítás.
 
 ```{r optclus, fig.cap="A klaszterek optimális száma"}
-factoextra::fviz_nbclust(as.matrix(beszedek_dfm), kmeans, method = "wss", k.max = 5, linecolor = "black") +
+klas_df <- factoextra::fviz_nbclust(as.matrix(beszedek_dfm), kmeans, method = "wss", k.max = 5, linecolor = "black") +
 labs(
   title = NULL,
   x = "Klaszterek száma",
   y = "Klasztereken belüli négyzetösszeg")
+
+ggplotly(klas_df)
 ```
 
 A kialakított csoportokat vizuálisan is megjeleníthetjük (ld. \@ref(fig:PMspeech). ábra).
@@ -218,7 +221,7 @@ top_tokens <- textstat_frequency(
   groups = docvars(torvenyek_dfm, field = "electoral_cycle")
   )
 
-ggplot(top_tokens, aes(reorder_within(feature, frequency, group), frequency)) +
+tok_df <- ggplot(top_tokens, aes(reorder_within(feature, frequency, group), frequency)) +
   geom_point(aes(shape = group), size = 2) +
   coord_flip() +
   labs(
@@ -228,6 +231,8 @@ ggplot(top_tokens, aes(reorder_within(feature, frequency, group), frequency)) +
   facet_wrap(~group, nrow = 2, scales = "free") +
   tidytext::scale_x_reordered() +
   theme(legend.position = "none")
+
+ggplotly(tok_df)
 ```
 
 A szövegtisztító lépéseket később újabbakkal is kiegészíthetjük, ha észrevesszük, hogy az elemzést zavaró tisztítási lépés maradt ki. Ilyen esetben tovább tisztíthatjuk a korpuszt, majd újra lefuttathatjuk az elemzést. Például, ha szükséges, további stopszavak eltávolítását is elvégezhetjük egy újabb stopszólista hozzáadásával. Ilyenkor ugyanúgy járunk el, mint az előző stopszólista esetén.
@@ -252,10 +257,10 @@ top_tokens_final <- textstat_frequency(torvenyek_dfm_final,
                                        )
 ```
 
-Ezt egy ábrán is megjelenítjük (ld. \@ref(fig:freqtoc). ábra).
+Ezt egy interaktív ábrán is megjelenítjük (ld. \@ref(fig:freqtoc). ábra).
 
 ```{r freqtoc, fig.cap="A 15 leggyakoribb token a korpuszban, a bővített stop szó listával"}
-ggplot(top_tokens_final, aes(reorder_within(feature, frequency, group), frequency)) +
+tokclean_df <- ggplot(top_tokens_final, aes(reorder_within(feature, frequency, group), frequency)) +
   geom_point(aes(shape = group), size = 2) +
   coord_flip() +
   labs(
@@ -265,6 +270,8 @@ ggplot(top_tokens_final, aes(reorder_within(feature, frequency, group), frequenc
   facet_wrap(~group, nrow = 2, scales = "free") +
   tidytext::scale_x_reordered() +
   theme(legend.position = "none")
+
+ggplotly(tokclean_df)
 ```
 
 A szövegtisztító és a korpusz előkészítő műveletek után következhet az LDA illesztése. Az alábbiakban az LDA illesztés két módszerét, a `VEM`-et és a `Gibbs`-et mutatjuk be. A modell mindkét módszer esetén ugyanaz, a különbség a következtetés módjában van. A `VEM` módszer variációs következtetés, míg a `Gibbs` mintavételen alapuló következtetés. [@bleiLatentDirichletAllocation2003; @griffithsFindingScientificTopics2004; @phanLearningClassifyShort2008].
@@ -314,13 +321,15 @@ perp_df <- dplyr::tibble(
 ```
 
 ```{r zavarossag, fig.cap="Zavarosság változása a k függvényében", cache=FALSE}
-ggplot(perp_df, aes(k, perplexity)) +
+perp_df <- ggplot(perp_df, aes(k, perplexity)) +
   geom_point() +
   geom_line() +
   labs(
     x = "Klaszterek száma",
     y = "Zavarosság"
   )
+
+ggplotly(perp_df)
 ```
 
 
