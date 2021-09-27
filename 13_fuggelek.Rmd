@@ -62,7 +62,7 @@ Az R súgórendszere a `help.start()` utasítással indítható el. Egy adott f�
 
 ### R csomagok {#packages}
 
-Az `R`-ben telepíthetők kiegészítő csomagok (packages), amelyek alapértelmezetten el nem érhető algoritmusokat, függvényeket tartalmaznak. A csomagok saját dokumentációval rendelkeznek, amelyeket fel kell tüntetni a használatukkal készült publikációink hivatkozáslistájában. A csomagok telepítésre több lehetőségünk is van: használhatjuk a menüsor `Tools -> Install Packages` menüpontját, vagy a jobb alsó ablak **packages** fül `Install` menüpontját, illetve az **editor** ablakban az `install.packages()` parancsot futtatva, ahol a `()`-be a telepíteni kívánt csomag nevét kell beírnunk (pl.: `install.packages("dplyr")`).
+Az `R`-ben telepíthetők kiegészítő csomagok (packages), amelyek alapértelmezetten el nem érhető algoritmusokat, függvényeket tartalmaznak. A csomagok saját dokumentációval rendelkeznek, amelyeket fel kell tüntetni a használatukkal készült publikációink hivatkozáslistájában. A csomagok telepítésre több lehetőségünk is van: használhatjuk a menüsor `Tools -> Install Packages` menüpontját, vagy a jobb alsó ablak **packages** fül `Install` menüpontját, illetve az **editor** ablakban az `install.packages()` parancsot futtatva, ahol a `()`-be a telepíteni kívánt csomag nevét kell beírnunk (pl.: `install.packages("dplyr")`). Ahhoz, hogy egy csomag funkcióit használjuk azt be kell töltetnünk a `library()` parancs segítségével, itt megintcsak a használni kívánt csomag nevét kell a zárójelek közé helyeznünk, viszont ebben az esetben nem szükséges idézőjelek közé helyeznünk zat (pl.: `library(dplyr)`) ameddig ezt a parancsot nem futattjuk le az adott csomag funkció nem lesznek elérhetőek számunkra.
 
 
 ```{r fig.align='center', fig.cap='Packages fül', echo=FALSE}
@@ -70,12 +70,12 @@ knitr::include_graphics('figures/13-04_packages.png')
 ```
 
 
-### Objektumok tárolása, értékadás 
+### Objektumok tárolása, értékadás {object}
 
 Az objektumok lehetnek például **vektorok**, **mátrixok**, **tömbök** (*array*), **adat táblák** (*data frame*). Értékadás nélkül az `R` csak megjeleníti a műveletek eredményét, de nem tárolja el azokat. Az eredmények eltárolásához azokat egy objektumba kell elmentenünk. Ehhez meg kell adnunk az objektum nevét majd az `<-` után adjuk meg annak értékét: `a <- 12 + 3`.Futtatás után az environments fülön megjelenik az a objektum, melynek értéke `15`. Az objektumok elnevezésénél figyelnünk kell arra, hogy az R különbséget tesz a kis és nagybetűk között, valamint, hogy az ugyanolyan nevű objektumokat kérdés nélkül felülírja és ezt a felülírást nem lehet visszavonni.
 
 
-### Vektorok
+### Vektorok {vector}
 
 Az R-ben kétféle típusú vektort különböztetünk meg:
 
@@ -162,6 +162,14 @@ orszag_adatok[1, 4]
 
 orszag_adatok$orszag
 ```
+
+
+## Munka saját adatokkal
+
+
+Saját adatainkat legegyszerűbben a munkakönyvtárból (working directory) hívhatjuk be. A munkakönyvtár egy olyan mappa a számítógépünkön, amely közvetlenül kapcsolatban van az éppen megnyitott R scripttel vagy projekttel. Amennyiben nem határozzuk meg , hogy adatokat honnan szeretnénk behívni, akkor azokat mindig innen fogja megpróbálni betölteni az R. A ` getwd()` parancs segítségével bármikor megtekinthetjük az aktuális munkakönyvtárunk helyét a számítógépünkön. Amennyiben szeretnénk beállítani egy új helyet a munkakönyvtárunknak akkor azt megtehetjük a ` setwd()`  paranccsal (pl.: setwd(C:/User /Documents)  illetve a menü rendszeren keresztül is van rá lehetőségünk `Session -> Set Working Directory ->  Choose Direcotry…`.
+
+Az egyes fájl formátumokat különböző parancsokkal tudjuk beolvasni. Egy txt esetében használhatjuk a `read.table() ` parancsot , ehhez a funkcióhoz nem kell csomagot betöltenünk, mivel az R alapverziója tartalmazza. Akárhányszor egy adatokat olvasunk be meg kell, hogy határozzuk az objektum nevét, amely tartalmazni fogja az adott fájl adatait  (pl.: proba<-read.table (proba.txt)). A csv (coma separated values) formátumú fájlok esetében használhatjuk a ` read.csv` parancsot, amelyet szintén tartalmaz az R alapverziója, illetve használhatjuk a ` read_csv` parancsot is, amelyet a ` readr` csomag tartalmaz (pl.: proba<-read.csv (proba.csv)). Utóbbi használata ajánlott magyar nyelvű szöveget tartalmazó adatok esetében, mivel tapasztalataink szerint ez a parancs kezeli legjobban a különböző kódolási problémákat. Amennyiben Excel táblázatokkal dolgozunk érdemes azokat csv formátumban elmenteni és azután betölteni, viszont van lehetőségünk a `XLConnect` csomag `readWorksheetFromFile()` parancsának segítségével is Excel fájlokat betölteni. Ebben az esetben a kódsorunkban azt is meg kell, hogy határozzuk, hogy az adott Excel fájl melyik munkalapjának információit akarjuk betölteni (pl.: proba <- readWorksheetFromFile (proba.xlsx, sheet=1).
 
 
 ## Vizualizáció
