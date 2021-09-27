@@ -41,6 +41,8 @@ texts <- HunMineR::data_miniszterelnokok_raw
 dplyr::glimpse(texts)
 ```
 
+A glimpse funkció segítségével nem csak a sorok és oszlopok számát tekinthetjük meg, hanem az egyes oszlopok neveit is, amelyek alapján megállapíthatjuk, hogy milyen információkat tartalmaz ez az objektum. Az egyes beszédek dokumentum azonosítóját, azok szövegét, az évüket és végül a miniszterelnök nevét, aki elmondta az adott beszédet.
+
 Ezt követően az [*Adatkezelés R-ben*](#adatkezeles) című fejezetben ismertetett `mutate()` függvény használatával két csoportra osztjuk a beszédeket. Ehhez először a `string_extract()` függvény segítségével meghatározzuk, hogy a kettéosztáshoz használni kívánt új változó a doc_id legyen, a `[^\\.]*` regex segítségével leválasztva arról a `.txt` kiterjesztést, majd a `str_sub()` függvénnyel megmondjuk, hogy a miniszterelnökök neve a `doc_id` hátulról számított hatodik karakteréig tart. Ezután kialakítjuk a két csoportot, azaz az `if_else()` segítségével meghatározzuk, hogy ha „antall_jozsef", „boross_peter", „orban_viktor" beszédeiről van szó azokat a jobb csoportba tegye, a maradékot pedig a bal csoportba.
 
 Majd azt is meghatározzuk, hogy melyik beszédnek mi a dátuma. Ehhez szintén a `str_sub()` függvényt használjuk, majd a `lubridate` segítségével alakítjuk ki a kívánt dátumformátumot.[^leiro-2]
@@ -188,6 +190,8 @@ mineln_dfm %>%
   dplyr::arrange(dplyr::desc(CTTR))
 ```
 
+A megkapott értékeket hozzáadhatjuk a dfm-hez is. A lenti kód egy dfm_lexdiv nevű adattáblát hoz létre, amely tartalmazza a mineln_dfm adattábla sorait, valamint a lexikai diverzitás értékeket.
+
 ```{r}
 dfm_lexdiv <- mineln_dfm
 
@@ -220,6 +224,8 @@ A kapott értékeket a `ggcorr()` függvény segítségével ábrázolhatjuk is.
 GGally::ggcorr(div_df[, 2:13], label = TRUE)
 ```
 
+Az így kapott ábránk egy korrelációs hőtérkép, az oszlopok tetején elhelyezkedő rövidítések az egyes mérőszámokat jelentik, amelyekkel a beszédeket vizsgáltuk ezek képlete megtalálható a [textstat lexdiv funkció oldalán](https://quanteda.io/reference/textstat_lexdiv.html). Ezek keresztmetszetében a számok az ábrázolják, hogy az egyes mérőszámok eredményei milyen kapcsolatban állnak egymással. Ahogy az ábra melletti skála is jelzi a piros négyzetben lévő számok pozitív korrelációt jeleznek, a kékben lévők pedig negatívat, minél halványabb egy adott négyzet színezése a korreláció mértéke annál kisebb.
+
 Ezt követően azt is megvizsgálhatjuk, hogy a korpusz szövegei mennyire könnyen olvashatóak. Ehhez a `Flesch.Kincaid` pontszámot használjuk, ami a szavak és a mondatok hossza alapján határozza meg a szöveg olvashatóságát. Ehhez a `textstat_readability()` függvényt használjuk, mely a korpuszunkat elemzi.
 
 ```{r}
@@ -227,12 +233,6 @@ quanteda.textstats::textstat_readability(x = corpus_mineln, measure = "Flesch.Ki
 ```
 
 Ezután a kiszámított értékkel kiegészítjük a korpuszt.
-
-```{r,  tidy = TRUE, tidy.opts=list(width.cutoff=80)}
-docvars(corpus_mineln, "f_k") <- textstat_readability(corpus_mineln, measure = "Flesch.Kincaid")[, 2]
-
-docvars(corpus_mineln)
-```
 
 ```{r,  tidy = TRUE, tidy.opts=list(width.cutoff=80)}
 docvars(corpus_mineln, "f_k") <- textstat_readability(corpus_mineln, measure = "Flesch.Kincaid")[, 2]
@@ -319,6 +319,8 @@ hierarchikus_klaszter <- hclust(as.dist(dist))
 
 ggdendro::ggdendrogram(hierarchikus_klaszter)
 ```
+
+A textstat_simil funkció segítségével azt is meg tudjuk vizsgálni, hogy egy adott kifejezés milyen egyéb kifejezésekkel korrelál.
 
 ```{r}
 mineln_dfm %>%
