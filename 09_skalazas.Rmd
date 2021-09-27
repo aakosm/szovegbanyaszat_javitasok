@@ -21,6 +21,7 @@ library(ggplot2)
 library(ggrepel)
 library(quanteda)
 library(quanteda.textmodels)
+library(plotly)
 library(HunMineR)
 ```
 
@@ -148,7 +149,7 @@ ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
 A párt metaadattal összehasonlíthatjuk az egy párthoz tartozó frakcióvezetők értékeit a `facet_wrap()` használatával. Figyeljünk arra, hogy az `y` tengelyen szabadon változhasson az egyes rész ábrák között, a `scales = "free"` opcióval  (ld. \@ref(fig:pozicio). ábra).
 
 ```{r partbanpoz, fig.cap="Párton belüli pozíciók"}
-ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
+speech_df <- ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
   geom_point() +
   geom_errorbarh(aes(xmin = lower, xmax = upper), height = 0) +
   labs(
@@ -156,13 +157,15 @@ ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
     x = expression(theta)
   ) +
   facet_wrap(~part, ncol = 1, scales = "free_y")
+
+ggplotly(speech_df)
 ```
 
 ## Wordscores
 
 A modell illesztést a wordfish-hez hasonlóan a `quanteda.textmodels` csomagban található `textmodel_wordscores()` függvény végzi. A kiinduló dfm ugyanaz, mint amit a fejezet elején elkészítettünk, a `beszedek_dfm`.
 
-A referencia pontokat dokumentumváltozóként hozzáadjuk a dfm-hez (a `refrencia_pont` oszlopot, ami `NA` értéket kap alapértelmezetten). A kiválasztott referencia dokumentumoknál pedig egyenként hozzáadjuk az értékeket. Erre több megoldás is van, az egyszerűbb út, hogy az egyik és a másik végletet a `-1; 1` intervallummal jelöljük. Ennek a lehetséges alternatívája, hogy egy külső, már validált forrást használunk. Pártok esetén ilyen lehet a Chapel Hill szakértői kérdőívének a pontszámai, a Manifesto projekt által kódolt jobb-bal (*rile*) dimenzió. A lenti példánál mi maradunk az egyszerűbb bináris kódolásnál (ld. \@ref(fig:partbanpoz). ábra). A wordfish eredményt alapul véve a két referencia pont Gulyás Gergely és Szél Bernadett beszédei lesznek.[^skala-3] Ezek a 3. és a 10. dokumentumok. Miután a referencia pontokat hozzárendeltünk az adattáblához szintén a `dovars` funkcióval meg is tekinthetjük azt és láthatjuk, hogy a referenci_pont már a metaadatok között szerepel.
+A referencia pontokat dokumentumváltozóként hozzáadjuk a dfm-hez (a `refrencia_pont` oszlopot, ami `NA` értéket kap alapértelmezetten). A kiválasztott referencia dokumentumoknál pedig egyenként hozzáadjuk az értékeket. Erre több megoldás is van, az egyszerűbb út, hogy az egyik és a másik végletet a `-1; 1` intervallummal jelöljük. Ennek a lehetséges alternatívája, hogy egy külső, már validált forrást használunk. Pártok esetén ilyen lehet a Chapel Hill szakértői kérdőívének a pontszámai, a Manifesto projekt által kódolt jobb-bal (*rile*) dimenzió. A lenti példánál mi maradunk az egyszerűbb bináris kódolásnál (ld. \@ref(fig:partbanpoz). ábra). A wordfish eredményt alapul véve a két referencia pont Gulyás Gergely és Szél Bernadett beszédei lesznek.[^skala-3] Ezek a 3. és a 10. dokumentumok. Miután a referencia pontokat hozzárendeltünk az adattáblához szintén a `docvars` funkcióval meg is tekinthetjük azt és láthatjuk, hogy a referenci_pont már a metaadatok között szerepel.
 
 [^skala-3]: Azért nem Vona Gábor beszédét választottuk, mert az gyaníthatóan egy kiugró érték, ami nem reprezentálja megfelelően a sokaságot.
 
@@ -216,7 +219,7 @@ dokumentumok_ws
 A 9.4-es ábrán a párton belüli bontást illusztráljuk a `facet_wrap()` segítségével.
 
 ```{r, fig.cap="A párton belüli wordscores-alapú skála"}
-ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
+party_df <- ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
   geom_point() +
   geom_errorbarh(aes(xmin = lwr, xmax = upr), height = 0) +
   labs(
@@ -224,4 +227,6 @@ ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
     x = "wordscores"
   ) +
   facet_wrap(~part, ncol = 1, scales = "free_y")
+
+ggplotly(party_df)
 ```
