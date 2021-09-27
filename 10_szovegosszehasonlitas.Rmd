@@ -10,8 +10,7 @@ A könyv korábbi fejezeteiben bemutatott eljárások között több olyat talá
 
 ## Lexikális hasonlóság
 
-A lexikális hasonlóság a gépi szövegfeldolgozás egy egyszerűbb megközelítése, amikor nem várjuk el az elemzésünktől, hogy „értse” a szöveget, csupán a formai hasonlóságot figyeljük. A megközelítés előnye, hogy számítási szempontból jelentősen egyszerűbb, mint a szemantikai hasonlóságra irányuló elemzések, hátránya azonban, hogy az egyszerűség könnyen tévútra vihet szofisztikáltabb elemzések esetén. Így például a lexikális hasonlóság szempontjából az alábbi két példamondat azonosnak tekinthető, hiszen formailag
-(kifejezések szintjén) megegyeznek.
+A lexikális hasonlóság a gépi szövegfeldolgozás egy egyszerűbb megközelítése, amikor nem várjuk el az elemzésünktől, hogy „értse” a szöveget, csupán a formai hasonlóságot figyeljük. A megközelítés előnye, hogy számítási szempontból jelentősen egyszerűbb, mint a szemantikai hasonlóságra irányuló elemzések, hátránya azonban, hogy az egyszerűség könnyen tévútra vihet szofisztikáltabb elemzések esetén. Így például a lexikális hasonlóság szempontjából az alábbi két példamondat azonosnak tekinthető, hiszen formailag (kifejezések szintjén) megegyeznek.
 
 *1. „A boszorkány megsüti Jancsit és Juliskát.”* 
 
@@ -156,10 +155,12 @@ colnames(tv_tvjav_minta)
 dim(tv_tvjav_minta)
 ```
 
-Ha jól végeztük a dolgunkat az adatbázisok összekapcsolása során, az eljárás végére 7 oszlopunk és 600 sorunk van, vagyis az újonnan létrehozott adatbázisba bekerült az összes változó (oszlop). A korpuszaink egy adattáblában való kezelése azért hasznos, mert így nem kell párhuzamosan elvégezni az azonos műveleteket a két korpusz, a törvények és a törvényjavaslatok tisztításához, hanem párhuzamosan tudunk dolgozni a kettővel. Kicsit közelebbről megvizsgálva az adatbázist, azt láthatjuk, hogy minden adatbázisunkban szereplő kormányzati ciklusra 100 megfigyelés áll rendelkezésünkre: `tv_tvjav_minta %>% count(korm_ciklus).`
+Ha jól végeztük a dolgunkat az adatbázisok összekapcsolása során, az eljárás végére 7 oszlopunk és 600 sorunk van, vagyis az újonnan létrehozott adatbázisba bekerült az összes változó (oszlop). A korpuszaink egy adattáblában való kezelése azért hasznos, mert így nem kell párhuzamosan elvégezni az azonos műveleteket a két korpusz, a törvények és a törvényjavaslatok tisztításához, hanem párhuzamosan tudunk dolgozni a kettővel. Kicsit közelebbről megvizsgálva az adatbázist, megtekinthetjük a metaadatainkat, valamit azt is láthatjuk a count funkció segítségével, hogy minden adatbázisunkban szereplő kormányzati ciklusra 100 megfigyelés áll rendelkezésünkre: `tv_tvjav_minta %>% count(korm_ciklus).`
 
 
 ```{r include = TRUE}
+summary(tv_tvjav_minta)
+
 tv_tvjav_minta %>% 
   count(korm_ciklus)
 ```
@@ -457,7 +458,7 @@ ggplot(tv_tvjav_tidy, aes(ev, hasonlosag)) +
         panel.grid.minor.x = element_blank() )
 ```
 
-A hasonlósági értékek évenkénti alakulásának megértése érdekében érdemes átlagot számolni a mutatókra. Ezt a `group_by()` és a `summarize()` függvények együttes alkalmazásával tehetjük meg. Megadjuk, hogy évenkénti bontásban szeretnénk a számításainkat elvégezni `group_by(ev)`, és azt, hogy átlagszámítást szeretnénk végezni `mean()`.
+A pont-diagramm ebben a formájában keveset árul el a számunkra, láthatjuk, hogy a koszinusz értékek általában magasabbak, de azt nem tudjuk meg mondani az egyes pontok alapján, hogy évről évre hogyan alakultak a jaccard és koszinusz értékek. Ezért a hasonlósági értékek évenkénti alakulásának megértése érdekében érdemes átlagot számolni a mutatókra. Ezt a `group_by()` és a `summarize()` függvények együttes alkalmazásával tehetjük meg. Megadjuk, hogy évenkénti bontásban szeretnénk a számításainkat elvégezni `group_by(ev)`, és azt, hogy átlagszámítást szeretnénk végezni `mean()`.
 
 
 ```{r}
@@ -468,7 +469,7 @@ evenkenti_atlag <- tv_tvjav_tidy %>%
 head(evenkenti_atlag)
 ```
 
-Az évenkénti átlagot tartalmazó adattáblánkra ezt követően vonal diagramot illesztünk. A \@ref(fig:lineplot).-es ábrán az látható, hogy a Jaccard- és koszinsz-hasonlóság értéke nagyjából együtt mozog, leszámítva a 2002-es, 2003-as éveket, mival azonban itt csak néhány adatpont áll rendelkezésre, ettől az inkonzisztenciától eltekinthetünk. 
+Az évenkénti átlagot tartalmazó adattáblánkra ezt követően vonal diagramot illesztünk. A \@ref(fig:lineplot).-es ábrán az látható, hogy a Jaccard- és koszinusz-hasonlóság értéke nagyjából együtt mozog, leszámítva a 2002-es, 2003-as éveket, mivel azonban itt csak néhány adatpont áll rendelkezésre, ettől az inkonzisztenciától eltekinthetünk. 
 
 ```{r lineplot, fig.cap="Koszinusz- és Jaccard hasonlóság vonal diagramon ábrázolva"}
 ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
@@ -483,7 +484,7 @@ ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
     )
 ```
 
-Ahhoz, hogy valamivel pontosabb képet kapjunk a Jaccard-index értékének alakulásáról, az eredményeinket érdemes vizualizálni a `ggplot2` segítségével. Elsőként évenkénti bontásban, boxplotokkal ábrázoljuk a Jaccard-index értékének alakulását (ld. \@ref(fig:boxplot). ábra).
+Ahhoz, hogy valamivel pontosabb képet kapjunk a Jaccard-index értékének alakulásáról, az eredményeinket érdemes vizualizálni a `ggplot2` segítségével. Elsőként évenkénti bontásban, boxplotokkal ábrázoljuk a Jaccard-index értékének alakulását (ld. \@ref(fig:boxplot). ábra). Így már nem csak azt láthatjuk, hogy évente mennyi volt az átlagos jaccard érték, hanem azt is, hogy az átlagtól mekkora eltérések voltak jelen, ez utóbbit természetesen azt is befolyásolja, hogy hány törvényt fogadtak el az adott évben.
 
 ```{r boxplot, fig.cap="Jaccard hasonlóság boxplotokkal ábrázolva"}
 ggplot(tv_tvjav_minta, aes(as.factor(ev), jaccard_index)) +
