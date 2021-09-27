@@ -103,6 +103,7 @@ library(quanteda)
 library(quanteda.textstats)
 library(readtext)
 library(ggplot2)
+library(plotly)
 library(HunMineR)
 ```
 
@@ -472,7 +473,7 @@ head(evenkenti_atlag)
 Az évenkénti átlagot tartalmazó adattáblánkra ezt követően vonal diagramot illesztünk. A \@ref(fig:lineplot).-es ábrán az látható, hogy a Jaccard- és koszinusz-hasonlóság értéke nagyjából együtt mozog, leszámítva a 2002-es, 2003-as éveket, mivel azonban itt csak néhány adatpont áll rendelkezésre, ettől az inkonzisztenciától eltekinthetünk. 
 
 ```{r lineplot, fig.cap="Koszinusz- és Jaccard hasonlóság vonal diagramon ábrázolva"}
-ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
+jac_cos_ave_df <- ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
   geom_line(aes(linetype = hasonlosag_tipus)) +
   labs(y = "Átlagos Jaccard- és koszinusz-hasonlóság", 
        linetype = NULL, 
@@ -482,12 +483,14 @@ ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank() 
     )
+
+ggplotly(jac_cos_ave_df)
 ```
 
 Ahhoz, hogy valamivel pontosabb képet kapjunk a Jaccard-index értékének alakulásáról, az eredményeinket érdemes vizualizálni a `ggplot2` segítségével. Elsőként évenkénti bontásban, boxplotokkal ábrázoljuk a Jaccard-index értékének alakulását (ld. \@ref(fig:boxplot). ábra). Így már nem csak azt láthatjuk, hogy évente mennyi volt az átlagos jaccard érték, hanem azt is, hogy az átlagtól mekkora eltérések voltak jelen, ez utóbbit természetesen azt is befolyásolja, hogy hány törvényt fogadtak el az adott évben.
 
 ```{r boxplot, fig.cap="Jaccard hasonlóság boxplotokkal ábrázolva"}
-ggplot(tv_tvjav_minta, aes(as.factor(ev), jaccard_index)) +
+jac_cos_box_df <- ggplot(tv_tvjav_minta, aes(as.factor(ev), jaccard_index)) +
   geom_boxplot() +
   labs(
     x = NULL,
@@ -496,6 +499,8 @@ ggplot(tv_tvjav_minta, aes(as.factor(ev), jaccard_index)) +
     axis.text.x = element_text(angle = 45),
     legend.position = "none"
     )
+
+ggplotly(jac_cos_box_df)
 ```
 
 A legalacsonyabb Jaccard-hasonlóság talán az 1994–1998-as időszakra jellemző, míg a 2014–2018-as időszakra szembetűnően magas Jaccard-értékeket látunk az első ábrázolt ciklushoz képest. Összességében nehéz trendet látni az ábrán, de érdemes azt is megjegyezni, hogy a negatív irányba kiugró adatpontok a 2014–2018-as ciklusban jelentősen nagyobb arányban tűnnek fel, mint a korábbi kormányzati ciklusok alatt.
