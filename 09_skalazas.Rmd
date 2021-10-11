@@ -148,17 +148,17 @@ ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
 
 A párt metaadattal összehasonlíthatjuk az egy párthoz tartozó frakcióvezetők értékeit a `facet_wrap()` használatával. Figyeljünk arra, hogy az `y` tengelyen szabadon változhasson az egyes rész ábrák között, a `scales = "free"` opcióval  (ld. \@ref(fig:pozicio). ábra).
 
-```{r partbanpoz, fig.cap="Párton belüli pozíciók"}
+```{r partbanpoz, eval = TRUE,  fig.height = 2, fig.cap="Párton belüli pozíciók"}
 speech_df <- ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
   geom_point() +
   geom_errorbarh(aes(xmin = lower, xmax = upper), height = 0) +
   labs(
     y = NULL,
-    x = expression(theta)
+    x = "wordscores"
   ) +
-  facet_wrap(~part, ncol = 1, scales = "free_y")
+  facet_wrap(~part, ncol = 1, scales = "free_y") 
 
-ggplotly(speech_df)
+ggplotly(speech_df, height = 1000)
 ```
 
 ## Wordscores
@@ -218,7 +218,7 @@ dokumentumok_ws
 
 A 9.4-es ábrán a párton belüli bontást illusztráljuk a `facet_wrap()` segítségével.
 
-```{r, fig.cap="A párton belüli wordscores-alapú skála"}
+```{r eval = TRUE, fig.height = 2, fig.cap="A párton belüli wordscores-alapú skála"}
 party_df <- ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
   geom_point() +
   geom_errorbarh(aes(xmin = lwr, xmax = upr), height = 0) +
@@ -228,5 +228,5 @@ party_df <- ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
   ) +
   facet_wrap(~part, ncol = 1, scales = "free_y")
 
-ggplotly(party_df)
+ggplotly(party_df, height = 1000)
 ```

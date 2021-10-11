@@ -36,15 +36,41 @@ Már említettük, hogy egy szövegbányászati elemzés során a szöveg is ada
 A példamondatok dokumentum-kifejezés mátrixsza az alábbi táblázat szerint fog kinézni. Vegyük észre azt is, hogy több olyan kifejezés van, melyek csak ragozásukban térnek el: Unió, Unióhoz; tagja, tagjának. Ezeket a kifejezéseket a kutatói szándék függvényében azonos alakúra hozhatjuk, hogy egy egységként jelenjenek meg. Az elemzések többségében a szövegelőkészítés egyik kiinduló lépése a szótövesítés vagy a lemmatizálás, előbbi a szavak toldalékainak levágását jelöli, utóbbi a szavak szótári alakra való visszaalakítását. A ragozás eltávolítását illetően elöljáróban annyit érdemes megjegyezni, hogy az agglutináló, vagyis ragasztó nyelvek esetén, mint amilyen a magyar is, a toldalékok eltávolítása gyakran igen komoly kihívást jelent. Nem csak a toldalékok formája lehet igen sokféle, de az is előfordulhat, hogy a tőszó nem egyezik meg a toldalék levágásával keletkező szótővel. Ilyen például a vödröt kifejezés, melynek szótöve a „vödr", de a nyelvtanilag helyes tőszó a „vödör". Hasonlóan a majmok kifejezés esetén a szótő a „majm” lesz, míg a nyelvtanilag helyes tőszó a „majom”. Emiatt a toldalékok levágását a magyar nyelvű szövegek esetén megfelelő körültekintéssel kell végezni.
 
 ```{r include = FALSE}
-vektorisation <- read_excel("data/vektorizacio.xlsx")
+Dokumentum <- c(1, 2, 3)
+`27` <- c(1, 0, 0)
+`2004-ben` <- c(0, 1, 1)
+akárcsak <-  c(0, 0, 1)
+az <- c(1, 1, 1)
+csatlakozott <- c(0, 1, 0)
+egyike <- c(1, 0, 0)
+Európai <- c(1, 1, 1)
+lett <- c(0, 0, 1)
+Magyarország <- c(1, 1, 1)
+Szlovákia <-  c(0, 0, 1)
+tagja <- c(0, 0, 1)
+tagjának <-  c(1, 0, 0)
+Unióhoz <- c(0, 1, 0)
 ```
 
 ```{r, echo = FALSE, results = 'ashis'}
-kable(vektorisation, align=rep('c', 5), caption = "Dokumentum-kifejezés mátrix három példamondattal") %>%
-kable_styling("striped", full_width = F,  bootstrap_options = c("striped", "hover", "condensed"), font_size = 10) %>%
-    column_spec(column = 1:15, monospace = T, width = '4cm') %>%
-    column_spec(column = 1:1, background = 'lightgrey') %>%
-  row_spec(0, angle = 0)
+dtm_pelda <- tibble::tibble(Dokumentum,
+                            `27`,
+                            `2004-ben`,
+                            akárcsak,
+                            az,
+                            csatlakozott,
+                            egyike,
+                            Európai,
+                            lett,
+                            Magyarország,
+                            Szlovákia,
+                            tagja,
+                            tagjának,
+                            Unióhoz)
+
+dtm_pelda %>% 
+  kbl(caption = "Dokumentum-kifejezés mátrix a példamondatokból") %>% 
+  kable_paper("hover", full_width = FALSE, font_size = 9)
 ```
 
 A dokumentum-kifejezés mátrixban minden dokumentumot egy vektor (értsd: egy sor) reprezentál, az eltérő kifejezések pedig külön oszlopokat kapnak. Tehát a fenti példában minden dokumentumunk egy 14 elemű vektorként jelenik meg, amelynek elemei azt jelölik, hogy milyen gyakran szerepel az adott kifejezés a dokumentumban. A dokumentum-kifejezés mátrixok egy jellemző tulajdonsága, hogy igen nagy dimenziókkal rendelkezhetnek (értsd: sok sorral és sok oszloppal), hiszen minden kifejezést külön oszlopként reprezentálnak. Egy sok dokumentumból álló vagy egy témák tekintetében változatos korpusz esetében a kifejezés mátrix elemeinek jelentős része 0 lesz, hiszen számos olyan kifejezés fordul elő az egyes dokumentumokban, amelyek más dokumentumban nem szerepelnek. A sok nullát tartalmazó mátrixot hívjuk ritka mátrixnak. Az adatok jobb kezelhetősége érdekben a ritka mátrixot valamilyen dimenzióredukciós eljárással sűrű mátrixszá lehet alakítani (például a nagyon ritka kifejezések eltávolításával vagy valamilyen súlyozáson alapuló eljárással).

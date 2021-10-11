@@ -247,7 +247,7 @@ Majd a `ggplot2` segítségével vizualizálhatjuk az eredményt (ld. \@ref(fig:
 corpus_df <- docvars(corpus_mineln)
 ```
 
-```{r eval=FALSE}
+```{r eval=TRUE, fig.height = 2, fig.cap="Az olvashatósági index alakulása"}
 mineln_df <- ggplot(corpus_df, aes(year, f_k)) +
   geom_point(size = 2) +
   geom_line(aes(linetype = partoldal), size = 1) +
@@ -265,7 +265,7 @@ mineln_df <- ggplot(corpus_df, aes(year, f_k)) +
 ggplotly(mineln_df)
 ```
 
-```{r olvashatosag, echo=FALSE, fig.cap="Az olvashatósági index alakulása"}
+```{r olvashatosag, echo=FALSE}
 # b <- ggplot(corpus_df, aes(year, f_k)) +
 #   geom_point(size = 2) +
 #   geom_line(aes(linetype = partoldal), size = 1) +
@@ -282,7 +282,7 @@ ggplotly(mineln_df)
 # 
 # saveRDS(b, "data/temp/05_plot.rds")
 
-readRDS("data/temp/05_plot.rds")
+#readRDS("data/temp/05_plot.rds")
 ```
 
 
@@ -370,7 +370,8 @@ freq_weight <- textstat_frequency(dfm_weighted, n = 5, groups = mineln)
 ```{r freqfeat, fig.cap="Leggyakoribb kifejezések a miniszterelnöki beszédekben"}
 data_df <- ggplot(data = freq_weight, aes(x = nrow(freq_weight):1, y = frequency)) +
   geom_point() +
-  facet_wrap(~ group, scales = "free", ncol = 2) +
+  facet_wrap(~ group, scales = "free", ncol = 1) +
+  theme(panel.spacing = unit(1, "lines"))+
   coord_flip() +
   scale_x_continuous(
     breaks = nrow(freq_weight):1,
@@ -381,7 +382,7 @@ data_df <- ggplot(data = freq_weight, aes(x = nrow(freq_weight):1, y = frequency
     y = "Relatív szófrekvencia"
     )
 
-ggplotly(data_df)
+ggplotly(data_df, height = 1000)
 ```
 
 Mivel a szövegösszehasonlítás egy komplex kutatási feladat, a témával bőbben is foglalkozunk a *[Szövegösszhasonlítás](#similarity)* fejezetben.

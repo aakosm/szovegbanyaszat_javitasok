@@ -8,7 +8,7 @@ source("_common.R")
 
 ## A kötet témái
 
-A szövegek adatként való értelmezése (*text as data*) és kvantitatív elemzése (*quantitative text analysis*), avagy a szövegbányászat (*text mining*) a nemzetközi társadalomtudományi kutatások egyik leggyorsabban fejlődő irányzata. A szövegbányászat egy olyan folyamat, amely során nyers, strukturálatlan szövegeket (pl.: beszédek, felszólalások, újságcikkek) egy strukturált formátumba alakítunk, hogy így új, korábban ismeretlen információkhoz tudjunk hozzájutni, mint trendekhez, mintázatokhoz összefüggésekhez stb. A szövegek és más kvalitatív adatok (filmek, képek) elemzése annyiban különbözik a mennyiségi (kvantitatív) adatokétól, hogy nyers formájukban még nem alkalmasak statisztikai, illetve ökonometriai elemzésre. Ezért van szükség az ezzel összefüggő módszertani problémák speciális tárgyalására.
+A szövegek adatként való értelmezése (*text as data*) és kvantitatív elemzése (*quantitative text analysis*), avagy a szövegbányászat (*text mining*) a nemzetközi társadalomtudományi kutatások egyik leggyorsabban fejlődő irányzata. A szövegbányászat egy olyan folyamat, amely során nyers, strukturálatlan szövegeket (pl.: beszédek, felszólalások, újságcikkek) egy strukturált formátumba alakítunk, hogy így új, korábban ismeretlen információkhoz tudjunk hozzájutni, mint trendekhez, mintázatokhoz, összefüggésekhez stb. A szövegek és más kvalitatív adatok (filmek, képek) elemzése annyiban különbözik a mennyiségi (kvantitatív) adatokétól, hogy nyers formájukban még nem alkalmasak statisztikai, illetve ökonometriai elemzésre. Ezért van szükség az ezzel összefüggő módszertani problémák speciális tárgyalására.
 
 Jelen kötet bevezeti az érdeklődőket a szövegbányászat és a mesterséges intelligencia társadalomtudományi alkalmazásának ilyen speciális problémáiba, valamint ezek gyakorlati megoldásába. Közvetlen előzménynek tekinthető a témában a Sebők Miklós által szerkesztett [*Kvantitatív szövegelemzés és szövegbányászat a politikatudományban*](https://poltextlab.tk.hu/uploads/files/Kvantitativ_szovegelemzes_keszpdf.pdf) címmel megjelent könyv, amely a magyar tudományos diskurzusban kevésbé bevett alapfogalmakat és eljárásokat mutatta be [@sebokKvantitativSzovegelemzesEs2016]. A hangsúly az elméleten volt, bár számos fejezet foglalkozott konkrét kódrészletek elemzésével. Míg az előző kötet az egyes kódolási eljárásokat, illetve ezek kutatásmódszertani előnyeit és hátrányait ismertette, ezúttal a társadalomtudományi elemzések során használható kvantitatív szövegelemzés legfontosabb gyakorlati feladatait vesszük sorra.
 
@@ -83,75 +83,104 @@ data(package = "HunMineR")
 
 ## Egy gyakorlati példa az R programmal való szövegbányászatra 
 
-A következőkben egy példát mutatunk be a szövegbányászat gyakorlati alkalmazására vonatkozóan, amely során Ady Endre és Petőfi Sándor verseinek szóhasználatát hasonlítjuk össze, az eredményekhez pedig szemléletes ábrázolást is készítünk. A jelen példában alkalmazott eljárásokat a későbbi fejezetekben részletesen is kifejtjük itt csupán szemléltetni kívánjuk velük, hogy milyen jellegű elemzéseket sajátíthat majd el az olvasó a könyv segítségével.
+A következőkben egy példát mutatunk be a szövegbányászat gyakorlati alkalmazására vonatkozóan, amely során Ady Endre és Petőfi Sándor összes verseinek szóhasználatát hasonlítjuk össze, az eredményekhez pedig szemléletes ábrázolást is készítünk. A jelen példában alkalmazott eljárásokat a későbbi fejezetekben részletesen is kifejtjük itt csupán szemléltetni kívánjuk velük, hogy milyen jellegű elemzéseket sajátíthat majd el az olvasó a könyv segítségével.
 
- Az R számos kiegészítő csomaggal rendelkezik, amelyek hasznos funkcióit úgy érhetünk el, ha telepítjük az őket tartalmazó csomagot. Ezt az `install.packages` paranccsal tehetjük meg, ha már korábban egyszer elvégeztük, akkor nem szükséges egy csomaggal megismételni.
+ Az R számos kiegészítő csomaggal rendelkezik, amelyek hasznos funkcióit úgy érhetünk el, ha telepítjük az őket tartalmazó csomagot. Ezt az `install.packages` paranccsal tehetjük meg, ha már korábban egyszer elvégeztük, akkor nem szükséges egy csomaggal megismételni. A lenti kódsorral a példánkhoz szükséges csomagokat telepíthetjük, de a könyvben használt többi csomagot is ezzel a módszerrel telepíthetjük.
  
-```{r eval=FALSE}
-install.packages("quanteda")
+```{r, eval=FALSE}
 install.packages("readtext")
-install.packages("wordcloud2")
-install.packages("dplyr")
+install.packages("quanteda")
+install.packages("quanteda.textstats")
+install.packages("quanteda.textplots")
+install.packages("ggplot2")
 ```
 
-A `library()` paranccsal pedig betölteni tudjuk a már telepített csomagjainkat, ezt minden alkalommal el kell, hogy végezzük, hogyha ezek egy funkcióját kívánjuk használni. Itt láthatjuk, hogy a két csomag után a HunMineR betöltése is szükséges, viszont annak ellenére, hogy ugyanazzal a funkcióval hívjuk elő a HunMiner nem egy csomag, hanem egy *repository* (adattár) így a telepítése egy eltérő eljárással zajlik, amelyet az előző alfejezetben írtunk le.
+A `library()` paranccsal pedig betölteni tudjuk a már telepített csomagjainkat, ezt minden alkalommal el kell, hogy végezzük, hogyha ezek egy funkcióját kívánjuk használni. Itt láthatjuk, hogy a két csomag után a HunMineR betöltése is szükséges, viszont annak ellenére, hogy ugyanazzal a funkcióval hívjuk elő a HunMiner nem egy csomag, hanem egy `repository` (adattár) így a telepítése egy eltérő eljárással zajlik, amelyet az előző alfejezetben írtunk le.
 
 ```{r include = TRUE}
 library(readtext)
+library(readr)
 library(quanteda)
 library(quanteda.textstats)
 library(quanteda.textplots)
 library(ggplot2)
+library(HunMineR)
 ```
 
 Ezt követően betöltjük a szükséges adatokat, jelen esetben a HunMiner adattárából.
 
-```{r}
-ady <- readtext("data/ady.txt")
-petofi <- readtext("data/petofi.txt")
+```{r, eval=FALSE}
+# hunminer placeholder
+
+ady <- data_ady_corpus
+petofi <- data_petofi_corpus
 ```
 
-Ahhoz, hogy adatokat használni tudjunk azokon először mindig úgynevezett tisztítási folyamatokat kell elvégeznünk, ezek segítségével tudjuk előkészíteni a szövegeket, ha nem végezzük el őket, vagy elvégezzük, de kellő alaposság nélkül akkor az eredményeink félrevezetőek lesznek.
+
+```{r}
+ady <- readtext("data/ady.txt", encoding = "UTF8")
+petofi <- readtext("data/petofi_corpus/corpus_files/*.txt", encoding = "UTF8")
+
+petofi <- data.frame(text = paste(petofi$text, collapse = " "),
+                     doc_id = "petofi")
+
+```
+
+Ahhoz, hogy adatokat használni tudjunk azokon először mindig úgynevezett tisztítási folyamatokat kell elvégeznünk, valamint át kell alakítanunk az adataink formátumát is. Az úgynevezett szövegtisztítási folyamatok a szövegeink előkészítését jelentik, ha kihagyjuk őket vagy nem végezzük el őket kellő alapossággal, akkor az eredményeink félrevezetőek lesznek. Az R-rel való kódolás során többféle formátumban is  tárolhatjuk az adatainkat, illetve az adataink egyik formátumból másikba való átalakítására is van lehetőségünk. Az egyes formátumok másféle típusú adatokat különböző elrendezésben tárolják, azért van szükségünk gyakran az adataink átalakítására, mivel az R-n belüli funkciókat, amelyekre szükségünk lesz csak specifikus formátumokon hajthatjuk végre.
+
+Első lépésként corpus formátumba helyezzük az adatainkat, erre csupán azért van szükség mert a későbbiekben ebből a formátumból tudjuk majd őket, token formátumba helyezni. 
 
 ```{r}
 ady_corpus <- corpus(ady)
 
+petofi_corpus <- corpus(petofi)
+```
+
+Ezt követően nem csak token formátumba helyezzük az adatokat a lenti kódsorokkal, hanem több szövegtisztító lépést is elvégzünk velük. A `tokens_tolower()` parancs segítségével minden szavunk betűjét kisbetűvé alakítjuk így a kódunk nem tesz különbséget ugyanazon szó két megjelenése között csupán azért, mert az egyik a mondat elején helyezkedik el. A `tokens_remove()` parancs segítségével egyes szavakat eltávolíthatunk két kódsorban is megjelenik ez a parancs, először a `quanteda` csomag magyar stopszó listájának elemeit távolítjuk el, majd másodjára általunk felsorolt kifejezések eltávolítására használjuk fel. Végül pedig a `tokens_wordstem()` parancs segítségével úgynevezett szótövezést hajtunk végre. Ez azt jelenti, hogy a szótövekről levágjuk a ragokat így a házban és a házhoz kifejezések egységesen ház kifejezésként fognak megjelenni a vizsgálatunkban. 
+
+```{r}
 ady_tok <- tokens(ady_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
   tokens_tolower() %>% 
   tokens_remove(stopwords("hungarian")) %>% 
-  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő")) %>%
+  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő", "a")) %>%
   tokens_wordstem()
-
-adydfm <- dfm(ady_tok, tolower = TRUE, remove = stopwords("hungarian"), stem = TRUE, remove_punct = TRUE, remove_symbols = TRUE, remove_numbers = TRUE)
-
-
-petofi_corpus <-corpus(petofi)
 
 petofi_tok <- tokens(petofi_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
   tokens_tolower() %>% 
   tokens_remove(stopwords("hungarian")) %>% 
-  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő")) %>%
+  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő", "a")) %>%
   tokens_wordstem()
+```
 
-petofidfm <- dfm(petofi_corpus, tolower = TRUE, remove = stopwords("hungarian"), stem = TRUE, remove_punct = TRUE, remove_symbols = TRUE, remove_numbers = TRUE)
+Ezt követően a token formátumban lévő adatainkat dfm formátumba helyezzük, egyúttál elvégzünk még néhány szövegtisztítási eljárást.A `remove_punct` `remove_symbols` és `remove_numbers` parancsok segítségével eltávolítjuk a mondatvégi írásjeleket, veszőket, szimbólumokat, valamint a számokat.
 
-petofidfm
+```{r}
+adydfm <- dfm(ady_tok)
 
-head(petofidfm, 2)
+petofidfm <- dfm(petofi_tok)
+```
 
+Majd megnyírbáljuk a szavaink listáját: a `dfm_trim()` parancs segítségével beállíthatjuk, hogy milyen gyakorisággal megjelenő szavakat hagyjunk az adataink között. Vannak jó okok mind a túlságosan gyakran megjelenő és a túlságosan kevésszer megejelenő szavak eltávolítására is. Ha egy szó nagyon gyakran jelenik meg, akkor feltételezhető, hogy az nem segít a számunkra értelmezni az egyes dokumentumaink közötti különbséget, mivel nem különbözteti meg azokat. Ha pedig egy szó túlságosan kevésszer jelenik meg, akkor az lehet, hogy egy egyedülálló eset, amely nem adhat a dokumentumainkra vonatkozó általános információt a számunkra. Jelen kód előírja, hogy ahhoz, hogy egy szó bekerüljün az összehasonlításunkba legalább 5-ször meg kell jelenie a szövegben.
 
+```{r}
+adydfm <- dfm_trim(petofidfm, min_termfreq = 5)
 
-
-dfm_trim(petofidfm, min_termfreq = 50, min_docfreq = 2)
-
-dfm_trim(petofidfm, max_termfreq = 5, max_docfreq = 2)
+petofidfm <- dfm_trim(adydfm, min_termfreq = 5)
 
 ```
 
 Végül pedig az R programon belül ábrázolhatjuk is az eredményeinket. Jelen esetben nem végeztünk el számítást, hanem a megtisztított szövegeink szavaiból generáltunk szófelhőket.
 
-```{r}
+A Petőfi versekből készült szófelhő:
+
+```{r, fig.cap="Petőfi szófelhő"}
 textplot_wordcloud(petofidfm)
+```
+
+
+Az Ady versekből készült szófelhő:
+
+```{r, fig.cap="Ady szófelhő"}
 textplot_wordcloud(adydfm)
 ```
 

@@ -35,18 +35,35 @@ A két példamondat (vagyis a dokumentumaink) dokumentum-kifejezés mátrixsza a
 
 ```{r, include = FALSE}
 library(kableExtra)
-library(readxl)
-cosine_similarity <- read_excel("data/temp/cosine_similarity.xlsx")
-cosine_similarity
+library(dplyr)
+
+Vektor_név <- c("X", "Y")
+jancsi <- c(1, 0)
+és <- c(1, 0)
+juliska <- c(1, 0)
+megsüti <- c(1, 1)
+a <-  c(1, 2)
+boszokrkányt <- c(1, 0)
+pék <- c(0, 1)
+kenyeret <- c(0, 1)
 ```
 
 
-```{r 10_1_dtm_pelda, echo = FALSE, results = 'ashis'}
-kable(cosine_similarity, caption = "Dokumentum-kifejezés mátrix két példamondattal") %>%
-kable_styling("striped", full_width = F,  bootstrap_options = c("striped", "hover", "condensed"), font_size = 12) %>%
-    column_spec(column = 1:9, monospace = T, width = '2cm') %>%
-    column_spec(column = 1:1, background = 'lightgrey') %>%
-  row_spec(0, angle = 0)
+```{r, echo = FALSE, results = 'ashis'}
+cosine_dfm <- data.frame(Vektor_név,
+                         jancsi,
+                         és,
+                         juliska,
+                         megsüti,
+                         a,
+                         boszokrkányt,
+                         pék,
+                         kenyeret)
+
+cosine_dfm %>% 
+  kbl(caption = "Dokumentum-kifejezés mátrix két példamondattal") %>% 
+  kable_paper("hover", full_width = TRUE)
+
 ```
 
 A két mondat közötti távolság értékét a képlet szerint a következő módon számítjuk ki: 
@@ -381,8 +398,8 @@ glimpse(koszinusz_df)
 Ezt követően pedig a `ggplot` függvényt használva a `geom_tile` segítségével tudjuk elkészíteni a hőtérképet, ami a hasonlósági mátrixot ábrázolja (ld. \@ref(fig:cosheat). ábra).
 
 
-```{r cosheat, fig.cap="Koszinusz-hasonlóság hőtérképen ábrázolva"}
-ggplot(koszinusz_df, aes(docs1, docs2, fill = similarity)) +
+```{r cosheat, fig.height = 1.7, fig.cap="Koszinusz-hasonlóság hőtérképen ábrázolva"}
+koszinusz_plot <- ggplot(koszinusz_df, aes(docs1, docs2, fill = similarity)) +
   geom_tile() +
   scale_fill_gradient(high = "#2c3e50", low = "#bdc3c7") +
   labs(
@@ -396,11 +413,13 @@ ggplot(koszinusz_df, aes(docs1, docs2, fill = similarity)) +
     axis.text.y=element_blank(),
     axis.ticks.y=element_blank()
 )
+
+ggplotly(koszinusz_plot)
 ```
 
 A Jaccard-hasonlósági hőtérképet ugyanezzel a módszerrel tudjuk elkészíteni (ld. \@ref(fig:jaccardheat). ábra).
 
-```{r jaccardheat, fig.cap="Jaccard hasonlóság hőtérképen ábrázolva"}
+```{r jaccardheat, fig.height = 1.7, fig.cap="Jaccard hasonlóság hőtérképen ábrázolva"}
 # adatok átalakítása
 jaccard_df <- as.matrix(jaccard_hasonlosag[501:600, 501:600]) %>%
   as.data.frame() %>%
@@ -412,7 +431,7 @@ jaccard_df <- as.matrix(jaccard_hasonlosag[501:600, 501:600]) %>%
     )
 
 # a ggplot ábra
-ggplot(jaccard_df, aes(docs1, docs2, fill = similarity)) +
+jaccard_plot <-ggplot(jaccard_df, aes(docs1, docs2, fill = similarity)) +
   geom_tile() +
   scale_fill_gradient(high = "#2c3e50", low = "#bdc3c7") +
   labs(
@@ -426,6 +445,8 @@ ggplot(jaccard_df, aes(docs1, docs2, fill = similarity)) +
     axis.text.y=element_blank(),
     axis.ticks.y=element_blank()
 )
+
+ggplotly(jaccard_plot)
 ```
 
 A két ábra összehasonlításánál láthatjuk, hogy a koszinusz-hasonlóság általában magasabb hasonlósági értékeket mutat. A mátrix főátlójában kiugró világos csík azt mutatja meg, hogy a legnagyobb hasonlóság az összetartozó törvény- és törvényjavaslat-szövegek között mutatkozik meg, eddig tehát az adataink az elvárásaink szerinti képet mutatják. Amennyiben a világos csíkot nem látnánk, az egyértelmű visszajelzés volna arról, hogy elrontottunk valamit a szövegelőkészítés eddigi lépései során, vagy a várakozásásaink voltak teljesen rosszak.
@@ -444,8 +465,8 @@ tv_tvjav_tidy <- tv_tvjav_minta %>%
 glimpse(tv_tvjav_tidy)
 ```
 
-```{r cosjac, fig.cap="Koszinusz- és Jaccard hasonlóság értékeinek alakulása"}
-ggplot(tv_tvjav_tidy, aes(ev, hasonlosag)) +
+```{r cosjac, fig.height = 2, fig.cap="Koszinusz- és Jaccard hasonlóság értékeinek alakulása"}
+jaccard_koszinusz_plot <- ggplot(tv_tvjav_tidy, aes(ev, hasonlosag)) +
   geom_jitter(aes(shape = hasonlosag_tipus,color = hasonlosag_tipus), width = 0.1, alpha = 0.45) +
   scale_x_continuous(breaks = seq(1994, 2018, by = 2)) + 
   labs(
@@ -457,6 +478,8 @@ ggplot(tv_tvjav_tidy, aes(ev, hasonlosag)) +
   theme(legend.position = "bottom",
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank() )
+
+ggplotly(jaccard_koszinusz_plot)
 ```
 
 A pont-diagramm ebben a formájában keveset árul el a számunkra, láthatjuk, hogy a koszinusz értékek általában magasabbak, de azt nem tudjuk meg mondani az egyes pontok alapján, hogy évről évre hogyan alakultak a jaccard és koszinusz értékek. Ezért a hasonlósági értékek évenkénti alakulásának megértése érdekében érdemes átlagot számolni a mutatókra. Ezt a `group_by()` és a `summarize()` függvények együttes alkalmazásával tehetjük meg. Megadjuk, hogy évenkénti bontásban szeretnénk a számításainkat elvégezni `group_by(ev)`, és azt, hogy átlagszámítást szeretnénk végezni `mean()`.
@@ -472,7 +495,7 @@ head(evenkenti_atlag)
 
 Az évenkénti átlagot tartalmazó adattáblánkra ezt követően vonal diagramot illesztünk. A \@ref(fig:lineplot).-es ábrán az látható, hogy a Jaccard- és koszinusz-hasonlóság értéke nagyjából együtt mozog, leszámítva a 2002-es, 2003-as éveket, mivel azonban itt csak néhány adatpont áll rendelkezésre, ettől az inkonzisztenciától eltekinthetünk. 
 
-```{r lineplot, fig.cap="Koszinusz- és Jaccard hasonlóság vonal diagramon ábrázolva"}
+```{r lineplot, eval = TRUE, fig.height = 2, fig.cap="Koszinusz- és Jaccard hasonlóság vonal diagramon ábrázolva"}
 jac_cos_ave_df <- ggplot(evenkenti_atlag, aes(ev, atl_hasonlosag)) +
   geom_line(aes(linetype = hasonlosag_tipus)) +
   labs(y = "Átlagos Jaccard- és koszinusz-hasonlóság", 
@@ -489,7 +512,7 @@ ggplotly(jac_cos_ave_df)
 
 Ahhoz, hogy valamivel pontosabb képet kapjunk a Jaccard-index értékének alakulásáról, az eredményeinket érdemes vizualizálni a `ggplot2` segítségével. Elsőként évenkénti bontásban, boxplotokkal ábrázoljuk a Jaccard-index értékének alakulását (ld. \@ref(fig:boxplot). ábra). Így már nem csak azt láthatjuk, hogy évente mennyi volt az átlagos jaccard érték, hanem azt is, hogy az átlagtól mekkora eltérések voltak jelen, ez utóbbit természetesen azt is befolyásolja, hogy hány törvényt fogadtak el az adott évben.
 
-```{r boxplot, fig.cap="Jaccard hasonlóság boxplotokkal ábrázolva"}
+```{r boxplot, eval = TRUE, fig.height = 2, fig.cap="Jaccard hasonlóság boxplotokkal ábrázolva"}
 jac_cos_box_df <- ggplot(tv_tvjav_minta, aes(as.factor(ev), jaccard_index)) +
   geom_boxplot() +
   labs(
