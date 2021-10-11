@@ -1,5 +1,7 @@
 # szovegbanyaszat_javitasok
 
+(proba javtias)
+
 Letolteni a github-rol a konyvet innen: https://github.com/aakosm/szovegbanyaszat_javitasok
 
 A projektet az `szovegbanyaszat_javitasok.Rproj` fileal tudod megnyitni az RStudioban.
