@@ -83,8 +83,8 @@ ggplotly(klas_df)
 
 A kialakított csoportokat vizuálisan is megjeleníthetjük (ld. \@ref(fig:PMspeech). ábra).
 
-```{r PMspeech, fig.cap="A miniszterelnöki beszédek klaszterei"}
-factoextra::fviz_cluster(
+```{r PMspeech, fig.height = 2, fig.cap="A miniszterelnöki beszédek klaszterei"}
+min_besz_plot <- factoextra::fviz_cluster(
   beszedek_klaszter, 
   data = beszedek_dfm, 
   pointsize = 2,
@@ -97,6 +97,8 @@ factoextra::fviz_cluster(
     y = "Második dimenzió"
   ) +
   theme(legend.position = "none")
+
+ggplotly(min_besz_plot)
 ```
 
 Az így kapott ábrán láthatjuk nem csak a két klaszter középpontjainak egymáshoz viszonyított pozícióját, de a klaszterek elemeinek egymáshoz viszonyított pozícióját is. Ez alapján láthatjuk, hogy a 2 klaszterünk nem ugyanakkora elemszámból állnak, valamint a belső hasonlóságuk is eltérő. valamint a klaszter elemek neveiből láthatjuk, hogy nem vált be a hipotézisünk arra vonatkozóan, hogy két klaszter beállítása esetén azok a jobb és baloldaliságot fogják tükrözni, ez valószínűleg azért van így mert a corpusokat ebben az esetben nem tisztítottuk, tehát stopszavazást sem végeztünk rajtuk, ebből kifolyólag pedig a politikai pozíciók mellett a szövegek hasonlósága és különbözősége sok más tényezőt is tükröz (pl: hogy mennyire összetetten vagy egyszerűen fogalmaz az illető, vagy a beszéd elhangzásának idején különös relevanciával bíró közpolitikákat)
@@ -233,7 +235,7 @@ tok_df <- ggplot(top_tokens, aes(reorder_within(feature, frequency, group), freq
   tidytext::scale_x_reordered() +
   theme(legend.position = "none")
 
-ggplotly(tok_df, height = 1000)
+ggplotly(tok_df, height = 1000, tooltip = "frequency")
 ```
 
 A szövegtisztító lépéseket később újabbakkal is kiegészíthetjük, ha észrevesszük, hogy az elemzést zavaró tisztítási lépés maradt ki. Ilyen esetben tovább tisztíthatjuk a korpuszt, majd újra lefuttathatjuk az elemzést. Például, ha szükséges, további stopszavak eltávolítását is elvégezhetjük egy újabb stopszólista hozzáadásával. Ilyenkor ugyanúgy járunk el, mint az előző stopszólista esetén.
@@ -273,7 +275,7 @@ tokclean_df <- ggplot(top_tokens_final, aes(reorder_within(feature, frequency, g
   tidytext::scale_x_reordered() +
   theme(legend.position = "none")
 
-ggplotly(tokclean_df, height = 1000)
+ggplotly(tokclean_df, height = 1000, tooltip = "frequency")
 ```
 
 A szövegtisztító és a korpusz előkészítő műveletek után következhet az LDA illesztése. Az alábbiakban az LDA illesztés két módszerét, a `VEM`-et és a `Gibbs`-et mutatjuk be. A modell mindkét módszer esetén ugyanaz, a különbség a következtetés módjában van. A `VEM` módszer variációs következtetés, míg a `Gibbs` mintavételen alapuló következtetés. [@bleiLatentDirichletAllocation2003; @griffithsFindingScientificTopics2004; @phanLearningClassifyShort2008].
@@ -397,7 +399,7 @@ toptermsplot9802vem <- top_terms %>%
   ) +
   tidytext::scale_x_reordered()
 
-ggplotly(toptermsplot9802vem)
+ggplotly(toptermsplot9802vem, tooltip = "beta")
 ```
 
 ```{r topic0206, fig.cap="2002–2006-os ciklus topikok és kifejezések (VEM mintavételezéssel)"}
@@ -414,7 +416,7 @@ toptermsplot0206vem <- top_terms %>%
   ) +
   tidytext::scale_x_reordered()
 
-ggplotly(toptermsplot0206vem)
+ggplotly(toptermsplot0206vem, tooltip = "beta")
 ```
 
 ### Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán
@@ -476,7 +478,7 @@ toptermsplot9802gibbs <- top_terms_gibbs %>%
   ) +
   tidytext::scale_x_reordered()
 
-ggplotly(toptermsplot9802gibbs)
+ggplotly(toptermsplot9802gibbs, tooltip = "beta")
 ```
 
 ```{r Gibbs0206, fig.cap="2002–2006-os ciklus topikok és kifejezések (Gibbs mintavétellel)"}
@@ -493,7 +495,7 @@ toptermsplot0206gibbs <- top_terms_gibbs %>%
   ) +
   scale_x_reordered()
 
-ggplotly(toptermsplot0206gibbs)
+ggplotly(toptermsplot0206gibbs, tooltip = "beta")
 ```
 
 ## Strukturális topikmodellek
@@ -595,7 +597,7 @@ topicplot <- tidy_stm %>%
     y = NULL
   )
 
-ggplotly(topicplot)
+ggplotly(topicplot, tooltip = "beta")
 ```
 
 Egy-egy topichoz tartozó meghatározó szavak annak függvényében változhatnak, hogy milyen algoritmust használunk. A `labelTopics()` függvény a már becsült stm modellünket alapul véve kínál négyféle alternatív opciót. Az egyes algoritmusok részletes magyarázatáért érdemes elolvasni a csomag részletes leírását.[^lda8]

@@ -382,7 +382,7 @@ data_df <- ggplot(data = freq_weight, aes(x = nrow(freq_weight):1, y = frequency
     y = "Relatív szófrekvencia"
     )
 
-ggplotly(data_df, height = 1000)
+ggplotly(data_df, height = 1000, tooltip = "frequency")
 ```
 
 Mivel a szövegösszehasonlítás egy komplex kutatási feladat, a témával bőbben is foglalkozunk a *[Szövegösszhasonlítás](#similarity)* fejezetben.

@@ -414,7 +414,7 @@ koszinusz_plot <- ggplot(koszinusz_df, aes(docs1, docs2, fill = similarity)) +
     axis.ticks.y=element_blank()
 )
 
-ggplotly(koszinusz_plot)
+ggplotly(koszinusz_plot, tooltip = "similarity")
 ```
 
 A Jaccard-hasonlósági hőtérképet ugyanezzel a módszerrel tudjuk elkészíteni (ld. \@ref(fig:jaccardheat). ábra).
@@ -446,7 +446,7 @@ jaccard_plot <-ggplot(jaccard_df, aes(docs1, docs2, fill = similarity)) +
     axis.ticks.y=element_blank()
 )
 
-ggplotly(jaccard_plot)
+ggplotly(jaccard_plot, tooltip = "similarity")
 ```
 
 A két ábra összehasonlításánál láthatjuk, hogy a koszinusz-hasonlóság általában magasabb hasonlósági értékeket mutat. A mátrix főátlójában kiugró világos csík azt mutatja meg, hogy a legnagyobb hasonlóság az összetartozó törvény- és törvényjavaslat-szövegek között mutatkozik meg, eddig tehát az adataink az elvárásaink szerinti képet mutatják. Amennyiben a világos csíkot nem látnánk, az egyértelmű visszajelzés volna arról, hogy elrontottunk valamit a szövegelőkészítés eddigi lépései során, vagy a várakozásásaink voltak teljesen rosszak.
@@ -568,13 +568,16 @@ tv_tvjav_minta <- tv_tvjav_minta %>%
 Miután létrehoztuk az új oszlopot, létrehozhatjuk a vizualizációt is annak alapján. Itt egy speciális pontdiagramot fogunk használni: `geom_jitter()`. Ez annyiban különbözik a pontdiagramtól, hogy kicsit szórtabban ábrázolja a diszkrét értékekre (évekre) eső pontokat, hogy az egy helyen sűrűsödő értékek ne takarják ki egymást. A `facet_wrap` segítségével tudjuk kategóriánként ábrázolni az évenkénti hasonlóságot (ld. \@ref(fig:govopp). ábra).
 
 ```{r govopp, fig.cap="Jaccard hasonlóság a benyújtó személye alapján"}
-ggplot(tv_tvjav_minta, aes(ev, jaccard_index)) +
+jaccard_be_plot <- ggplot(tv_tvjav_minta, aes(ev, jaccard_index)) +
   geom_jitter(width = 0.1, alpha = 0.5) +
   scale_x_continuous(breaks = seq(1994, 2018, by = 2)) +
   facet_wrap(~ korm_ell2, ncol = 1) +
+  theme(panel.spacing = unit(2, "lines"))+
   labs(
-    y = "Jaccard-hasonlóság",
+    y = NULL,
     x = NULL)
+
+ggplotly(jaccard_be_plot, height = 1000)
 ```
 
 

@@ -158,7 +158,7 @@ speech_df <- ggplot(dokumentumok_wf, aes(theta, reorder(speaker, theta))) +
   ) +
   facet_wrap(~part, ncol = 1, scales = "free_y") 
 
-ggplotly(speech_df, height = 1000)
+ggplotly(speech_df, height = 1000, tooltip = "theta")
 ```
 
 ## Wordscores
@@ -228,5 +228,5 @@ party_df <- ggplot(dokumentumok_ws, aes(fit, reorder(speaker, fit))) +
   ) +
   facet_wrap(~part, ncol = 1, scales = "free_y")
 
-ggplotly(party_df, height = 1000)
+ggplotly(party_df, height = 1000, tooltip = "fit")
 ```
