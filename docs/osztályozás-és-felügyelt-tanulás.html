@@ -33,6 +33,7 @@
   
 <link rel="prev" href="nlp-ch.html"/>
 <link rel="next" href="függelék.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,7 +51,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -70,6 +70,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +131,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="konyv_style.css" type="text/css" />
 </head>
@@ -268,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="irodalomjegyzék.html"><a href="irodalomjegyzék.html"><i class="fa fa-check"></i>Irodalomjegyzék</a></li>
 <li class="divider"></li>
-<li> Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex. </li>
+<li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
 </ul>
 
       </nav>
@@ -286,156 +309,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="osztályozás-és-felügyelt-tanulás" class="section level1">
+<div id="osztályozás-és-felügyelt-tanulás" class="section level1" number="12">
 <h1><span class="header-section-number">12</span> Osztályozás és felügyelt tanulás</h1>
-<div id="fogalmi-alapok-5" class="section level2">
+<div id="fogalmi-alapok-5" class="section level2" number="12.1">
 <h2><span class="header-section-number">12.1</span> Fogalmi alapok</h2>
 <p>A mesterséges intelligencia két fontos társadalomtudományi alkalmazási területe a felügyelet nélküli és a felügyelt tanulás. Míg az első esetben – ahogy azt a <em><a href="lda-ch.html#lda_ch">Felügyelet nélküli tanulás</a></em> fejezetben bemutattuk – az emberi beavatkozás néhány kulcsparaméter megadására (így pl. a kívánt topikok számának meghatározására) szorítkozik, addig a felügyelt tanulás esetében a kutatónak nagyobb mozgástere van “tanítani” a gépet. Ennyiben a felügyelt tanulás alkalmasabb hipotézisek tesztelésére, mint az adatok rejtett mintázatait felfedező felügyelet nélküli tanulás.</p>
 <p>A felügyelt tanulási feladat megoldása egy úgynevezett tanító halmaz (<em>training set</em>) meghatározásával kezdődik, melynek során a kutatók saját maguk végzik el kézzel azt a feladatot melyet a továbbiakban gépi közreműködéssel szeretnének nagyobb nagyságrendben, de egyben érvényesen (<em>validity</em>) és megbízhatóan (<em>reliability</em>) kivitelezni. Eredményeinket az ugyanúgy eredetileg kézzel lekódolt, de a modell-építés során félretett teszthalmazunkon (<em>test set</em>) értékelhetjük. Ennek során négy kategóriába rendezzük modellünk előrejelzéseit. Egy, a politikusi beszédeket a pozitív hangulatuk alapján osztályozó példát véve ezek a következők: azok a beszédek amelyeket a modell helyesen sorolt be pozitívba (valódi pozitív), vagy negatívba (valódi negatív), illetve azok, amelyek hibásan szerepelnek a pozitív (ál-pozitív), vagy a negatív kategóriában (ál-negatív). Mindezek együttesen egy ún. tévesztési táblát (<em>confusion matrix</em>) adnak, melynek további elemzésével ítéletet alkothatunk modellépítésünk eredményességéről.</p>
 <p>A felügyelt tanulás számos kutatási feladat megoldására alkalmazhatjuk, melyek közül a leggyakoribbak a különböző osztályozási (<em>classification</em>) feladatok. Miközben ezek – így pl. a véleményelemzés – szótáralapú módszertannal is megoldhatóak (lásd a <em><a href="sentiment.html#sentiment">Szótárak és érzelemelemzés</a></em> fejezetet), a felügyelt tanulás a nagyobb élőmunkaigényt rendszerint jobb eredményekkel és rugalmasabb felhasználhatósággal hálálja meg (gondoljunk csak a szótárak domain-függőségére). A felügyelt tanulás egyben a mesterséges intelligencia kutatásának gyorsan fejlődő területe, mely az e fejezetben tárgyalt algoritmus-központú gépi tanuláson túl az ún. mélytanulás (<em>deep learning</em>) és a neurális hálók területén is zajlik egyre látványosabb sikerekkel.</p>
 </div>
-<div id="osztályozás-felügyelt-tanulással" class="section level2">
+<div id="osztályozás-felügyelt-tanulással" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> Osztályozás felügyelt tanulással</h2>
 <p>Az alábbi fejezetben a CAP magyar média gyűjteményéből a napilap címlapokat tartalmazó modult használjuk.<a href="#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a> Az induló adatbázis 61 835 cikk szövegét és metaadatait (összesen öt változót: sorszám, fájlnév, a közpolitikai osztály kódja, szöveg, illetve a korpusz forrása – <em>Magyar Nemzet</em> vagy <em>Népszabadság</em>) tartalmazza. Az a célunk, hogy az egyes cikkekhez kézzel, jó minőségben (két, egymástól függetlenül dolgozó kódoló által) kiosztott és egyeztetett közpolitikai kódokat – ez a tanítóhalmaz – arra használjuk, hogy meghatározzuk egy kiválasztott cikkcsoport hasonló kódjait. Az osztályozási feladathoz a CAP közpolitikai kódrendszerét használjuk, mely 21 közpolitikai kategóriát határoz meg az oktatástól az egészségügyön át a honvédelemig.<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a></p>
 <p>Annak érdekében, hogy egyértelműen értékelhessük a gépi tanulás hatékonyságát, a kiválasztott cikkcsoport (azaz a teszthalmaz) esetében is ismerjük a kézi kódolás eredményét („éles“ kutatási helyzetben, ismeretlen kódok esetében ugyanakkor ezt gyakran szintén csak egy kisebb mintán tudjuk kézzel validálni). További fontos lépés, hogy az észszerű futási idő érdekében a gyakorlat során a teljes adatbázisból – és ezen belül is csak a Népszabadság részhalmazból – fogunk venni egy 4500 darabos mintát. Ezen a mintán pedigg kétféle modellt is fogunk futtatni a Naive Bayes-t és az SVM-t vagyis Support Vector Machine-t. Az ezekkel a módszerekkel létrehozott két modellünk hatékonyságát fogjuk összehasonlítani, valamint azt is megfogjuk nézni, hogy az eredmények megbízhatósága mennyiben közelíti meg a kézikódolási módszerre jellemző 80-90%-os pontosságot.</p>
 <p>Először behívjuk a szükséges csomagokat. Majd a felügyelet nélküli tanulással foglalkozó fejezethez hasonlóan itt is alkalmazzuk a <code>set.seed()</code> funkciót, mivel anélkül nem egyeznének az eredményeink teljes mértékben egy a kódunk egy késöbbi újrafuttatása esetén.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-1"></a><span class="kw">library</span>(stringr)</span>
-<span id="cb233-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-2"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb233-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-3"></a><span class="kw">library</span>(quanteda)</span>
-<span id="cb233-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-4"></a><span class="kw">library</span>(caret)</span>
-<span id="cb233-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-5"></a><span class="kw">library</span>(quanteda.textmodels)</span>
-<span id="cb233-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-6"></a><span class="kw">library</span>(HunMineR)</span>
-<span id="cb233-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-7"></a></span>
-<span id="cb233-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-8"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb233-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb233-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb233-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb233-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb233-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HunMineR)</span>
+<span id="cb233-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span></code></pre></div>
 <p>Ezt követően betöltjük a <code>HunMineR</code>-ből az adatainkat. Jelen esetben is vethetünk egy pillantást az objektum tartalmára a glimpse funkció segítségével, és láthatjuk, hogy az öt változónk a cikkek tényleges szövege, a sorok száma, a fájlok neve, az újság, ahol a cikk megjelent, valamint a cikk adott témába való besorolása, amely kézi kódolással került hozzárendelésre.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-1"></a>Data_NOL_MNO &lt;-<span class="st"> </span>HunMineR<span class="op">::</span>data_nol_mno_clean</span>
-<span id="cb234-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-2"></a><span class="kw">glimpse</span>(Data_NOL_MNO)</span>
-<span id="cb234-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-3"></a><span class="co">#&gt; Rows: 71,875</span></span>
-<span id="cb234-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-4"></a><span class="co">#&gt; Columns: 5</span></span>
-<span id="cb234-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-5"></a><span class="co">#&gt; $ row_number      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, ~</span></span>
-<span id="cb234-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-6"></a><span class="co">#&gt; $ filename        &lt;chr&gt; &quot;nol_1990_01_02_01.txt&quot;, &quot;nol_1990_01_02_02.txt~</span></span>
-<span id="cb234-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-7"></a><span class="co">#&gt; $ majortopic_code &lt;dbl&gt; 19, 19, 19, 1, 1, 19, 19, 1, 1, 19, 19, 1, 19, ~</span></span>
-<span id="cb234-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-8"></a><span class="co">#&gt; $ text            &lt;chr&gt; &quot;változás év választás év világ ünneplés köz ke~</span></span>
-<span id="cb234-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-9"></a><span class="co">#&gt; $ corpus          &lt;chr&gt; &quot;NOL&quot;, &quot;NOL&quot;, &quot;NOL&quot;, &quot;NOL&quot;, &quot;NOL&quot;, &quot;NOL&quot;, &quot;NOL&quot;~</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-1" aria-hidden="true" tabindex="-1"></a>Data_NOL_MNO <span class="ot">&lt;-</span> HunMineR<span class="sc">::</span>data_nol_mno_clean</span>
+<span id="cb234-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Data_NOL_MNO)</span>
+<span id="cb234-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 71,875</span></span>
+<span id="cb234-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 5</span></span>
+<span id="cb234-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ row_number      &lt;dbl&gt; 1, 2, 3, 4,~</span></span>
+<span id="cb234-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ filename        &lt;chr&gt; &quot;nol_1990_0~</span></span>
+<span id="cb234-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ majortopic_code &lt;dbl&gt; 19, 19, 19,~</span></span>
+<span id="cb234-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ text            &lt;chr&gt; &quot;változás é~</span></span>
+<span id="cb234-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ corpus          &lt;chr&gt; &quot;NOL&quot;, &quot;NOL~</span></span></code></pre></div>
 <p>Majd pár kissebb átalakítást hajtunk végre az adatainkon. Először is ehhez a modellhez most csak a Népszabadság cikkeket fogjuk alkalmazni a Magyar Nemzet cikkeit kiszedjük az adataink közül. Ezután leegyszerűsítjük a kódolást. Összesen 21 témakört lefed a cikkek kézi kódolása most viszont ezekből egy bináris változót készítünk, amelynek 1 lesz az értéke, ha a cikk makrogazdaságról szól, ha pedig bármilyne más témakörről, akkor 0 lesz az értéke. Így két hasonló méretű csoportot hozunk létre. A modellek pedig az ide történő besorolálst próbálják majd megállapítani a cikkek szövege alapján vagyis, hogy makrogazdasági témáról szól-e az adott cikk, vagy valamilyen más témáról. Majd kiválasztjuk a táblából a két változó, amelyekre szükségünk lesz a cikkek szövegét <code>text</code> és a cikkekhez kézzel hozzárendelt téműt <code>label</code> a többit pedig elvetjük.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-1"></a>Data_NOL &lt;-<span class="st"> </span>Data_NOL_MNO <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-2"></a><span class="st">  </span><span class="kw">filter</span>(text <span class="op">!=</span><span class="st"> &quot; &quot;</span> <span class="op">|</span><span class="st"> </span>text <span class="op">!=</span><span class="st"> &quot;&quot;</span>, corpus <span class="op">==</span><span class="st"> &quot;NOL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">label =</span> <span class="kw">if_else</span>(majortopic_code <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-4"></a><span class="st">  </span><span class="kw">group_by</span>(label) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-5"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">2250</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-6"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb235-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-7"></a><span class="st">  </span><span class="kw">select</span>(text, label)</span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-1" aria-hidden="true" tabindex="-1"></a>Data_NOL <span class="ot">&lt;-</span> Data_NOL_MNO <span class="sc">%&gt;%</span> </span>
+<span id="cb235-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(text <span class="sc">!=</span> <span class="st">&quot; &quot;</span> <span class="sc">|</span> text <span class="sc">!=</span> <span class="st">&quot;&quot;</span>, corpus <span class="sc">==</span> <span class="st">&quot;NOL&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">if_else</span>(majortopic_code <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(label) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">2250</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb235-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb235-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb235-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(text, label)</span></code></pre></div>
 <p>Ezt követően egy korpusszá alakítjuk az objektumunkat.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb236-1"></a>nol_corpus &lt;-<span class="st"> </span><span class="kw">corpus</span>(Data_NOL)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb236-1" aria-hidden="true" tabindex="-1"></a>nol_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(Data_NOL)</span></code></pre></div>
 <p>Majd létrehozunk egy új objektumot id_train néven amely 1 és 4500 között 3600 különböző a <code>sample()</code> funkció segítségével véletlenszerűen kiválogatott számot tartalmaz. Utána pedig a korpuszunkhoz hozzá adunk egy új id_numeric elnevezésű változót, amely csupán a megszámozza az egyes cikkeket. Ezeket a késöbbiekben arra fogjuk felhasználni, hogy kialakítsuk a tanító és teszt halmazokat</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb237-1"></a>id_train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4500</span>, <span class="dv">3600</span>, <span class="dt">replace =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb237-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb237-2"></a>nol_corpus<span class="op">$</span>id_numeric &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">ndoc</span>(nol_corpus)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb237-1" aria-hidden="true" tabindex="-1"></a>id_train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4500</span>, <span class="dv">3600</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb237-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb237-2" aria-hidden="true" tabindex="-1"></a>nol_corpus<span class="sc">$</span>id_numeric <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ndoc</span>(nol_corpus)</span></code></pre></div>
 <p>Ezt követően a korpuszunkat egy tokenekké alakítjuk és ezzel egyidejűleg eltávolítjuk a quanteda beépített magyar stopszó szótárát, valamint sztemmelést is végrehajtunk.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-1"></a>nol_toks &lt;-<span class="st"> </span><span class="kw">tokens</span>(nol_corpus, <span class="dt">remove_punct =</span> <span class="ot">TRUE</span>, <span class="dt">remove_number =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb238-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-2"></a><span class="st">  </span><span class="kw">tokens_remove</span>(<span class="dt">pattern =</span> <span class="kw">stopwords</span>(<span class="st">&quot;hungarian&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb238-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-3"></a><span class="st">  </span><span class="kw">tokens_wordstem</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-1" aria-hidden="true" tabindex="-1"></a>nol_toks <span class="ot">&lt;-</span> <span class="fu">tokens</span>(nol_corpus, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">remove_number =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb238-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_remove</span>(<span class="at">pattern =</span> <span class="fu">stopwords</span>(<span class="st">&quot;hungarian&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb238-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb238-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tokens_wordstem</span>()</span></code></pre></div>
 <p>A tokeneket pedig egy dfm-é alakítjuk.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb239-1"></a>dfmtnol &lt;-<span class="st"> </span><span class="kw">dfm</span>(nol_toks)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb239-1" aria-hidden="true" tabindex="-1"></a>dfmtnol <span class="ot">&lt;-</span> <span class="fu">dfm</span>(nol_toks)</span></code></pre></div>
 <p>Ezt követően kialakítjunk a tanító és teszt halmazokat a korábban létrehozott változók segítségével. A lenti kód elsősora egy subsetet alakít ki az adattáblánk mindazon soraiból, amelyek id_numeric változója szerepel az id_train számsorban ez lesz a tanító alhalmaz. Majd ennek megfelelően egy másik alhalmazt alakítunk ki a teszteléshez, amely minden olyan sorát fogja tartalmazni adattáblánknak, amely id_numeric változója nem szerepel az id_train számsorban.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb240-1"></a>dfmat_training &lt;-<span class="st"> </span><span class="kw">dfm_subset</span>(dfmtnol, id_numeric <span class="op">%in%</span><span class="st"> </span>id_train)</span>
-<span id="cb240-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb240-2"></a>dfmat_test &lt;-<span class="st"> </span><span class="kw">dfm_subset</span>(dfmtnol, <span class="op">!</span>id_numeric <span class="op">%in%</span><span class="st"> </span>id_train)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb240-1" aria-hidden="true" tabindex="-1"></a>dfmat_training <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmtnol, id_numeric <span class="sc">%in%</span> id_train)</span>
+<span id="cb240-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb240-2" aria-hidden="true" tabindex="-1"></a>dfmat_test <span class="ot">&lt;-</span> <span class="fu">dfm_subset</span>(dfmtnol, <span class="sc">!</span>id_numeric <span class="sc">%in%</span> id_train)</span></code></pre></div>
 <p>Azáltal pedig, hogy kialakítottuk a két alhalmazt el is végeztük az utolsó előkészítési folyamatot is, az így előkészített adatokon tudjuk majd futtatni a következőkben, mind a Naive Bayes és az SVM modellünket.</p>
-<div id="naive-bayes" class="section level3">
+<div id="naive-bayes" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">12.2.1</span> Naive Bayes</h3>
 <p>Először létrehozzuk a modellünket, amely számára meghatározzuk, hogy a label változóhoz kell egy predikciót adnia, majd ezt alakalmazzuk az adatainkra.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb241-1"></a>tmod_nb &lt;-<span class="st"> </span><span class="kw">textmodel_nb</span>(dfmat_training, dfmat_training<span class="op">$</span>label)</span>
-<span id="cb241-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb241-2"></a>dfmat_matched &lt;-<span class="st"> </span><span class="kw">dfm_match</span>(dfmat_test, <span class="dt">features =</span> <span class="kw">featnames</span>(dfmat_training))</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb241-1" aria-hidden="true" tabindex="-1"></a>tmod_nb <span class="ot">&lt;-</span> <span class="fu">textmodel_nb</span>(dfmat_training, dfmat_training<span class="sc">$</span>label)</span>
+<span id="cb241-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb241-2" aria-hidden="true" tabindex="-1"></a>dfmat_matched <span class="ot">&lt;-</span> <span class="fu">dfm_match</span>(dfmat_test, <span class="at">features =</span> <span class="fu">featnames</span>(dfmat_training))</span></code></pre></div>
 <p>A következő objektumban eltároljuk a kézikódolás eredményeit, amelyeket már ismerünk.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb242-1"></a>actual_class &lt;-<span class="st"> </span>dfmat_matched<span class="op">$</span>label</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb242-1" aria-hidden="true" tabindex="-1"></a>actual_class <span class="ot">&lt;-</span> dfmat_matched<span class="sc">$</span>label</span></code></pre></div>
 <p>Majd eltároljuk egy másik objektumban azokat az eredményeket, amelyeket a modellünk generált.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb243-1"></a>predicted_class &lt;-<span class="st"> </span><span class="kw">predict</span>(tmod_nb, <span class="dt">newdata =</span> dfmat_matched)</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb243-1" aria-hidden="true" tabindex="-1"></a>predicted_class <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod_nb, <span class="at">newdata =</span> dfmat_matched)</span></code></pre></div>
 <p>A két fenti adat segítségével pedig létrehozhatjuk a korábban is említett tévesztési táblát.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-1"></a>tab_class &lt;-<span class="st"> </span><span class="kw">table</span>(actual_class, predicted_class)</span>
-<span id="cb244-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-2"></a>tab_class</span>
-<span id="cb244-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-3"></a><span class="co">#&gt;             predicted_class</span></span>
-<span id="cb244-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-4"></a><span class="co">#&gt; actual_class   0   1</span></span>
-<span id="cb244-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-5"></a><span class="co">#&gt;            0 391  65</span></span>
-<span id="cb244-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-6"></a><span class="co">#&gt;            1  72 372</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-1" aria-hidden="true" tabindex="-1"></a>tab_class <span class="ot">&lt;-</span> <span class="fu">table</span>(actual_class, predicted_class)</span>
+<span id="cb244-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-2" aria-hidden="true" tabindex="-1"></a>tab_class</span>
+<span id="cb244-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             predicted_class</span></span>
+<span id="cb244-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; actual_class   0   1</span></span>
+<span id="cb244-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            0 391  65</span></span>
+<span id="cb244-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb244-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            1  72 372</span></span></code></pre></div>
 <p>Ezt létrehozhatjuk a <code>caret</code> csomag funkciójával is, amely a tévesztési tábla mellett sok más hasznos adatot is megad a számunkra.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-1"></a><span class="kw">confusionMatrix</span>(tab_class, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</span>
-<span id="cb245-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-2"></a><span class="co">#&gt; Confusion Matrix and Statistics</span></span>
-<span id="cb245-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-3"></a><span class="co">#&gt; </span></span>
-<span id="cb245-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-4"></a><span class="co">#&gt;             predicted_class</span></span>
-<span id="cb245-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-5"></a><span class="co">#&gt; actual_class   0   1</span></span>
-<span id="cb245-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-6"></a><span class="co">#&gt;            0 391  65</span></span>
-<span id="cb245-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-7"></a><span class="co">#&gt;            1  72 372</span></span>
-<span id="cb245-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-8"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb245-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-9"></a><span class="co">#&gt;                Accuracy : 0.848         </span></span>
-<span id="cb245-10"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-10"></a><span class="co">#&gt;                  95% CI : (0.823, 0.871)</span></span>
-<span id="cb245-11"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-11"></a><span class="co">#&gt;     No Information Rate : 0.514         </span></span>
-<span id="cb245-12"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-12"></a><span class="co">#&gt;     P-Value [Acc &gt; NIR] : &lt;2e-16        </span></span>
-<span id="cb245-13"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-13"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb245-14"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-14"></a><span class="co">#&gt;                   Kappa : 0.695         </span></span>
-<span id="cb245-15"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-15"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb245-16"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-16"></a><span class="co">#&gt;  Mcnemar&#39;s Test P-Value : 0.608         </span></span>
-<span id="cb245-17"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-17"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb245-18"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-18"></a><span class="co">#&gt;             Sensitivity : 0.844         </span></span>
-<span id="cb245-19"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-19"></a><span class="co">#&gt;             Specificity : 0.851         </span></span>
-<span id="cb245-20"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-20"></a><span class="co">#&gt;          Pos Pred Value : 0.857         </span></span>
-<span id="cb245-21"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-21"></a><span class="co">#&gt;          Neg Pred Value : 0.838         </span></span>
-<span id="cb245-22"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-22"></a><span class="co">#&gt;               Precision : 0.857         </span></span>
-<span id="cb245-23"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-23"></a><span class="co">#&gt;                  Recall : 0.844         </span></span>
-<span id="cb245-24"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-24"></a><span class="co">#&gt;                      F1 : 0.851         </span></span>
-<span id="cb245-25"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-25"></a><span class="co">#&gt;              Prevalence : 0.514         </span></span>
-<span id="cb245-26"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-26"></a><span class="co">#&gt;          Detection Rate : 0.434         </span></span>
-<span id="cb245-27"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-27"></a><span class="co">#&gt;    Detection Prevalence : 0.507         </span></span>
-<span id="cb245-28"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-28"></a><span class="co">#&gt;       Balanced Accuracy : 0.848         </span></span>
-<span id="cb245-29"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-29"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb245-30"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-30"></a><span class="co">#&gt;        &#39;Positive&#39; Class : 0             </span></span>
-<span id="cb245-31"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-31"></a><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(tab_class, <span class="at">mode =</span> <span class="st">&quot;everything&quot;</span>)</span>
+<span id="cb245-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Confusion Matrix and Statistics</span></span>
+<span id="cb245-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb245-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             predicted_class</span></span>
+<span id="cb245-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; actual_class   0   1</span></span>
+<span id="cb245-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            0 391  65</span></span>
+<span id="cb245-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            1  72 372</span></span>
+<span id="cb245-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                Accuracy :</span></span>
+<span id="cb245-10"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  95% CI :</span></span>
+<span id="cb245-11"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     No Information Rate :</span></span>
+<span id="cb245-12"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     P-Value [Acc &gt; NIR] :</span></span>
+<span id="cb245-13"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-14"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Kappa :</span></span>
+<span id="cb245-15"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-16"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mcnemar&#39;s Test P-Value :</span></span>
+<span id="cb245-17"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-18"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Sensitivity :</span></span>
+<span id="cb245-19"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Specificity :</span></span>
+<span id="cb245-20"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Pos Pred Value :</span></span>
+<span id="cb245-21"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Neg Pred Value :</span></span>
+<span id="cb245-22"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Precision :</span></span>
+<span id="cb245-23"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  Recall :</span></span>
+<span id="cb245-24"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      F1 :</span></span>
+<span id="cb245-25"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Prevalence :</span></span>
+<span id="cb245-26"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Detection Rate :</span></span>
+<span id="cb245-27"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Detection Prevalence :</span></span>
+<span id="cb245-28"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Balanced Accuracy :</span></span>
+<span id="cb245-29"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-30"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        &#39;Positive&#39; Class :</span></span>
+<span id="cb245-31"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb245-32"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb245-33"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.848         </span></span>
+<span id="cb245-34"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  (0.823, 0.871)</span></span>
+<span id="cb245-35"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.514         </span></span>
+<span id="cb245-36"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &lt;2e-16        </span></span>
+<span id="cb245-37"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb245-38"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.695         </span></span>
+<span id="cb245-39"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb245-40"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.608         </span></span>
+<span id="cb245-41"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb245-42"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.844         </span></span>
+<span id="cb245-43"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.851         </span></span>
+<span id="cb245-44"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.857         </span></span>
+<span id="cb245-45"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.838         </span></span>
+<span id="cb245-46"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.857         </span></span>
+<span id="cb245-47"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.844         </span></span>
+<span id="cb245-48"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.851         </span></span>
+<span id="cb245-49"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.514         </span></span>
+<span id="cb245-50"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.434         </span></span>
+<span id="cb245-51"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.507         </span></span>
+<span id="cb245-52"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.848         </span></span>
+<span id="cb245-53"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb245-54"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0             </span></span>
+<span id="cb245-55"><a href="osztályozás-és-felügyelt-tanulás.html#cb245-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
 <p>Az eredményeken pedig láthatjuk, hogy még az egyszerűség kedvéért lecsökkentett méretű tanítási halmaz ellenére is egy kifejezett magas 84.78%-os pontossági értéket kapunk, amely többé-kevésbé megfeletethető egy kizárólag kézikódolással végzett vizsgálat pontosságának</p>
 </div>
-<div id="support-vector-machine" class="section level3">
+<div id="support-vector-machine" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Support-vector machine</h3>
 <p>A következő kódsorral alkalmazzuk az SVM modellünket, hogy az adatainkon belül a label változóra vonatkozóan készítsen predikciót.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb246-1"></a>tmod_svm &lt;-<span class="st"> </span><span class="kw">textmodel_svm</span>(dfmat_training, <span class="dt">y =</span> dfmat_training<span class="op">$</span>label)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb246-1" aria-hidden="true" tabindex="-1"></a>tmod_svm <span class="ot">&lt;-</span> <span class="fu">textmodel_svm</span>(dfmat_training, <span class="at">y =</span> dfmat_training<span class="sc">$</span>label)</span></code></pre></div>
 <p>Ismét eltároljuk a kézikódolás eredményeit, amelyeket már ismerünk. Valamint az eredményeket, amelyeket az SVM modellünk generált szintén eltároljuk egy objektumba.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb247-1"></a>actual_class_svm &lt;-<span class="st"> </span>dfmat_matched<span class="op">$</span>label</span>
-<span id="cb247-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb247-2"></a>predicted_class_svm &lt;-<span class="st"> </span><span class="kw">predict</span>(tmod_svm, <span class="dt">newdata =</span> dfmat_matched)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb247-1" aria-hidden="true" tabindex="-1"></a>actual_class_svm <span class="ot">&lt;-</span> dfmat_matched<span class="sc">$</span>label</span>
+<span id="cb247-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb247-2" aria-hidden="true" tabindex="-1"></a>predicted_class_svm <span class="ot">&lt;-</span> <span class="fu">predict</span>(tmod_svm, <span class="at">newdata =</span> dfmat_matched)</span></code></pre></div>
 <p>Ismét létrehozhatunk egy egyszerű tévesztési táblát.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-1"></a>tab_class_svm &lt;-<span class="st"> </span><span class="kw">table</span>(actual_class_svm, predicted_class_svm)</span>
-<span id="cb248-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-2"></a>tab_class_svm</span>
-<span id="cb248-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-3"></a><span class="co">#&gt;                 predicted_class_svm</span></span>
-<span id="cb248-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-4"></a><span class="co">#&gt; actual_class_svm   0   1</span></span>
-<span id="cb248-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-5"></a><span class="co">#&gt;                0 369  87</span></span>
-<span id="cb248-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-6"></a><span class="co">#&gt;                1  45 399</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-1" aria-hidden="true" tabindex="-1"></a>tab_class_svm <span class="ot">&lt;-</span> <span class="fu">table</span>(actual_class_svm, predicted_class_svm)</span>
+<span id="cb248-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-2" aria-hidden="true" tabindex="-1"></a>tab_class_svm</span>
+<span id="cb248-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 predicted_class_svm</span></span>
+<span id="cb248-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; actual_class_svm   0   1</span></span>
+<span id="cb248-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                0 369  87</span></span>
+<span id="cb248-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                1  45 399</span></span></code></pre></div>
 <p>Valamint jelen esetben is használhatjuk a <code>caret</code> csomagban található funkciót, hogy még több információt nyerjünk ki a modellünk működéséről.</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-1"></a><span class="kw">confusionMatrix</span>(tab_class_svm, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</span>
-<span id="cb249-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-2"></a><span class="co">#&gt; Confusion Matrix and Statistics</span></span>
-<span id="cb249-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-3"></a><span class="co">#&gt; </span></span>
-<span id="cb249-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-4"></a><span class="co">#&gt;                 predicted_class_svm</span></span>
-<span id="cb249-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-5"></a><span class="co">#&gt; actual_class_svm   0   1</span></span>
-<span id="cb249-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-6"></a><span class="co">#&gt;                0 369  87</span></span>
-<span id="cb249-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-7"></a><span class="co">#&gt;                1  45 399</span></span>
-<span id="cb249-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-8"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb249-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-9"></a><span class="co">#&gt;                Accuracy : 0.853         </span></span>
-<span id="cb249-10"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-10"></a><span class="co">#&gt;                  95% CI : (0.829, 0.876)</span></span>
-<span id="cb249-11"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-11"></a><span class="co">#&gt;     No Information Rate : 0.54          </span></span>
-<span id="cb249-12"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-12"></a><span class="co">#&gt;     P-Value [Acc &gt; NIR] : &lt; 2e-16       </span></span>
-<span id="cb249-13"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-13"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb249-14"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-14"></a><span class="co">#&gt;                   Kappa : 0.707         </span></span>
-<span id="cb249-15"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-15"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb249-16"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-16"></a><span class="co">#&gt;  Mcnemar&#39;s Test P-Value : 0.000359      </span></span>
-<span id="cb249-17"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-17"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb249-18"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-18"></a><span class="co">#&gt;             Sensitivity : 0.891         </span></span>
-<span id="cb249-19"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-19"></a><span class="co">#&gt;             Specificity : 0.821         </span></span>
-<span id="cb249-20"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-20"></a><span class="co">#&gt;          Pos Pred Value : 0.809         </span></span>
-<span id="cb249-21"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-21"></a><span class="co">#&gt;          Neg Pred Value : 0.899         </span></span>
-<span id="cb249-22"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-22"></a><span class="co">#&gt;               Precision : 0.809         </span></span>
-<span id="cb249-23"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-23"></a><span class="co">#&gt;                  Recall : 0.891         </span></span>
-<span id="cb249-24"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-24"></a><span class="co">#&gt;                      F1 : 0.848         </span></span>
-<span id="cb249-25"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-25"></a><span class="co">#&gt;              Prevalence : 0.460         </span></span>
-<span id="cb249-26"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-26"></a><span class="co">#&gt;          Detection Rate : 0.410         </span></span>
-<span id="cb249-27"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-27"></a><span class="co">#&gt;    Detection Prevalence : 0.507         </span></span>
-<span id="cb249-28"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-28"></a><span class="co">#&gt;       Balanced Accuracy : 0.856         </span></span>
-<span id="cb249-29"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-29"></a><span class="co">#&gt;                                         </span></span>
-<span id="cb249-30"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-30"></a><span class="co">#&gt;        &#39;Positive&#39; Class : 0             </span></span>
-<span id="cb249-31"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-31"></a><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(tab_class_svm, <span class="at">mode =</span> <span class="st">&quot;everything&quot;</span>)</span>
+<span id="cb249-2"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Confusion Matrix and Statistics</span></span>
+<span id="cb249-3"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb249-4"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                 predicted_class_svm</span></span>
+<span id="cb249-5"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; actual_class_svm   0   1</span></span>
+<span id="cb249-6"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                0 369  87</span></span>
+<span id="cb249-7"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                1  45 399</span></span>
+<span id="cb249-8"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-9"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                Accuracy :</span></span>
+<span id="cb249-10"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  95% CI :</span></span>
+<span id="cb249-11"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     No Information Rate :</span></span>
+<span id="cb249-12"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     P-Value [Acc &gt; NIR] :</span></span>
+<span id="cb249-13"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-14"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Kappa :</span></span>
+<span id="cb249-15"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-16"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mcnemar&#39;s Test P-Value :</span></span>
+<span id="cb249-17"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-18"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Sensitivity :</span></span>
+<span id="cb249-19"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             Specificity :</span></span>
+<span id="cb249-20"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Pos Pred Value :</span></span>
+<span id="cb249-21"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Neg Pred Value :</span></span>
+<span id="cb249-22"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               Precision :</span></span>
+<span id="cb249-23"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                  Recall :</span></span>
+<span id="cb249-24"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      F1 :</span></span>
+<span id="cb249-25"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;              Prevalence :</span></span>
+<span id="cb249-26"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Detection Rate :</span></span>
+<span id="cb249-27"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    Detection Prevalence :</span></span>
+<span id="cb249-28"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       Balanced Accuracy :</span></span>
+<span id="cb249-29"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-30"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        &#39;Positive&#39; Class :</span></span>
+<span id="cb249-31"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                          </span></span>
+<span id="cb249-32"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb249-33"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.853         </span></span>
+<span id="cb249-34"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  (0.829, 0.876)</span></span>
+<span id="cb249-35"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.54          </span></span>
+<span id="cb249-36"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &lt; 2e-16       </span></span>
+<span id="cb249-37"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb249-38"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.707         </span></span>
+<span id="cb249-39"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb249-40"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.000359      </span></span>
+<span id="cb249-41"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb249-42"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.891         </span></span>
+<span id="cb249-43"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.821         </span></span>
+<span id="cb249-44"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.809         </span></span>
+<span id="cb249-45"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.899         </span></span>
+<span id="cb249-46"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.809         </span></span>
+<span id="cb249-47"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.891         </span></span>
+<span id="cb249-48"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.848         </span></span>
+<span id="cb249-49"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.460         </span></span>
+<span id="cb249-50"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.410         </span></span>
+<span id="cb249-51"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.507         </span></span>
+<span id="cb249-52"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0.856         </span></span>
+<span id="cb249-53"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb249-54"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  0             </span></span>
+<span id="cb249-55"><a href="osztályozás-és-felügyelt-tanulás.html#cb249-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span></code></pre></div>
 <p>Itt ismét azt találjuk, hogy a csökkentett méretű korpusz ellenére egy kifejezetten magas pontossági értéket 85.33%-ot kapunk.</p>
 
 </div>
