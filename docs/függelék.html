@@ -291,7 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="irodalomjegyzék.html"><a href="irodalomjegyzék.html"><i class="fa fa-check"></i>Irodalomjegyzék</a></li>
 <li class="divider"></li>
-<li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
+<li> Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex. </li>
 </ul>
 
       </nav>
@@ -318,7 +318,7 @@ div.csl-indent {
 <div id="az-rstudio-kezdőfelülete" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Az RStudio kezdőfelülete</h3>
 <p>Az RStudio kezdőfelülete négy panelből, eszközsorból és menüsorból áll:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-252"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-247"></span>
 <p class="caption">
 Ábra 13.1: RStudio felhasználói felület
 </p>
@@ -329,7 +329,7 @@ div.csl-indent {
 <div id="projektmunka" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> A projektalapú munka</h3>
 <p>Bár nem kötelező, de javasolt, hogy az RStudio-ban projekt alapon dolgozzunk, mivel így az összes – az adott projekttel kapcsolatos fájlt – egy mappában tárolhatjuk. Új projekt beállítását a <code>File-&gt;New Project</code> menüben tehetjük meg, ahol a saját gépünk egy könyvtárát kell kiválasztani, ahová az R a scripteket, az adat- és előzményfájlokat menti. Ezenkívül a <code>Tools-&gt;Global Options-&gt;General</code> menüpont alatt le kell tiltani a <em>„Restore most recently opened project at startup”</em> és a <em>„Restore .RData ino workspace at startup”</em> beállítást, valamint <em>„Save workspace to .RData on exit”</em> legördülő menüjében be kell állítani a <em>„Never”</em> értéket.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-253"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-248"></span>
 <p class="caption">
 Ábra 13.2: RStudio projekt beállítások
 </p>
@@ -343,7 +343,7 @@ div.csl-indent {
 A scriptbeli utasítások az azokat tartalmazó sorokra állva vagy több sort kijelölve a <code>Run</code> feliratra kattintva vagy a <code>Ctrl+Enter</code> billentyűparanccsal futtathatók le. A lefuttatott parancsok és azok eredményei ezután a bal alsó sarokban lévő <strong>console</strong> ablakban jelennek meg és ugyanitt kapunk hibaüzenetet is, ha valamilyen hibát vétettünk a script írása közben.</p>
 <p>A munkafolyamat során létrehozott állományok (ábrák, fájlok) az ún. munkakönyvtárba (<em>working directory</em>) mentődnek. Az aktuális munkakönyvtár neve, elérési útja a <code>getwd()</code> utasítással jeleníthető meg. A könyvtárban található állományok listázására a <code>list.files()</code> utasítással van lehetőségünk. Ha a korábbiaktól eltérő munkakönyvtárat akarunk megadni, azt a <code>setwd()</code> függvénnyel tehetjük meg, ahol a <code>()</code>-ben az adott mappa elérési útját kell megadnunk. Az elérési útban a meghajtó azonosítóját, majd a mappák, almappák nevét vagy egy normál irányú perjel (<code>/</code>), vagy két fordított perjel (<code>\\</code>) választja el, mivel az elérési út karakterlánc, ezért azt idézőjelek vagy aposztrófok közé kell tennünk.
 Az aktuális munkakönyvtárba beléphetünk a jobb alsó ablak file lapján a <code>„More -&gt; Go To Working Directory”</code> segítségével. Ugyanitt a <code>„Set Working Directory”</code>-val munkakönyvtárnak állíthatjuk be az a mappát, amelyben épp benne vagyunk.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-254"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-249"></span>
 <p class="caption">
 Ábra 13.3: Working directory beállítások
 </p>
@@ -363,7 +363,7 @@ Az R súgórendszere a <code>help.start()</code> utasítással indítható el. E
 <div id="packages" class="section level3" number="13.1.4">
 <h3><span class="header-section-number">13.1.4</span> R csomagok</h3>
 <p>Az <code>R</code>-ben telepíthetők kiegészítő csomagok (packages), amelyek alapértelmezetten el nem érhető algoritmusokat, függvényeket tartalmaznak. A csomagok saját dokumentációval rendelkeznek, amelyeket fel kell tüntetni a használatukkal készült publikációink hivatkozáslistájában. A csomagok telepítésre több lehetőségünk is van: használhatjuk a menüsor <code>Tools -&gt; Install Packages</code> menüpontját, vagy a jobb alsó ablak <strong>packages</strong> fül <code>Install</code> menüpontját, illetve az <strong>editor</strong> ablakban az <code>install.packages()</code> parancsot futtatva, ahol a <code>()</code>-be a telepíteni kívánt csomag nevét kell beírnunk (pl.: <code>install.packages("dplyr")</code>). Ahhoz, hogy egy csomag funkcióit használjuk azt be kell töltetnünk a <code>library()</code> parancs segítségével, itt megintcsak a használni kívánt csomag nevét kell a zárójelek közé helyeznünk, viszont ebben az esetben nem szükséges idézőjelek közé helyeznünk zat (pl.: <code>library(dplyr)</code>) ameddig ezt a parancsot nem futattjuk le az adott csomag funkció nem lesznek elérhetőek számunkra.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-255"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-250"></span>
 <p class="caption">
 Ábra 13.4: Packages fül
 </p>
@@ -398,8 +398,7 @@ Az R súgórendszere a <code>help.start()</code> utasítással indítható el. E
 <span id="cb252-4"><a href="függelék.html#cb252-4" aria-hidden="true" tabindex="-1"></a>karakter_kombinalt <span class="ot">&lt;-</span><span class="fu">c</span>(karakter1, karakter2)</span>
 <span id="cb252-5"><a href="függelék.html#cb252-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb252-6"><a href="függelék.html#cb252-6" aria-hidden="true" tabindex="-1"></a>karakter_kombinalt</span>
-<span id="cb252-7"><a href="függelék.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;kutya&quot;  &quot;macska&quot; &quot;ló&quot;    </span></span>
-<span id="cb252-8"><a href="függelék.html#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;nyúl&quot;</span></span></code></pre></div>
+<span id="cb252-7"><a href="függelék.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;kutya&quot;  &quot;macska&quot; &quot;ló&quot;     &quot;nyúl&quot;</span></span></code></pre></div>
 <p>Ha egy vektorról szeretnénk megtudni, hogy milyen típusú azt a <code>typeof()</code> vagy a <code>class()</code> paranccsal tehetjük meg, ahol <code>()</code>-ben az adott objektumként tárolt vektor nevét kell megadnunk: <code>typeof(karakter1)</code>. A vektor hosszúságát (benne tárolt elemek száma vektorok esetén) a <code>lenght()</code> függvénnyel tudhatjuk meg.</p>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="függelék.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(karakter1)</span>
 <span id="cb253-2"><a href="függelék.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;character&quot;</span></span>
@@ -421,32 +420,22 @@ Az R súgórendszere a <code>help.start()</code> utasítással indítható el. E
 <div id="data-frame" class="section level3" number="13.1.8">
 <h3><span class="header-section-number">13.1.8</span> Data frame</h3>
 <p>Az adattábla (<em>data frame</em>) a statisztikai és adatelemzési folyamatok egyik leggyakrabban használt adattárolási formája. Egy data frame többféle típusú adatot tartalmazhat. A data frame-k különféle oszlopokból állhatnak, amelyek különféle típusú adatokat tartalmazhatnak, de egy oszlop csak egy típusú adatból állhat. Az itt bemutatott <em>data frame</em> 7 megfigyelést és 4 féle változót tartalmaz (id, country, pop, continent).</p>
-<pre><code>#&gt;   id      orszag nepesseg
-#&gt; 1  1    Thailand     68.7
-#&gt; 2  2      Norway      5.2
-#&gt; 3  3 North Korea     24.0
-#&gt; 4  4      Canada     47.8
-#&gt; 5  5    Slovenia      2.0
-#&gt; 6  6      France     63.6
-#&gt; 7  7   Venezuela     31.6
-#&gt;       kontinens
-#&gt; 1          Asia
-#&gt; 2        Europe
-#&gt; 3          Asia
-#&gt; 4 North America
-#&gt; 5        Europe
-#&gt; 6        Europe
-#&gt; 7 South America</code></pre>
+<pre><code>#&gt;   id      orszag nepesseg     kontinens
+#&gt; 1  1    Thailand     68.7          Asia
+#&gt; 2  2      Norway      5.2        Europe
+#&gt; 3  3 North Korea     24.0          Asia
+#&gt; 4  4      Canada     47.8 North America
+#&gt; 5  5    Slovenia      2.0        Europe
+#&gt; 6  6      France     63.6        Europe
+#&gt; 7  7   Venezuela     31.6 South America</code></pre>
 <p>A <em>data frame</em>-be rendezett adatokhoz különböző módon férhetünk hozzá, például a <em>data frame</em> nevének majd []-ben a kívánt sor megadásával, kiírathatjuk a <strong>console</strong> ablakba annak tetszőleges sorát ás oszlopát: <code>orszag_adatok[1, 1]</code>. Az R több különböző módot kínál a <em>data frame</em> sorainak és oszlopainak eléréséhez. A <code>[</code> általános használata: <code>data_frame[sor, oszlop]</code>. Egy másik megoldás a <code>$</code> haszálata: <code>data_frame$oszlop</code>.</p>
 <div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="függelék.html#cb256-1" aria-hidden="true" tabindex="-1"></a>orszag_adatok[<span class="dv">1</span>, <span class="dv">4</span>]</span>
 <span id="cb256-2"><a href="függelék.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Asia</span></span>
-<span id="cb256-3"><a href="függelék.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Levels: Asia ... South America</span></span>
+<span id="cb256-3"><a href="függelék.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Asia Europe North America South America</span></span>
 <span id="cb256-4"><a href="függelék.html#cb256-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb256-5"><a href="függelék.html#cb256-5" aria-hidden="true" tabindex="-1"></a>orszag_adatok<span class="sc">$</span>orszag</span>
-<span id="cb256-6"><a href="függelék.html#cb256-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thailand&quot;    &quot;Norway&quot;     </span></span>
-<span id="cb256-7"><a href="függelék.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;North Korea&quot; &quot;Canada&quot;     </span></span>
-<span id="cb256-8"><a href="függelék.html#cb256-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;Slovenia&quot;    &quot;France&quot;     </span></span>
-<span id="cb256-9"><a href="függelék.html#cb256-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] &quot;Venezuela&quot;</span></span></code></pre></div>
+<span id="cb256-6"><a href="függelék.html#cb256-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thailand&quot;    &quot;Norway&quot;      &quot;North Korea&quot; &quot;Canada&quot;      &quot;Slovenia&quot;   </span></span>
+<span id="cb256-7"><a href="függelék.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;France&quot;      &quot;Venezuela&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="munka-saját-adatokkal" class="section level2" number="13.2">
@@ -472,14 +461,14 @@ Először egyszerű alapbeállítások mellett egy histogram típusú vizualizá
 <span id="cb258-3"><a href="függelék.html#cb258-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap)</span>
 <span id="cb258-4"><a href="függelék.html#cb258-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span> </span>
 <span id="cb258-5"><a href="függelék.html#cb258-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-265-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-260-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Lehetőségünk van arra, hogy az alakzat színét megváltoztassuk. A használható színek és színkódok megtalálhatóak a <code>ggplot2</code> leírásában: <a href="https://ggplot2-book.org/scale-colour.html">https://ggplot2-book.org/scale-colour.html</a></p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="függelék.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb259-2"><a href="függelék.html#cb259-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gapminder,</span>
 <span id="cb259-3"><a href="függelék.html#cb259-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap)</span>
 <span id="cb259-4"><a href="függelék.html#cb259-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb259-5"><a href="függelék.html#cb259-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-261-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Meghatározhatjuk külön-külön a histogram x és y tengelyén ábrázolni kívánt adatokat és választhatjuk azok pontszerű ábrázolását is.</p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="függelék.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb260-2"><a href="függelék.html#cb260-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gapminder,</span>
@@ -489,7 +478,7 @@ Először egyszerű alapbeállítások mellett egy histogram típusú vizualizá
 <span id="cb260-6"><a href="függelék.html#cb260-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb260-7"><a href="függelék.html#cb260-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb260-8"><a href="függelék.html#cb260-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-267-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-262-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Ahogy az előzőekben, itt is megváltoztathatjuk az ábra színét.</p>
 <div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="függelék.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb261-2"><a href="függelék.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gapminder,</span>
@@ -499,7 +488,7 @@ Először egyszerű alapbeállítások mellett egy histogram típusú vizualizá
 <span id="cb261-6"><a href="függelék.html#cb261-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb261-7"><a href="függelék.html#cb261-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
 <span id="cb261-8"><a href="függelék.html#cb261-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-263-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Az fenti script kibővítésével az egyes kontinensek adatait különböző színnel ábrázolhatjuk, az x és y tengelyt elnevezhetjük, a histogramnak címet és alcímet adhatunk, illetve az adataink forrását is feltüntethetjük az alábbi módon:</p>
 <div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="függelék.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb262-2"><a href="függelék.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gapminder,</span>
@@ -517,7 +506,7 @@ Először egyszerű alapbeállítások mellett egy histogram típusú vizualizá
 <span id="cb262-14"><a href="függelék.html#cb262-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Points are country-years&quot;</span>,</span>
 <span id="cb262-15"><a href="függelék.html#cb262-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Source: Gapminder dataset&quot;</span></span>
 <span id="cb262-16"><a href="függelék.html#cb262-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-264-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Az ábrán található feliratok méretének, betűtípusának és betűszínének megválasztásra is lehetőségünk van.</p>
 <div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="függelék.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
 <span id="cb263-2"><a href="függelék.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> gapminder,</span>
@@ -539,23 +528,23 @@ Először egyszerű alapbeállítások mellett egy histogram típusú vizualizá
 <span id="cb263-18"><a href="függelék.html#cb263-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">12</span>, </span>
 <span id="cb263-19"><a href="függelék.html#cb263-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;red&quot;</span></span>
 <span id="cb263-20"><a href="függelék.html#cb263-20" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-270-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-265-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Készíthetünk oszlopdiagramot is, amit a <code>ggplot2</code> diamonds adatkészletén személtetünk</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="függelék.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds) <span class="sc">+</span></span>
 <span id="cb264-2"><a href="függelék.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-271-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-266-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Itt is lehetőségünk van arra, hogy a diagram színét megváltoztassuk.</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="függelék.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds) <span class="sc">+</span></span>
 <span id="cb265-2"><a href="függelék.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut), <span class="at">fill =</span> <span class="st">&quot;darkgreen&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-272-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-267-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>De arra is lehetőségünk van, hogy az egyes oszlopok eltérő színűek legyenek.</p>
 <div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="függelék.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds) <span class="sc">+</span></span>
 <span id="cb266-2"><a href="függelék.html#cb266-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> cut))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-273-1.png" width="90%" style="display: block; margin: auto;" />
+<p><img src="_main_files/figure-html/unnamed-chunk-268-1.png" width="90%" style="display: block; margin: auto;" />
 Arra is van lehetőségünk, hogy egyszerre több változót is ábrázoljunk.</p>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="függelék.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamonds) <span class="sc">+</span></span>
 <span id="cb267-2"><a href="függelék.html#cb267-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> cut, <span class="at">fill =</span> clarity))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-274-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-269-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Arra ggplot2 segítségével arra is lehetőségünk van, hogy csv-ből beolvasott adatainkat vizualizáljuk.</p>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="függelék.html#cb268-1" aria-hidden="true" tabindex="-1"></a>plot_cap_1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/plot_cap_1.csv&quot;</span>, <span class="at">head =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>) </span>
 <span id="cb268-2"><a href="függelék.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_cap_1, <span class="fu">aes</span>(Year, <span class="at">fill =</span> Subtopic)) <span class="sc">+</span> </span>
@@ -589,8 +578,8 @@ Arra is van lehetőségünk, hogy egyszerre több változót is ábrázoljunk.</
 <span id="cb270-5"><a href="függelék.html#cb270-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
 <p>Majd ennek az obejktumnak a nevét helyezzük be a <code>ggplotly</code> parancsba, és futtassuk azt.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="függelék.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(ggplotábra)</span></code></pre></div>
-<div id="htmlwidget-427f919b336f9f0e59b5" style="width:90%;height:1500px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-427f919b336f9f0e59b5">{"x":{"data":[{"orientation":"v","width":[3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494827,3906.27472494827,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,3906.27472494828,7812.54944989655,11718.8241748448,15625.0988997931,19531.3736247414,23437.6483496897,27343.9230746379,31250.1977995862,35156.4725245345,39062.7472494828,42969.021974431,46875.2966993793,50781.5714243276,54687.8461492759,58594.1208742241,62500.3955991724,66406.6703241207,70312.9450490689,74219.2197740172,78125.4944989655,82031.7692239138,85938.0439488621,89844.3186738103,93750.5933987586,97656.8681237069,101563.142848655,105469.417573603,109375.692298552,113281.9670235],"y":[630,448,223,125,66,69,48,34,23,21,5,3,2,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,2,1],"text":["count: 630<br />gdpPercap:      0","count: 448<br />gdpPercap:   3906","count: 223<br />gdpPercap:   7813","count: 125<br />gdpPercap:  11719","count:  66<br />gdpPercap:  15625","count:  69<br />gdpPercap:  19531","count:  48<br />gdpPercap:  23438","count:  34<br />gdpPercap:  27344","count:  23<br />gdpPercap:  31250","count:  21<br />gdpPercap:  35156","count:   5<br />gdpPercap:  39063","count:   3<br />gdpPercap:  42969","count:   2<br />gdpPercap:  46875","count:   1<br />gdpPercap:  50782","count:   0<br />gdpPercap:  54688","count:   1<br />gdpPercap:  58594","count:   0<br />gdpPercap:  62500","count:   0<br />gdpPercap:  66407","count:   0<br />gdpPercap:  70313","count:   0<br />gdpPercap:  74219","count:   0<br />gdpPercap:  78125","count:   1<br />gdpPercap:  82032","count:   0<br />gdpPercap:  85938","count:   0<br />gdpPercap:  89844","count:   1<br />gdpPercap:  93751","count:   0<br />gdpPercap:  97657","count:   0<br />gdpPercap: 101563","count:   0<br />gdpPercap: 105469","count:   2<br />gdpPercap: 109376","count:   1<br />gdpPercap: 113282"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7812.54944989655,121094.516473397],"tickmode":"array","ticktext":["0","30000","60000","90000","120000"],"tickvals":[0,30000,60000,90000,120000],"categoryorder":"array","categoryarray":["0","30000","60000","90000","120000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-31.5,661.5],"tickmode":"array","ticktext":["0","200","400","600"],"tickvals":[0,200,400,600],"categoryorder":"array","categoryarray":["0","200","400","600"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"26784ce8774":{"x":{},"type":"bar"}},"cur_data":"26784ce8774","visdat":{"26784ce8774":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e52a37deb96f0d78e726" style="width:90%;height:1500px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e52a37deb96f0d78e726">{"x":{"data":[{"orientation":"v","width":[3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494827,3906.27472494827,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,3906.27472494828,7812.54944989655,11718.8241748448,15625.0988997931,19531.3736247414,23437.6483496897,27343.9230746379,31250.1977995862,35156.4725245345,39062.7472494828,42969.021974431,46875.2966993793,50781.5714243276,54687.8461492759,58594.1208742241,62500.3955991724,66406.6703241207,70312.9450490689,74219.2197740172,78125.4944989655,82031.7692239138,85938.0439488621,89844.3186738103,93750.5933987586,97656.8681237069,101563.142848655,105469.417573603,109375.692298552,113281.9670235],"y":[630,448,223,125,66,69,48,34,23,21,5,3,2,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,2,1],"text":["count: 630<br />gdpPercap:      0","count: 448<br />gdpPercap:   3906","count: 223<br />gdpPercap:   7813","count: 125<br />gdpPercap:  11719","count:  66<br />gdpPercap:  15625","count:  69<br />gdpPercap:  19531","count:  48<br />gdpPercap:  23438","count:  34<br />gdpPercap:  27344","count:  23<br />gdpPercap:  31250","count:  21<br />gdpPercap:  35156","count:   5<br />gdpPercap:  39063","count:   3<br />gdpPercap:  42969","count:   2<br />gdpPercap:  46875","count:   1<br />gdpPercap:  50782","count:   0<br />gdpPercap:  54688","count:   1<br />gdpPercap:  58594","count:   0<br />gdpPercap:  62500","count:   0<br />gdpPercap:  66407","count:   0<br />gdpPercap:  70313","count:   0<br />gdpPercap:  74219","count:   0<br />gdpPercap:  78125","count:   1<br />gdpPercap:  82032","count:   0<br />gdpPercap:  85938","count:   0<br />gdpPercap:  89844","count:   1<br />gdpPercap:  93751","count:   0<br />gdpPercap:  97657","count:   0<br />gdpPercap: 101563","count:   0<br />gdpPercap: 105469","count:   2<br />gdpPercap: 109376","count:   1<br />gdpPercap: 113282"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":43.1050228310502},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7812.54944989655,121094.516473397],"tickmode":"array","ticktext":["0","30000","60000","90000","120000"],"tickvals":[0,30000,60000,90000,120000],"categoryorder":"array","categoryarray":["0","30000","60000","90000","120000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-31.5,661.5],"tickmode":"array","ticktext":["0","200","400","600"],"tickvals":[0,200,400,600],"categoryorder":"array","categoryarray":["0","200","400","600"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"108c4df9322f":{"x":{},"type":"bar"}},"cur_data":"108c4df9322f","visdat":{"108c4df9322f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

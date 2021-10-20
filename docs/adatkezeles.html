@@ -291,7 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="irodalomjegyzék.html"><a href="irodalomjegyzék.html"><i class="fa fa-check"></i>Irodalomjegyzék</a></li>
 <li class="divider"></li>
-<li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
+<li> Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex. </li>
 </ul>
 
       </nav>
@@ -422,29 +422,29 @@ div.csl-indent {
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="adatkezeles.html#cb29-1" aria-hidden="true" tabindex="-1"></a>szoveg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gitar&quot;</span>, <span class="st">&quot;ukulele&quot;</span>, <span class="st">&quot;nagybogo&quot;</span>)</span>
 <span id="cb29-2"><a href="adatkezeles.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="adatkezeles.html#cb29-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_view</span>(szoveg, <span class="at">pattern =</span> <span class="st">&quot;ar&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-2a0aa06af93a16cb6976" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a0aa06af93a16cb6976">{"x":{"html":"<ul>\n  <li>git<span class='match'>ar<\/span><\/li>\n  <li>ukulele<\/li>\n  <li>nagybogo<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8636ddbff91a5d859114" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8636ddbff91a5d859114">{"x":{"html":"<ul>\n  <li>git<span class='match'>ar<\/span><\/li>\n  <li>ukulele<\/li>\n  <li>nagybogo<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Reguláris kifejezésekkel rákereshetünk nem csak egyes elemekre (pl.: szavak, szótagok, betűk) hanem olyan konkrét esetekre is, amikor ezek egymás után fordulnak elő. Ilyenkor úgynevezett ngrammokat használunk, amelyek egy karakterláncban szereplő n-számú elem szekvenciája. A lenti példban ezeke működését egy úgynevezett bigrammal tehát egy n=2 értékű ngrammal mutatjuk be. Az ngrammok segítenek kezelni olyan eseteket, amikor két egymást követő elem eltérő jelentéssel bír, egymás mellett, mint külön-külön.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="adatkezeles.html#cb30-1" aria-hidden="true" tabindex="-1"></a>szoveg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a fehér ház fehérebb mint bármely más ház&quot;</span>)</span>
 <span id="cb30-2"><a href="adatkezeles.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="adatkezeles.html#cb30-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_view</span>(szoveg, <span class="at">pattern =</span> <span class="st">&quot;fehér ház&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-9f3cee4d843b89650912" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9f3cee4d843b89650912">{"x":{"html":"<ul>\n  <li>a <span class='match'>fehér ház<\/span> fehérebb mint bármely más ház<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c691aba399ebcf1d39ed" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c691aba399ebcf1d39ed">{"x":{"html":"<ul>\n  <li>a <span class='match'>fehér ház<\/span> fehérebb mint bármely más ház<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Az ún. „horgonyokkal“, (<em>anchor</em>) azt lehet megadni, hogy a karakter string elején vagy végén szeretnénk-e egyezést találni. A string eleji anchor a <code>^</code>, a string végi pedig a <code>$</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="adatkezeles.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;^Dr.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-01daba96b8626765b32f" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-01daba96b8626765b32f">{"x":{"html":"<ul>\n  <li><span class='match'>Dr.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c7a51efb878c2a1054e0" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c7a51efb878c2a1054e0">{"x":{"html":"<ul>\n  <li><span class='match'>Dr.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="adatkezeles.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;Dr.$&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-1a0fc14485e092e6ecee" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1a0fc14485e092e6ecee">{"x":{"html":"<ul>\n  <li>Dr. Doktor <span class='match'>Dr.<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-305f09fe6168d13775cd" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-305f09fe6168d13775cd">{"x":{"html":"<ul>\n  <li>Dr. Doktor <span class='match'>Dr.<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Továbbá azt is meghatározhatjuk, hogy egy adott karakter, vagy karakter kombinációt, valamint a mellett elhelyezkedő karaktereket is szeretnénk kijelölni.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="adatkezeles.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.k.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-6030dbfa8463ec66cd6c" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6030dbfa8463ec66cd6c">{"x":{"html":"<ul>\n  <li>Dr. D<span class='match'>okt<\/span>or Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-41fcad8841dffceffc47" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-41fcad8841dffceffc47">{"x":{"html":"<ul>\n  <li>Dr. D<span class='match'>okt<\/span>or Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Egy másik jellemző probléma, hogy olyan speciális karaktert akarunk leírni a regex kifejezésünkkel, ami amúgy a regex szintaxisban használt. Ilyen eset például a <code>.</code>, ami mint írásjel sokszor csak zaj, ám a regex kontextusban a „bármilyen karakter„ megfelelője. Ahhoz, hogy magát az írásjelet jelöljük, a <code>\\</code> -t kell elé rakni.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="adatkezeles.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-802f3c54327454b08faa" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-802f3c54327454b08faa">{"x":{"html":"<ul>\n  <li>Dr<span class='match'>.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3794bac70e52e67eb5b8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3794bac70e52e67eb5b8">{"x":{"html":"<ul>\n  <li>Dr<span class='match'>.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Néhány hasznos regex kifejezés:</p>
 <ul>
 <li><code>[:digit:]</code> - számok (123)</li>

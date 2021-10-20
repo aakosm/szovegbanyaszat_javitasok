@@ -291,7 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="irodalomjegyzék.html"><a href="irodalomjegyzék.html"><i class="fa fa-check"></i>Irodalomjegyzék</a></li>
 <li class="divider"></li>
-<li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
+<li> Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex. </li>
 </ul>
 
       </nav>
@@ -334,7 +334,7 @@ div.csl-indent {
 <p>A könyvben szereplő ábrák nagy része a <code>ggplot2</code> csomaggal készült a <code>theme_set(theme_light())</code> opció beállításával a háttérben. Ez azt jelenti, hogy az ábrákat előállító kódok a <code>theme_light()</code> sort nem tartalmazzák, de a tényleges ábrán már megjelennek a tematikus elemek.</p>
 <p>Az egyes fejezetekben használt R csomagok listája és verziószáma a lenti táblázatban található. Fontos tudni, hogy a használt R csomagokat folyamatosan fejlesztik, ezért elképzelhető hogy eltérő verziószámú változatok esetén változhat a kód szintaxis.</p>
 <!-- html table generated in R 4.0.5 by xtable 1.8-4 package -->
-<!-- Fri Oct 01 12:38:56 2021 -->
+<!-- Tue Oct 05 15:03:56 2021 -->
 <table border="1">
 <caption align="bottom">
 A könyvben használt R csomagok
@@ -664,19 +664,19 @@ topicmodels
 <p>Végül pedig az R programon belül ábrázolhatjuk is az eredményeinket. Jelen esetben nem végeztünk el számítást, hanem a megtisztított szövegeink szavaiból generáltunk szófelhőket.</p>
 <p>A Petőfi versekből készült szófelhő:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(petofidfm)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <p class="caption">
 Ábra 1.1: Petofi szófelho
 </p>
-<img src="_main_files/figure-html/unnamed-chunk-20-1.png" alt="Petofi szófelho" width="90%" />
+<img src="_main_files/figure-html/unnamed-chunk-15-1.png" alt="Petofi szófelho" width="90%" />
 </div>
 <p>Az Ady versekből készült szófelhő:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">textplot_wordcloud</span>(adydfm)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <p class="caption">
 Ábra 1.2: Ady szófelho
 </p>
-<img src="_main_files/figure-html/unnamed-chunk-21-1.png" alt="Ady szófelho" width="90%" />
+<img src="_main_files/figure-html/unnamed-chunk-16-1.png" alt="Ady szófelho" width="90%" />
 </div>
 <p>Az így kapott ábrákon az ady és petofi versek szavait láthatjuk egy úgynevezett szófelhőben összegyűjtve. Annál nagyobb méretben jelenít meg az ábránk egy kifejezést, minél gyakrabban fordul az elő a szövegünkben, amely jelen esetben a két költő összes verse. Ugyan a szófelhő nem egy statisztikai számítás, amely alapján következtetéseket vonhatnánk le a vizsgált szövegekről, de egy hasznos és látványos ábrázolási módszer, illetve jelen esetben jól példázza az R egy jelentős előnyét, hogy a segítségével az eredményeinket gyorsan és egyszerűen tudjuk ábrázolni.</p>
 </div>

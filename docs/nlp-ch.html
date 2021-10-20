@@ -291,7 +291,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="irodalomjegyzék.html"><a href="irodalomjegyzék.html"><i class="fa fa-check"></i>Irodalomjegyzék</a></li>
 <li class="divider"></li>
-<li>Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex.</li>
+<li> Sebők Miklós, Ring Orsolya, és Máté Ákos. 2021. Szövegbányászat és Mesterséges Intelligencia R-ben. Budapest: Typotex. </li>
 </ul>
 
       </nav>
@@ -328,14 +328,14 @@ div.csl-indent {
 <p>Az elemző használatának részletes leírás megtalálható a már jelzett honlapon, itt most csak vázlatosan ismeretetjük. Fontos kiemelni, hogy a <code>magyarlanc</code> JAVA modulokból áll, így használatához szükséges, hogy a számítógépen megfelelő JAVA környezet legyen telepítve. Először fenti oldalról le kell töltenünk a <code>magyarlanc-3.0.jar</code> fájlt, majd bemásolni azt abba a mappába, ahol az elemezni kívánt <code>txt</code> található. A parancssort Windows operációs rendszer alatt a számítógép kereső mezőjébe a <code>cmd</code> parancs beírásával tudjuk megnyitni. Ezután a parancsorban belépve abba a könyvtárba, ahol az elemezni kíván txt és a <code>magyarlanc-3.0.jar</code> elemző van, az alábbi parancs segítségével végezhetjük el az elemzést: <code>java -Xmx1G -jar magyarlanc-3.0.jar -mode morphparse -input in.txt -output out.txt</code>, ahol az <code>in.txt</code> helyébe az elemezni kívánt <code>txt</code> nevét, az <code>out.txt</code> helyébe, pedig az elemzés eredményeként létrejövő fájl nevét kell megadni.</p>
 <p>Példánkban az Országgyűlésben 2014 és 2018 között elhangzott véletlenszerűen kiválasztott 25 napirend előtti felszólalás korpuszán szemléltetjük az elemző működését.<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a> A 25 fájlt elemezhetjük egyesével, de ha ez a későbbi elemzéshez nem szükséges, a parancsorban a <code>copy *.txt eredmeny.txt</code> paranccsal egyesíthetjük azokat egy fájlba. Majd ezen az <code>eredmeny.txt</code>-n végezzük el az elemzést az alábbi paranccsal: <code>java -Xmx1G -jar magyarlanc-3.0.jar -mode morphparse -input eredmeny.txt -output eredmeny_out.txt</code></p>
 <p>Az elemzés eredményéül kapott <code>txt</code> fájlban láthatjuk, hogy az elemző elvégezte a szövegek mondatokra bontását, tokenizálását, szótári alakra hozását és POS-taggelését, azaz meghatározta a szavak szófaját.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-212"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-207"></span>
 <p class="caption">
 Ábra 11.1: A magyarlánc elemzo nyers eredménye
 </p>
 <img src="figures/11-01_magyarlanc_kimenet.png" alt="A magyarlánc elemzo nyers eredménye" width="90%" />
 </div>
 <p>Ezt követően célszerű a <code>txt</code> fájlt excelbe beolvasva oszlopokra tagolni, az oszlopokat fejléccel ellátni, majd <code>csv</code> fájlként elmenteni.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-213"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-208"></span>
 <p class="caption">
 Ábra 11.2: Az Excelben megnyitott magyarlánc eredmény
 </p>
@@ -352,7 +352,7 @@ div.csl-indent {
 <div id="a-szeged-ner" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> A <code>szeged ner</code></h2>
 <p>A <code>magyarlanc</code> nyelvi elemzőhöz hasonlóan használhatjuk a <code>szeged ner</code> elemzőt is, melynek részletes leírása és maga a <code>ner.jar</code> elemző is megtalálható az alábbi oldalon: <a href="https://rgai.inf.u-szeged.hu/node/109" class="uri">https://rgai.inf.u-szeged.hu/node/109</a>. Az elemző a fent bemutatott módon szintén parancssorból indítható az alábbi parancs használatával: <code>java -Xmx3G -jar ner.jar -mode predicate -input input.txt -output output.txt</code>. Az elemző PER (személynév), LOC (hely(szín)), ORG (szervezet) és MISC (vegyes) címkét ad az egyes névelemeknek.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-217"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-212"></span>
 <p class="caption">
 Ábra 11.3: A szeged ner elemzo eredménye
 </p>
@@ -375,8 +375,7 @@ div.csl-indent {
 <span id="cb220-2"><a href="nlp-ch.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
 <span id="cb220-3"><a href="nlp-ch.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb220-4"><a href="nlp-ch.html#cb220-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-5"><a href="nlp-ch.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_initialize</span>(<span class="at">model =</span> <span class="st">&quot;en_core_web_sm&quot;</span>)</span>
-<span id="cb220-6"><a href="nlp-ch.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span></code></pre></div>
+<span id="cb220-5"><a href="nlp-ch.html#cb220-5" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_initialize</span>(<span class="at">model =</span> <span class="st">&quot;en_core_web_sm&quot;</span>)</span></code></pre></div>
 <p>A <code>spacy_parse()</code> függvény segítségével lehetőségünk van a szövegek tokenizálására, szótári alakra hozására és szófaji egyértelműsítésére.</p>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="nlp-ch.html#cb221-1" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">d1 =</span> <span class="st">&quot;spaCy is great at fast natural language processing.&quot;</span>,</span>
 <span id="cb221-2"><a href="nlp-ch.html#cb221-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">d2 =</span> <span class="st">&quot;Mr. Smith spent two years in North Carolina.&quot;</span>)</span>
@@ -385,63 +384,25 @@ div.csl-indent {
 <span id="cb221-5"><a href="nlp-ch.html#cb221-5" aria-hidden="true" tabindex="-1"></a>parsedtxt <span class="ot">&lt;-</span> <span class="fu">spacy_parse</span>(txt)</span>
 <span id="cb221-6"><a href="nlp-ch.html#cb221-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb221-7"><a href="nlp-ch.html#cb221-7" aria-hidden="true" tabindex="-1"></a>parsedtxt</span>
-<span id="cb221-8"><a href="nlp-ch.html#cb221-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id</span></span>
-<span id="cb221-9"><a href="nlp-ch.html#cb221-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1</span></span>
-<span id="cb221-10"><a href="nlp-ch.html#cb221-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2</span></span>
-<span id="cb221-11"><a href="nlp-ch.html#cb221-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3</span></span>
-<span id="cb221-12"><a href="nlp-ch.html#cb221-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4</span></span>
-<span id="cb221-13"><a href="nlp-ch.html#cb221-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5</span></span>
-<span id="cb221-14"><a href="nlp-ch.html#cb221-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6</span></span>
-<span id="cb221-15"><a href="nlp-ch.html#cb221-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d1           1        7</span></span>
-<span id="cb221-16"><a href="nlp-ch.html#cb221-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d1           1        8</span></span>
-<span id="cb221-17"><a href="nlp-ch.html#cb221-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d1           1        9</span></span>
-<span id="cb221-18"><a href="nlp-ch.html#cb221-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        1</span></span>
-<span id="cb221-19"><a href="nlp-ch.html#cb221-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2</span></span>
-<span id="cb221-20"><a href="nlp-ch.html#cb221-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3</span></span>
-<span id="cb221-21"><a href="nlp-ch.html#cb221-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4</span></span>
-<span id="cb221-22"><a href="nlp-ch.html#cb221-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5</span></span>
-<span id="cb221-23"><a href="nlp-ch.html#cb221-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6</span></span>
-<span id="cb221-24"><a href="nlp-ch.html#cb221-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7</span></span>
-<span id="cb221-25"><a href="nlp-ch.html#cb221-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     d2           1        8</span></span>
-<span id="cb221-26"><a href="nlp-ch.html#cb221-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18     d2           1        9</span></span>
-<span id="cb221-27"><a href="nlp-ch.html#cb221-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         token      lemma   pos</span></span>
-<span id="cb221-28"><a href="nlp-ch.html#cb221-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1       spaCy      spacy  INTJ</span></span>
-<span id="cb221-29"><a href="nlp-ch.html#cb221-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          is         be   AUX</span></span>
-<span id="cb221-30"><a href="nlp-ch.html#cb221-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       great      great   ADJ</span></span>
-<span id="cb221-31"><a href="nlp-ch.html#cb221-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          at         at   ADP</span></span>
-<span id="cb221-32"><a href="nlp-ch.html#cb221-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        fast       fast   ADJ</span></span>
-<span id="cb221-33"><a href="nlp-ch.html#cb221-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     natural    natural   ADJ</span></span>
-<span id="cb221-34"><a href="nlp-ch.html#cb221-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    language   language  NOUN</span></span>
-<span id="cb221-35"><a href="nlp-ch.html#cb221-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  processing processing  NOUN</span></span>
-<span id="cb221-36"><a href="nlp-ch.html#cb221-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9           .          . PUNCT</span></span>
-<span id="cb221-37"><a href="nlp-ch.html#cb221-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        Mr.        Mr. PROPN</span></span>
-<span id="cb221-38"><a href="nlp-ch.html#cb221-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11      Smith      Smith PROPN</span></span>
-<span id="cb221-39"><a href="nlp-ch.html#cb221-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12      spent      spend  VERB</span></span>
-<span id="cb221-40"><a href="nlp-ch.html#cb221-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13        two        two   NUM</span></span>
-<span id="cb221-41"><a href="nlp-ch.html#cb221-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14      years       year  NOUN</span></span>
-<span id="cb221-42"><a href="nlp-ch.html#cb221-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         in         in   ADP</span></span>
-<span id="cb221-43"><a href="nlp-ch.html#cb221-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16      North      North PROPN</span></span>
-<span id="cb221-44"><a href="nlp-ch.html#cb221-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17   Carolina   Carolina PROPN</span></span>
-<span id="cb221-45"><a href="nlp-ch.html#cb221-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18          .          . PUNCT</span></span>
-<span id="cb221-46"><a href="nlp-ch.html#cb221-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      entity</span></span>
-<span id="cb221-47"><a href="nlp-ch.html#cb221-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          </span></span>
-<span id="cb221-48"><a href="nlp-ch.html#cb221-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          </span></span>
-<span id="cb221-49"><a href="nlp-ch.html#cb221-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          </span></span>
-<span id="cb221-50"><a href="nlp-ch.html#cb221-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          </span></span>
-<span id="cb221-51"><a href="nlp-ch.html#cb221-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          </span></span>
-<span id="cb221-52"><a href="nlp-ch.html#cb221-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          </span></span>
-<span id="cb221-53"><a href="nlp-ch.html#cb221-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7          </span></span>
-<span id="cb221-54"><a href="nlp-ch.html#cb221-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8          </span></span>
-<span id="cb221-55"><a href="nlp-ch.html#cb221-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9          </span></span>
-<span id="cb221-56"><a href="nlp-ch.html#cb221-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10         </span></span>
-<span id="cb221-57"><a href="nlp-ch.html#cb221-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 PERSON_B</span></span>
-<span id="cb221-58"><a href="nlp-ch.html#cb221-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12         </span></span>
-<span id="cb221-59"><a href="nlp-ch.html#cb221-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13   DATE_B</span></span>
-<span id="cb221-60"><a href="nlp-ch.html#cb221-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14   DATE_I</span></span>
-<span id="cb221-61"><a href="nlp-ch.html#cb221-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         </span></span>
-<span id="cb221-62"><a href="nlp-ch.html#cb221-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16    GPE_B</span></span>
-<span id="cb221-63"><a href="nlp-ch.html#cb221-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17    GPE_I</span></span>
-<span id="cb221-64"><a href="nlp-ch.html#cb221-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18</span></span></code></pre></div>
+<span id="cb221-8"><a href="nlp-ch.html#cb221-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id      token      lemma   pos   entity</span></span>
+<span id="cb221-9"><a href="nlp-ch.html#cb221-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1      spaCy      spacy  INTJ         </span></span>
+<span id="cb221-10"><a href="nlp-ch.html#cb221-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2         is         be   AUX         </span></span>
+<span id="cb221-11"><a href="nlp-ch.html#cb221-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3      great      great   ADJ         </span></span>
+<span id="cb221-12"><a href="nlp-ch.html#cb221-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4         at         at   ADP         </span></span>
+<span id="cb221-13"><a href="nlp-ch.html#cb221-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5       fast       fast   ADJ         </span></span>
+<span id="cb221-14"><a href="nlp-ch.html#cb221-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6    natural    natural   ADJ         </span></span>
+<span id="cb221-15"><a href="nlp-ch.html#cb221-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d1           1        7   language   language  NOUN         </span></span>
+<span id="cb221-16"><a href="nlp-ch.html#cb221-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d1           1        8 processing processing  NOUN         </span></span>
+<span id="cb221-17"><a href="nlp-ch.html#cb221-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d1           1        9          .          . PUNCT         </span></span>
+<span id="cb221-18"><a href="nlp-ch.html#cb221-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        1        Mr.        Mr. PROPN         </span></span>
+<span id="cb221-19"><a href="nlp-ch.html#cb221-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2      Smith      Smith PROPN PERSON_B</span></span>
+<span id="cb221-20"><a href="nlp-ch.html#cb221-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3      spent      spend  VERB         </span></span>
+<span id="cb221-21"><a href="nlp-ch.html#cb221-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4        two        two   NUM   DATE_B</span></span>
+<span id="cb221-22"><a href="nlp-ch.html#cb221-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5      years       year  NOUN   DATE_I</span></span>
+<span id="cb221-23"><a href="nlp-ch.html#cb221-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6         in         in   ADP         </span></span>
+<span id="cb221-24"><a href="nlp-ch.html#cb221-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7      North      North PROPN    GPE_B</span></span>
+<span id="cb221-25"><a href="nlp-ch.html#cb221-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     d2           1        8   Carolina   Carolina PROPN    GPE_I</span></span>
+<span id="cb221-26"><a href="nlp-ch.html#cb221-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18     d2           1        9          .          . PUNCT</span></span></code></pre></div>
 <p>Az elvégzett tokenizálás eredményéből adattáblát készíthetünk.</p>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="nlp-ch.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_tokenize</span>(txt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>, <span class="at">output =</span> <span class="st">&quot;data.frame&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb222-2"><a href="nlp-ch.html#cb222-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tail</span>()</span>
@@ -455,151 +416,100 @@ div.csl-indent {
 <p>Ugyancsak lehetőségünk van a különböző entitások, így például a tulajdonnevek kinyerésére.</p>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="nlp-ch.html#cb223-1" aria-hidden="true" tabindex="-1"></a>parsedtxt <span class="ot">&lt;-</span> <span class="fu">spacy_parse</span>(txt, <span class="at">lemma =</span> <span class="cn">FALSE</span>, <span class="at">entity =</span> <span class="cn">TRUE</span>, <span class="at">nounphrase =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb223-2"><a href="nlp-ch.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">entity_extract</span>(parsedtxt)</span>
-<span id="cb223-3"><a href="nlp-ch.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id         entity</span></span>
-<span id="cb223-4"><a href="nlp-ch.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d2           1          Smith</span></span>
-<span id="cb223-5"><a href="nlp-ch.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1 North_Carolina</span></span>
-<span id="cb223-6"><a href="nlp-ch.html#cb223-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   entity_type</span></span>
-<span id="cb223-7"><a href="nlp-ch.html#cb223-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      PERSON</span></span>
-<span id="cb223-8"><a href="nlp-ch.html#cb223-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         GPE</span></span></code></pre></div>
+<span id="cb223-3"><a href="nlp-ch.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id         entity entity_type</span></span>
+<span id="cb223-4"><a href="nlp-ch.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d2           1          Smith      PERSON</span></span>
+<span id="cb223-5"><a href="nlp-ch.html#cb223-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1 North_Carolina         GPE</span></span></code></pre></div>
 <p>A tulajdonneveken túl felcímkézhetjük a dátumokat, eseményeket is.</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="nlp-ch.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">entity_extract</span>(parsedtxt, <span class="at">type =</span> <span class="st">&quot;all&quot;</span>)</span>
-<span id="cb224-2"><a href="nlp-ch.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id         entity</span></span>
-<span id="cb224-3"><a href="nlp-ch.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d2           1          Smith</span></span>
-<span id="cb224-4"><a href="nlp-ch.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1      two_years</span></span>
-<span id="cb224-5"><a href="nlp-ch.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     d2           1 North_Carolina</span></span>
-<span id="cb224-6"><a href="nlp-ch.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   entity_type</span></span>
-<span id="cb224-7"><a href="nlp-ch.html#cb224-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      PERSON</span></span>
-<span id="cb224-8"><a href="nlp-ch.html#cb224-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        DATE</span></span>
-<span id="cb224-9"><a href="nlp-ch.html#cb224-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3         GPE</span></span></code></pre></div>
+<span id="cb224-2"><a href="nlp-ch.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id         entity entity_type</span></span>
+<span id="cb224-3"><a href="nlp-ch.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d2           1          Smith      PERSON</span></span>
+<span id="cb224-4"><a href="nlp-ch.html#cb224-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1      two_years        DATE</span></span>
+<span id="cb224-5"><a href="nlp-ch.html#cb224-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     d2           1 North_Carolina         GPE</span></span></code></pre></div>
 <p>Az <code>entity_consolidate()</code> függvény segítségével arra is lehetőségünk van, hogy a több szóból álló entitásokat egy tokenként kezeljük.</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="nlp-ch.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">entity_consolidate</span>(parsedtxt) <span class="sc">%&gt;%</span></span>
 <span id="cb225-2"><a href="nlp-ch.html#cb225-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tail</span>()</span>
-<span id="cb225-3"><a href="nlp-ch.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id</span></span>
-<span id="cb225-4"><a href="nlp-ch.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2</span></span>
-<span id="cb225-5"><a href="nlp-ch.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3</span></span>
-<span id="cb225-6"><a href="nlp-ch.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4</span></span>
-<span id="cb225-7"><a href="nlp-ch.html#cb225-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5</span></span>
-<span id="cb225-8"><a href="nlp-ch.html#cb225-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6</span></span>
-<span id="cb225-9"><a href="nlp-ch.html#cb225-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7</span></span>
-<span id="cb225-10"><a href="nlp-ch.html#cb225-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             token    pos entity_type</span></span>
-<span id="cb225-11"><a href="nlp-ch.html#cb225-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11          Smith ENTITY      PERSON</span></span>
-<span id="cb225-12"><a href="nlp-ch.html#cb225-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12          spent   VERB            </span></span>
-<span id="cb225-13"><a href="nlp-ch.html#cb225-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13      two_years ENTITY        DATE</span></span>
-<span id="cb225-14"><a href="nlp-ch.html#cb225-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14             in    ADP            </span></span>
-<span id="cb225-15"><a href="nlp-ch.html#cb225-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 North_Carolina ENTITY         GPE</span></span>
-<span id="cb225-16"><a href="nlp-ch.html#cb225-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16              .  PUNCT</span></span></code></pre></div>
+<span id="cb225-3"><a href="nlp-ch.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id          token    pos entity_type</span></span>
+<span id="cb225-4"><a href="nlp-ch.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2          Smith ENTITY      PERSON</span></span>
+<span id="cb225-5"><a href="nlp-ch.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3          spent   VERB            </span></span>
+<span id="cb225-6"><a href="nlp-ch.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4      two_years ENTITY        DATE</span></span>
+<span id="cb225-7"><a href="nlp-ch.html#cb225-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5             in    ADP            </span></span>
+<span id="cb225-8"><a href="nlp-ch.html#cb225-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6 North_Carolina ENTITY         GPE</span></span>
+<span id="cb225-9"><a href="nlp-ch.html#cb225-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7              .  PUNCT</span></span></code></pre></div>
 <p>A <code>nounphrase_extract()</code> függvény lehetőséget ad az összetartozó kifejezések összefűzésére.</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="nlp-ch.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nounphrase_extract</span>(parsedtxt)</span>
-<span id="cb226-2"><a href="nlp-ch.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id</span></span>
-<span id="cb226-3"><a href="nlp-ch.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d1           1</span></span>
-<span id="cb226-4"><a href="nlp-ch.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1</span></span>
-<span id="cb226-5"><a href="nlp-ch.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     d2           1</span></span>
-<span id="cb226-6"><a href="nlp-ch.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     d2           1</span></span>
-<span id="cb226-7"><a href="nlp-ch.html#cb226-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                         nounphrase</span></span>
-<span id="cb226-8"><a href="nlp-ch.html#cb226-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 fast_natural_language_processing</span></span>
-<span id="cb226-9"><a href="nlp-ch.html#cb226-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                        Mr._Smith</span></span>
-<span id="cb226-10"><a href="nlp-ch.html#cb226-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                        two_years</span></span>
-<span id="cb226-11"><a href="nlp-ch.html#cb226-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                   North_Carolina</span></span></code></pre></div>
+<span id="cb226-2"><a href="nlp-ch.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   doc_id sentence_id                       nounphrase</span></span>
+<span id="cb226-3"><a href="nlp-ch.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     d1           1 fast_natural_language_processing</span></span>
+<span id="cb226-4"><a href="nlp-ch.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     d2           1                        Mr._Smith</span></span>
+<span id="cb226-5"><a href="nlp-ch.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     d2           1                        two_years</span></span>
+<span id="cb226-6"><a href="nlp-ch.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4     d2           1                   North_Carolina</span></span></code></pre></div>
 <p>Majd képes arra, hogy ezeket az összetartozó kifejezéseket egyben kezelje.</p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="nlp-ch.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nounphrase_consolidate</span>(parsedtxt)</span>
-<span id="cb227-2"><a href="nlp-ch.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id</span></span>
-<span id="cb227-3"><a href="nlp-ch.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1</span></span>
-<span id="cb227-4"><a href="nlp-ch.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2</span></span>
-<span id="cb227-5"><a href="nlp-ch.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3</span></span>
-<span id="cb227-6"><a href="nlp-ch.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4</span></span>
-<span id="cb227-7"><a href="nlp-ch.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5</span></span>
-<span id="cb227-8"><a href="nlp-ch.html#cb227-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6</span></span>
-<span id="cb227-9"><a href="nlp-ch.html#cb227-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d2           1        1</span></span>
-<span id="cb227-10"><a href="nlp-ch.html#cb227-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d2           1        2</span></span>
-<span id="cb227-11"><a href="nlp-ch.html#cb227-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d2           1        3</span></span>
-<span id="cb227-12"><a href="nlp-ch.html#cb227-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        4</span></span>
-<span id="cb227-13"><a href="nlp-ch.html#cb227-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        5</span></span>
-<span id="cb227-14"><a href="nlp-ch.html#cb227-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        6</span></span>
-<span id="cb227-15"><a href="nlp-ch.html#cb227-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                               token</span></span>
-<span id="cb227-16"><a href="nlp-ch.html#cb227-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                             spaCy</span></span>
-<span id="cb227-17"><a href="nlp-ch.html#cb227-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                                is</span></span>
-<span id="cb227-18"><a href="nlp-ch.html#cb227-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                             great</span></span>
-<span id="cb227-19"><a href="nlp-ch.html#cb227-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                                at</span></span>
-<span id="cb227-20"><a href="nlp-ch.html#cb227-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  fast_natural_language_processing</span></span>
-<span id="cb227-21"><a href="nlp-ch.html#cb227-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6                                 .</span></span>
-<span id="cb227-22"><a href="nlp-ch.html#cb227-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7                         Mr._Smith</span></span>
-<span id="cb227-23"><a href="nlp-ch.html#cb227-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8                             spent</span></span>
-<span id="cb227-24"><a href="nlp-ch.html#cb227-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9                         two_years</span></span>
-<span id="cb227-25"><a href="nlp-ch.html#cb227-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10                               in</span></span>
-<span id="cb227-26"><a href="nlp-ch.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11                   North_Carolina</span></span>
-<span id="cb227-27"><a href="nlp-ch.html#cb227-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12                                .</span></span>
-<span id="cb227-28"><a href="nlp-ch.html#cb227-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           pos</span></span>
-<span id="cb227-29"><a href="nlp-ch.html#cb227-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        INTJ</span></span>
-<span id="cb227-30"><a href="nlp-ch.html#cb227-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         AUX</span></span>
-<span id="cb227-31"><a href="nlp-ch.html#cb227-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3         ADJ</span></span>
-<span id="cb227-32"><a href="nlp-ch.html#cb227-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4         ADP</span></span>
-<span id="cb227-33"><a href="nlp-ch.html#cb227-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  nounphrase</span></span>
-<span id="cb227-34"><a href="nlp-ch.html#cb227-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6       PUNCT</span></span>
-<span id="cb227-35"><a href="nlp-ch.html#cb227-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  nounphrase</span></span>
-<span id="cb227-36"><a href="nlp-ch.html#cb227-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8        VERB</span></span>
-<span id="cb227-37"><a href="nlp-ch.html#cb227-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  nounphrase</span></span>
-<span id="cb227-38"><a href="nlp-ch.html#cb227-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        ADP</span></span>
-<span id="cb227-39"><a href="nlp-ch.html#cb227-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 nounphrase</span></span>
-<span id="cb227-40"><a href="nlp-ch.html#cb227-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12      PUNCT</span></span></code></pre></div>
+<span id="cb227-2"><a href="nlp-ch.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id                            token</span></span>
+<span id="cb227-3"><a href="nlp-ch.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1                            spaCy</span></span>
+<span id="cb227-4"><a href="nlp-ch.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2                               is</span></span>
+<span id="cb227-5"><a href="nlp-ch.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3                            great</span></span>
+<span id="cb227-6"><a href="nlp-ch.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4                               at</span></span>
+<span id="cb227-7"><a href="nlp-ch.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5 fast_natural_language_processing</span></span>
+<span id="cb227-8"><a href="nlp-ch.html#cb227-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6                                .</span></span>
+<span id="cb227-9"><a href="nlp-ch.html#cb227-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d2           1        1                        Mr._Smith</span></span>
+<span id="cb227-10"><a href="nlp-ch.html#cb227-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d2           1        2                            spent</span></span>
+<span id="cb227-11"><a href="nlp-ch.html#cb227-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d2           1        3                        two_years</span></span>
+<span id="cb227-12"><a href="nlp-ch.html#cb227-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        4                               in</span></span>
+<span id="cb227-13"><a href="nlp-ch.html#cb227-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        5                   North_Carolina</span></span>
+<span id="cb227-14"><a href="nlp-ch.html#cb227-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        6                                .</span></span>
+<span id="cb227-15"><a href="nlp-ch.html#cb227-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           pos</span></span>
+<span id="cb227-16"><a href="nlp-ch.html#cb227-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        INTJ</span></span>
+<span id="cb227-17"><a href="nlp-ch.html#cb227-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2         AUX</span></span>
+<span id="cb227-18"><a href="nlp-ch.html#cb227-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3         ADJ</span></span>
+<span id="cb227-19"><a href="nlp-ch.html#cb227-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4         ADP</span></span>
+<span id="cb227-20"><a href="nlp-ch.html#cb227-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  nounphrase</span></span>
+<span id="cb227-21"><a href="nlp-ch.html#cb227-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6       PUNCT</span></span>
+<span id="cb227-22"><a href="nlp-ch.html#cb227-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  nounphrase</span></span>
+<span id="cb227-23"><a href="nlp-ch.html#cb227-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8        VERB</span></span>
+<span id="cb227-24"><a href="nlp-ch.html#cb227-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  nounphrase</span></span>
+<span id="cb227-25"><a href="nlp-ch.html#cb227-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        ADP</span></span>
+<span id="cb227-26"><a href="nlp-ch.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 nounphrase</span></span>
+<span id="cb227-27"><a href="nlp-ch.html#cb227-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12      PUNCT</span></span></code></pre></div>
 <p>Arra is lehetőség van, hogy az egyes kifejezések közötti függőségeket vizsgáljuk.</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="nlp-ch.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spacy_parse</span>(txt, <span class="at">dependency =</span> <span class="cn">TRUE</span>, <span class="at">lemma =</span> <span class="cn">FALSE</span>, <span class="at">pos =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb228-2"><a href="nlp-ch.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id</span></span>
-<span id="cb228-3"><a href="nlp-ch.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1</span></span>
-<span id="cb228-4"><a href="nlp-ch.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2</span></span>
-<span id="cb228-5"><a href="nlp-ch.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3</span></span>
-<span id="cb228-6"><a href="nlp-ch.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4</span></span>
-<span id="cb228-7"><a href="nlp-ch.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5</span></span>
-<span id="cb228-8"><a href="nlp-ch.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6</span></span>
-<span id="cb228-9"><a href="nlp-ch.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d1           1        7</span></span>
-<span id="cb228-10"><a href="nlp-ch.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d1           1        8</span></span>
-<span id="cb228-11"><a href="nlp-ch.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d1           1        9</span></span>
-<span id="cb228-12"><a href="nlp-ch.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        1</span></span>
-<span id="cb228-13"><a href="nlp-ch.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2</span></span>
-<span id="cb228-14"><a href="nlp-ch.html#cb228-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3</span></span>
-<span id="cb228-15"><a href="nlp-ch.html#cb228-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4</span></span>
-<span id="cb228-16"><a href="nlp-ch.html#cb228-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5</span></span>
-<span id="cb228-17"><a href="nlp-ch.html#cb228-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6</span></span>
-<span id="cb228-18"><a href="nlp-ch.html#cb228-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7</span></span>
-<span id="cb228-19"><a href="nlp-ch.html#cb228-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     d2           1        8</span></span>
-<span id="cb228-20"><a href="nlp-ch.html#cb228-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18     d2           1        9</span></span>
-<span id="cb228-21"><a href="nlp-ch.html#cb228-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         token head_token_id  dep_rel</span></span>
-<span id="cb228-22"><a href="nlp-ch.html#cb228-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1       spaCy             2     intj</span></span>
-<span id="cb228-23"><a href="nlp-ch.html#cb228-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          is             2     ROOT</span></span>
-<span id="cb228-24"><a href="nlp-ch.html#cb228-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       great             2    acomp</span></span>
-<span id="cb228-25"><a href="nlp-ch.html#cb228-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          at             2     prep</span></span>
-<span id="cb228-26"><a href="nlp-ch.html#cb228-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        fast             8     amod</span></span>
-<span id="cb228-27"><a href="nlp-ch.html#cb228-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     natural             7     amod</span></span>
-<span id="cb228-28"><a href="nlp-ch.html#cb228-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    language             8 compound</span></span>
-<span id="cb228-29"><a href="nlp-ch.html#cb228-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  processing             4     pobj</span></span>
-<span id="cb228-30"><a href="nlp-ch.html#cb228-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9           .             2    punct</span></span>
-<span id="cb228-31"><a href="nlp-ch.html#cb228-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        Mr.             2 compound</span></span>
-<span id="cb228-32"><a href="nlp-ch.html#cb228-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11      Smith             3    nsubj</span></span>
-<span id="cb228-33"><a href="nlp-ch.html#cb228-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12      spent             3     ROOT</span></span>
-<span id="cb228-34"><a href="nlp-ch.html#cb228-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13        two             5   nummod</span></span>
-<span id="cb228-35"><a href="nlp-ch.html#cb228-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14      years             3     dobj</span></span>
-<span id="cb228-36"><a href="nlp-ch.html#cb228-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         in             3     prep</span></span>
-<span id="cb228-37"><a href="nlp-ch.html#cb228-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16      North             8 compound</span></span>
-<span id="cb228-38"><a href="nlp-ch.html#cb228-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17   Carolina             6     pobj</span></span>
-<span id="cb228-39"><a href="nlp-ch.html#cb228-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18          .             3    punct</span></span>
-<span id="cb228-40"><a href="nlp-ch.html#cb228-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      entity</span></span>
-<span id="cb228-41"><a href="nlp-ch.html#cb228-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          </span></span>
-<span id="cb228-42"><a href="nlp-ch.html#cb228-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          </span></span>
-<span id="cb228-43"><a href="nlp-ch.html#cb228-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          </span></span>
-<span id="cb228-44"><a href="nlp-ch.html#cb228-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          </span></span>
-<span id="cb228-45"><a href="nlp-ch.html#cb228-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          </span></span>
-<span id="cb228-46"><a href="nlp-ch.html#cb228-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          </span></span>
-<span id="cb228-47"><a href="nlp-ch.html#cb228-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7          </span></span>
-<span id="cb228-48"><a href="nlp-ch.html#cb228-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8          </span></span>
-<span id="cb228-49"><a href="nlp-ch.html#cb228-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9          </span></span>
-<span id="cb228-50"><a href="nlp-ch.html#cb228-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10         </span></span>
-<span id="cb228-51"><a href="nlp-ch.html#cb228-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 PERSON_B</span></span>
-<span id="cb228-52"><a href="nlp-ch.html#cb228-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12         </span></span>
-<span id="cb228-53"><a href="nlp-ch.html#cb228-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13   DATE_B</span></span>
-<span id="cb228-54"><a href="nlp-ch.html#cb228-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14   DATE_I</span></span>
-<span id="cb228-55"><a href="nlp-ch.html#cb228-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         </span></span>
-<span id="cb228-56"><a href="nlp-ch.html#cb228-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16    GPE_B</span></span>
-<span id="cb228-57"><a href="nlp-ch.html#cb228-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17    GPE_I</span></span>
-<span id="cb228-58"><a href="nlp-ch.html#cb228-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18</span></span></code></pre></div>
+<span id="cb228-2"><a href="nlp-ch.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    doc_id sentence_id token_id      token head_token_id  dep_rel</span></span>
+<span id="cb228-3"><a href="nlp-ch.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      d1           1        1      spaCy             2     intj</span></span>
+<span id="cb228-4"><a href="nlp-ch.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      d1           1        2         is             2     ROOT</span></span>
+<span id="cb228-5"><a href="nlp-ch.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      d1           1        3      great             2    acomp</span></span>
+<span id="cb228-6"><a href="nlp-ch.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      d1           1        4         at             2     prep</span></span>
+<span id="cb228-7"><a href="nlp-ch.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      d1           1        5       fast             8     amod</span></span>
+<span id="cb228-8"><a href="nlp-ch.html#cb228-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      d1           1        6    natural             7     amod</span></span>
+<span id="cb228-9"><a href="nlp-ch.html#cb228-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      d1           1        7   language             8 compound</span></span>
+<span id="cb228-10"><a href="nlp-ch.html#cb228-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8      d1           1        8 processing             4     pobj</span></span>
+<span id="cb228-11"><a href="nlp-ch.html#cb228-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9      d1           1        9          .             2    punct</span></span>
+<span id="cb228-12"><a href="nlp-ch.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     d2           1        1        Mr.             2 compound</span></span>
+<span id="cb228-13"><a href="nlp-ch.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     d2           1        2      Smith             3    nsubj</span></span>
+<span id="cb228-14"><a href="nlp-ch.html#cb228-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     d2           1        3      spent             3     ROOT</span></span>
+<span id="cb228-15"><a href="nlp-ch.html#cb228-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     d2           1        4        two             5   nummod</span></span>
+<span id="cb228-16"><a href="nlp-ch.html#cb228-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     d2           1        5      years             3     dobj</span></span>
+<span id="cb228-17"><a href="nlp-ch.html#cb228-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15     d2           1        6         in             3     prep</span></span>
+<span id="cb228-18"><a href="nlp-ch.html#cb228-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16     d2           1        7      North             8 compound</span></span>
+<span id="cb228-19"><a href="nlp-ch.html#cb228-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     d2           1        8   Carolina             6     pobj</span></span>
+<span id="cb228-20"><a href="nlp-ch.html#cb228-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18     d2           1        9          .             3    punct</span></span>
+<span id="cb228-21"><a href="nlp-ch.html#cb228-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      entity</span></span>
+<span id="cb228-22"><a href="nlp-ch.html#cb228-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1          </span></span>
+<span id="cb228-23"><a href="nlp-ch.html#cb228-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          </span></span>
+<span id="cb228-24"><a href="nlp-ch.html#cb228-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3          </span></span>
+<span id="cb228-25"><a href="nlp-ch.html#cb228-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          </span></span>
+<span id="cb228-26"><a href="nlp-ch.html#cb228-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5          </span></span>
+<span id="cb228-27"><a href="nlp-ch.html#cb228-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          </span></span>
+<span id="cb228-28"><a href="nlp-ch.html#cb228-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7          </span></span>
+<span id="cb228-29"><a href="nlp-ch.html#cb228-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8          </span></span>
+<span id="cb228-30"><a href="nlp-ch.html#cb228-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9          </span></span>
+<span id="cb228-31"><a href="nlp-ch.html#cb228-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10         </span></span>
+<span id="cb228-32"><a href="nlp-ch.html#cb228-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 PERSON_B</span></span>
+<span id="cb228-33"><a href="nlp-ch.html#cb228-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12         </span></span>
+<span id="cb228-34"><a href="nlp-ch.html#cb228-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13   DATE_B</span></span>
+<span id="cb228-35"><a href="nlp-ch.html#cb228-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14   DATE_I</span></span>
+<span id="cb228-36"><a href="nlp-ch.html#cb228-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15         </span></span>
+<span id="cb228-37"><a href="nlp-ch.html#cb228-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16    GPE_B</span></span>
+<span id="cb228-38"><a href="nlp-ch.html#cb228-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17    GPE_I</span></span>
+<span id="cb228-39"><a href="nlp-ch.html#cb228-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18</span></span></code></pre></div>
 <p>A következőkben a <a href="sentiment.html#sentiment">Szótáralapú elemzések, érzelem-elemzés</a> fejezetben is használt Magyar Nemzeti Bank kamatdöntéseit kísérő nemzetközi sajtóközleményei korpuszán mutatunk be egy példát a névelemfelismerésre és az eredmények vizualizálására.</p>
 <p>Első lépésként beolvassuk a szövegeket, majd a már megismert <code>quanteda</code> csomag segítségével korpuszt készítünk belőlük.</p>
 <div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="nlp-ch.html#cb229-1" aria-hidden="true" tabindex="-1"></a>mnb_df <span class="ot">&lt;-</span> HunMineR<span class="sc">::</span>data_mnb_pr</span>
