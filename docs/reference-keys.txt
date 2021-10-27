@@ -40,7 +40,6 @@ fig:unnamed-chunk-247
 fig:unnamed-chunk-248
 fig:unnamed-chunk-249
 fig:unnamed-chunk-250
-online-második-kiadás
 intro
 a-kötet-témái
 használati-utasítás
