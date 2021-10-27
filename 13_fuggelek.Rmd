@@ -349,7 +349,7 @@ ggplot(pie, aes(x = "", y = value, fill = Type)) +
 Továbbá minden ábránkat, amelyet a ggplot segítségével létrehozunk lehetőségünk van interaktívvá tenni a `plotly` csomag `ggplotly` parancsának segítségével. Ehhez egyszerűen csak az ábrát egy objektumba kell, hogy létrehozzuk.
 
 ```{r}
-ggplotábra <- ggplot(
+ggplotabra <- ggplot(
   data = gapminder, 
   mapping = aes(x = gdpPercap)
 ) + 
@@ -358,7 +358,7 @@ ggplotábra <- ggplot(
 
 Majd ennek az obejktumnak a nevét helyezzük be a `ggplotly` parancsba, és futtassuk azt.
 
-```{r}
-ggplotly(ggplotábra)
+```{r fig.height = 2}
+ggplotly(ggplotabra)
 ```
 

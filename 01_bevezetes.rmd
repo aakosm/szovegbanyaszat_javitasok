@@ -10,9 +10,11 @@ source("_common.R")
 
 A szövegek adatként való értelmezése (*text as data*) és kvantitatív elemzése (*quantitative text analysis*), avagy a szövegbányászat (*text mining*) a nemzetközi társadalomtudományi kutatások egyik leggyorsabban fejlődő irányzata. A szövegbányászat egy olyan folyamat, amely során nyers, strukturálatlan szövegeket (pl.: beszédek, felszólalások, újságcikkek) egy strukturált formátumba alakítunk, hogy így új, korábban ismeretlen információkhoz tudjunk hozzájutni, mint trendekhez, mintázatokhoz, összefüggésekhez stb. A szövegek és más kvalitatív adatok (filmek, képek) elemzése annyiban különbözik a mennyiségi (kvantitatív) adatokétól, hogy nyers formájukban még nem alkalmasak statisztikai, illetve ökonometriai elemzésre. Ezért van szükség az ezzel összefüggő módszertani problémák speciális tárgyalására.
 
-Jelen kötet bevezeti az érdeklődőket a szövegbányászat és a mesterséges intelligencia társadalomtudományi alkalmazásának ilyen speciális problémáiba, valamint ezek gyakorlati megoldásába. Közvetlen előzménynek tekinthető a témában a Sebők Miklós által szerkesztett [*Kvantitatív szövegelemzés és szövegbányászat a politikatudományban*](https://poltextlab.tk.hu/uploads/files/Kvantitativ_szovegelemzes_keszpdf.pdf) címmel megjelent könyv, amely a magyar tudományos diskurzusban kevésbé bevett alapfogalmakat és eljárásokat mutatta be [@sebokKvantitativSzovegelemzesEs2016]. A hangsúly az elméleten volt, bár számos fejezet foglalkozott konkrét kódrészletek elemzésével. Míg az előző kötet az egyes kódolási eljárásokat, illetve ezek kutatásmódszertani előnyeit és hátrányait ismertette, ezúttal a társadalomtudományi elemzések során használható kvantitatív szövegelemzés legfontosabb gyakorlati feladatait vesszük sorra.
+Jelen kötet bevezeti az érdeklődőket a szövegbányászat és a mesterséges intelligencia társadalomtudományi alkalmazásának ilyen speciális problémáiba, valamint ezek gyakorlati megoldásába. Közvetlen előzménynek tekinthető a témában a Sebők Miklós által szerkesztett [*Kvantitatív szövegelemzés és szövegbányászat a politikatudományban*](https://poltextlab.tk.hu/uploads/files/Kvantitativ_szovegelemzes_keszpdf.pdf) címmel megjelent könyv, amely a magyar tudományos diskurzusban kevésbé bevett alapfogalmakat és eljárásokat mutatta be [@sebokKvantitativSzovegelemzesEs2016]. A hangsúly az elméleten volt, bár számos fejezet foglalkozott konkrét kódrészletek elemzésével. Míg az előző kötet az egyes kódolási eljárásokat, illetve ezek kutatásmódszertani előnyeit és hátrányait ismertette, ezúttal a társadalomtudományi elemzések során használható kvantitatív szövegelemzés legfontosabb gyakorlati feladatait vesszük sorra, ezek egymással való logikai kapcsolatátt illusztrálja a lenti ábra. A könyvben bemutatott kódok elsősorban a quanteda csomagot illetve egyes a quanteda-ra épülő csomagokat használnak [@benoit2018].
 
-![A szövegbányászat egyes módszerei](figures/01_modszerek.jpg)
+![A szövegbányászat könyvünkben bemutatott egyes módszerei](figures/01_modszerek.jpg)
+
+A kötetünkben tárgyalt egyes módszereket három kategóriába sorolhatjuk, annak megfelelően, hogy azok milyen kutatási kérdéseknél kerülhetnek hasznosításra. A szövegbányászat egyik legalapvetőbb problémája a dokumentumok egyes kategóriákba való csoportosítása. Az erre vonatkozó módszerek két alkategóriája közül is többet mutatunk be. Amikor ismert kategóriákba történő osztályzásról beszélünk, akkor a kutatónak kell meghatároznia előre a kategóriákat a modell számára, mielőtt az replikálja a besorolásokat. Mind a Naïve Bayes és a Support Vector Machine ezt a feladatot látja el ezek működéséről és alkalmazásáról az [Osztályozás és felügyelt tanulás](#felugyelt) című fejezetben írunk. Ezzel szemben ismeretlen kategóriákba való csoportosítás esetén a kutató nem ad előzőleges utatsítást az algoritmus számára, a modell a csoportosítást a dokumentumok szövegében meglévő látens mintázat alapján végzi el. Az ismeretlen kategóriákba történő csoportosítást a könyvben bemutatott több módszerrel is elvégezhetjók, mint a K-közép klaszterezés, Latent Dirichlet Allocation, és Structured topic models, amelyeket a [Felügyelet nélküli tanulás - Topikmodellezés](#lda_ch) című fejezetben tárgyaljuk. A szövegek statisztikai leírása egyszerre lehet két szöveg összehasonlítása Koszinusz vagy Jaccard hasonlóság alapján, melyekről a [Szövegösszehasonlítás](#similarity) fejzetben írunk, valamint egy adott szöveg különböző statisztikai jellemzőinek leírása, az erre voantkozó módszerekkel [Leíró statisztika](#leiro_stat) című fejezet foglalkozik. A szótáralapú módszerekről és ezek érzelemelemzésre való használatát a [Szótárak és érzelemelemzés](#sentiment) című fejezet tárgyalja. Az ideológiai skálázás során politikai szereplők egymáshoz viszonyított realtív pozícióit azonosítjuk általában beszédek, illetve felszólalások alapján az erre vonatkozó módszertant a [Szövegskálázás](#scaling) című fejezet részletezi. Végezetül pedig a szóbeágyazások ellentétben a korábbiakban említett szózsák logikát követő módszerekkel képesek egy dokumentum szóhasználatának belső összefüggéseit azonosítani, ezzel a kifejezetten rugalmas kutatási módszerrel, illetve alkalmazásával [Szóbeágyazások](#embedding) fejezetben foglalkozunk.
 
 Könyvünk a magyar tankönyvpiacon elsőként ismerteti lépésről-lépésre a nemzetközi társadalomtudományban használatos kvantitatív szövegelemzési eljárásokat. A módszereink bemutatására szolgáló elemzéseket az R programnyelv segítségével végeztük el, mely a nemzetközi társadalomtudományi vizsgálatok során egyik leggyakrabban használt környezet a Python mellett. A kötetben igyekeztünk magyar szakkifejezéseket használni, de mivel a szövegbányászat nyelve az angol, mindig megadtuk, azok angol megfelelőjét is. Kivételt képeznek azok az esetek, ahol nincs használatban megfelelő magyar terminológia, ezeknél megtartottuk az angol kifejezéseket, de magyarázattal láttuk el azokat.
 
@@ -105,35 +107,27 @@ library(quanteda.textstats)
 library(quanteda.textplots)
 library(ggplot2)
 library(HunMineR)
+library(dplyr)
 ```
 
 Ezt követően betöltjük a szükséges adatokat, jelen esetben a HunMiner adattárából.
 
-```{r, eval=FALSE}
-# hunminer placeholder
-
-ady <- data_ady_corpus
-petofi <- data_petofi_corpus
-```
-
-
 ```{r}
-ady <- readtext("data/ady.txt", encoding = "UTF8")
-petofi <- readtext("data/petofi_corpus/corpus_files/*.txt", encoding = "UTF8")
+ady <- readtext("ady.txt", encoding = "UTF-8")
 
-petofi <- data.frame(text = paste(petofi$text, collapse = " "),
-                     doc_id = "petofi")
-
+petofi <- read.csv("petofi.csv")
 ```
+
+
 
 Ahhoz, hogy adatokat használni tudjunk azokon először mindig úgynevezett tisztítási folyamatokat kell elvégeznünk, valamint át kell alakítanunk az adataink formátumát is. Az úgynevezett szövegtisztítási folyamatok a szövegeink előkészítését jelentik, ha kihagyjuk őket vagy nem végezzük el őket kellő alapossággal, akkor az eredményeink félrevezetőek lesznek. Az R-rel való kódolás során többféle formátumban is  tárolhatjuk az adatainkat, illetve az adataink egyik formátumból másikba való átalakítására is van lehetőségünk. Az egyes formátumok másféle típusú adatokat különböző elrendezésben tárolják, azért van szükségünk gyakran az adataink átalakítására, mivel az R-n belüli funkciókat, amelyekre szükségünk lesz csak specifikus formátumokon hajthatjuk végre.
 
-Első lépésként corpus formátumba helyezzük az adatainkat, erre csupán azért van szükség mert a későbbiekben ebből a formátumból tudjuk majd őket, token formátumba helyezni. 
+Első lépésként korpusz formátumba helyezzük az adatainkat, erre csupán azért van szükség mert a későbbiekben ebből a formátumból tudjuk majd őket, token formátumba helyezni. 
 
 ```{r}
 ady_corpus <- corpus(ady)
 
-petofi_corpus <- corpus(petofi)
+petofi_corpus <- corpus(petofi, text_field = "X.U.FEFF.textfield")
 ```
 
 Ezt követően nem csak token formátumba helyezzük az adatokat a lenti kódsorokkal, hanem több szövegtisztító lépést is elvégzünk velük. A `tokens_tolower()` parancs segítségével minden szavunk betűjét kisbetűvé alakítjuk így a kódunk nem tesz különbséget ugyanazon szó két megjelenése között csupán azért, mert az egyik a mondat elején helyezkedik el. A `tokens_remove()` parancs segítségével egyes szavakat eltávolíthatunk két kódsorban is megjelenik ez a parancs, először a `quanteda` csomag magyar stopszó listájának elemeit távolítjuk el, majd másodjára általunk felsorolt kifejezések eltávolítására használjuk fel. Végül pedig a `tokens_wordstem()` parancs segítségével úgynevezett szótövezést hajtunk végre. Ez azt jelenti, hogy a szótövekről levágjuk a ragokat így a házban és a házhoz kifejezések egységesen ház kifejezésként fognak megjelenni a vizsgálatunkban. 
@@ -142,13 +136,13 @@ Ezt követően nem csak token formátumba helyezzük az adatokat a lenti kódsor
 ady_tok <- tokens(ady_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
   tokens_tolower() %>% 
   tokens_remove(stopwords("hungarian")) %>% 
-  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő", "a")) %>%
+  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő", "a", "txt", "se", "h?t", "h?t", "kit", "?", "?t", "megi", "ah", "ili", "ti", "8", "no", "t?n", "oh", "f?l", "?h", "ugi", "iIi", "oIi")) %>%
   tokens_wordstem()
 
-petofi_tok <- tokens(petofi_corpus, what = "word", remove_symbols = TRUE, remove_numbers = TRUE, remove_punct = TRUE) %>% 
+petofi_tok <- tokens(petofi_corpus, what = "word", remove_symbols = TRUE,remove_punct = TRUE) %>%
   tokens_tolower() %>% 
   tokens_remove(stopwords("hungarian")) %>% 
-  tokens_remove (c("is", "ha", "te", "föl", "kis", "előtt", "oli", "ő", "a")) %>%
+  tokens_remove (c("is", "ha", "te", "fÃ¶l", "kis", "elÅtt", "oli", "Å", "a", "txt", "se", "h?t", "h?t", "kit", "?", "?t", "megi", "ah", "ili", "ti", "8", "no", "t?n", "oh", "f?l", "?h", "ugi", "iIi", "oIi")) %>%
   tokens_wordstem()
 ```
 
@@ -163,10 +157,9 @@ petofidfm <- dfm(petofi_tok)
 Majd megnyírbáljuk a szavaink listáját: a `dfm_trim()` parancs segítségével beállíthatjuk, hogy milyen gyakorisággal megjelenő szavakat hagyjunk az adataink között. Vannak jó okok mind a túlságosan gyakran megjelenő és a túlságosan kevésszer megejelenő szavak eltávolítására is. Ha egy szó nagyon gyakran jelenik meg, akkor feltételezhető, hogy az nem segít a számunkra értelmezni az egyes dokumentumaink közötti különbséget, mivel nem különbözteti meg azokat. Ha pedig egy szó túlságosan kevésszer jelenik meg, akkor az lehet, hogy egy egyedülálló eset, amely nem adhat a dokumentumainkra vonatkozó általános információt a számunkra. Jelen kód előírja, hogy ahhoz, hogy egy szó bekerüljün az összehasonlításunkba legalább 5-ször meg kell jelenie a szövegben.
 
 ```{r}
-adydfm <- dfm_trim(petofidfm, min_termfreq = 5)
+adydfm <- dfm_trim(adydfm, min_termfreq = 25)
 
-petofidfm <- dfm_trim(adydfm, min_termfreq = 5)
-
+petofidfm <- dfm_trim(petofidfm, min_termfreq = 25)
 ```
 
 Végül pedig az R programon belül ábrázolhatjuk is az eredményeinket. Jelen esetben nem végeztünk el számítást, hanem a megtisztított szövegeink szavaiból generáltunk szófelhőket.
@@ -189,7 +182,7 @@ Az így kapott ábrákon az ady és petofi versek szavait láthatjuk egy úgynev
 
 ## Köszönetnyilvánítás
 
-Jelen kötet az ELKH Társadalomtudományi Kutatóközpont poltextLAB szövegbányászati kutatócsoportja (<http://poltextlab.com/>) műhelyében készült. A kötet fejezetei Sebők Miklós, Ring Orsolya és Máté Ákos közös munkájának eredményei. Az *Alapfogalmak*, illetve a *Szövegösszehasonlítás* fejezetekben társszerző volt Székely Anna. A kézirat a szerzők többéves oktatási gyakorlatára, a hallgatóktól kapott visszajelzésekre építve készült el. Köszönjük a Bibó Szakkollégiumban (2021), a Rajk Szakkollégiumban (2019--2021), valamint a Széchenyi Szakkollégiumban (2019) tartott féléves, valamint a Corvinus Egyetemen és a Társadalomtudományi Kutatóközpontban tartott rövidebb képzési alkalmak résztvevőinek visszajelzéseit. Köszönjük a projekt gyakornokainak, Czene-Joó Máténak, Kaló Eszternek, Meleg Andrásnak, Lovász Dorottyának, Nagy Orsolyának, valamint kutatás asszisztenseinek, Balázs Gergőnek, Gelányi Péternek és Lancsár Eszternek a kézirat végleges formába öntése sorn nyújtott segítséget.
+Jelen kötet az ELKH Társadalomtudományi Kutatóközpont poltextLAB szövegbányászati kutatócsoportja (<http://poltextlab.com/>) műhelyében készült. A kötet fejezetei Sebők Miklós, Ring Orsolya és Máté Ákos közös munkájának eredményei. Az *Alapfogalmak*, illetve a *Szövegösszehasonlítás* fejezetekben társszerző volt Székely Anna. A *Bevezetésben*, a *Függelékben*, és az *Adatkezelés R-ben*, az *Osztályozás és felügyelt tanulás* című fejezetekben Gelányi Péter hajtott végre nagyobb frissítéseket, valamint alakította ki a könyv interaktív ábráit.  A kézirat a szerzők többéves oktatási gyakorlatára, a hallgatóktól kapott visszajelzésekre építve készült el. Köszönjük a Bibó Szakkollégiumban (2021), a Rajk Szakkollégiumban (2019--2021), valamint a Széchenyi Szakkollégiumban (2019) tartott féléves, valamint a Corvinus Egyetemen és a Társadalomtudományi Kutatóközpontban tartott rövidebb képzési alkalmak résztvevőinek visszajelzéseit. Köszönjük a projekt gyakornokainak, Czene-Joó Máténak, Kaló Eszternek, Meleg Andrásnak, Lovász Dorottyának, Nagy Orsolyának, valamint kutatás asszisztenseinek, Balázs Gergőnek, Gelányi Péternek és Lancsár Eszternek a kézirat végleges formába öntése sorn nyújtott segítséget.
 
 Külön köszönet illeti a Társadalomtudományi Kutatóközpont Comparative Agendas Project (<https://cap.tk.hu/hu>) kutatócsoportjának tagjait, kiemelten Boda Zsoltot, Molnár Csabát és Pokornyi Zsanettet a kötetben használt korpuszok sokéves előkészítéséért. Köszönettel tartozunk az egyes fejezetek alapjául szolgáló elemzések és publikációk társszerzőinek, Barczikay Tamásnak, Berki Tamásnak, Kacsuk Zoltánnak, Kubik Bálintnak, Molnár Csabának és Szabó Martina Katalinnak.
 

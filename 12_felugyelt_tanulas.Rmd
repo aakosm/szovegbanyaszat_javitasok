@@ -1,4 +1,4 @@
-# Osztályozás és felügyelt tanulás
+# Osztályozás és felügyelt tanulás {#felugyelt}
 
 ## Fogalmi alapok
 
@@ -13,7 +13,15 @@ A felügyelt tanulási feladat megoldása egy úgynevezett tanító halmaz (*tra
 
 A felügyelt tanulás számos kutatási feladat megoldására alkalmazhatjuk, melyek közül a leggyakoribbak a különböző osztályozási (*classification*) feladatok. Miközben ezek – így pl. a véleményelemzés – szótáralapú módszertannal is megoldhatóak (lásd a *[Szótárak és érzelemelemzés](#sentiment)* fejezetet), a felügyelt tanulás a nagyobb élőmunkaigényt rendszerint jobb eredményekkel és rugalmasabb felhasználhatósággal hálálja meg (gondoljunk csak a szótárak domain-függőségére). A felügyelt tanulás egyben a mesterséges intelligencia kutatásának gyorsan fejlődő területe, mely az e fejezetben tárgyalt algoritmus-központú gépi tanuláson túl az ún. mélytanulás (*deep learning*) és a neurális hálók területén is zajlik egyre látványosabb sikerekkel.
 
-Jelen fejezetben két modell fajtát mutatunk be egyazon korpuszon az SVM-t (support vector machine) és a Naive Bayes-t. Mindkettő a fentiekben leírt klasszifikációs feladatot végzi el, viszont eltérő módon működnek. Az SVM minden dokumentumunkat egy vektorként reprezentálja, ami annyit jelent, hogy hozzájuk rendel egy számsort, amely egy közös térben betöltött pozíciójukat reprezentálja. Az SVM lényegében egy vonalat (hyperplane) húz meg ebben a közös térben úgy, hogy az elválassza egymástól a tanítóhalmaz különféle módon felcímkézett dokumentumait. Innentől kezdve a modellnek nincs más dolga, mint megállapítani azon dokumentumok vektor értékeit, amelyek nem voltak a teszt halmaz részei, attól függően, hogy az SVM által meghúzott vonal mely felére esnek ezek is besorolhatóvá válnak a teszthalmazunk kategóriáiba. Ezzel szemben a Naive Bayes a dokumentumok egyes szavaihoz rendel valószínűségi értékeket. A felcímkézett teszt halmazunk szavaihoz egy valószínűségi értéket rendel annak függvényében, hogy az adott szó adott kategóriába tartozó dokumentumokban hányszor jelenik meg, az adott kategória dokumentumainak teljes szószámához képest. Miután a teszt halmazunk dokumentumaiban minden szóhoz hozzárendeltük ezeket a valószínűségi értékeket nincs más dolgunk, mint a teszt halmazunkon kívül eső dokumentumokban felkeresni ugyanezen szavakat, a hozzájuk rendelt valószínűségi értékeket aggregálni és ez alapján minden dokumentumhoz tudunk rendelni több valószínűségi értéket is, amelyek megadják, hogy mekkora eséllyel tartozik a dokumentum a teszt halmazunk egyes kategóriáiba.
+Jelen fejezetben két modell fajtát mutatunk be egyazon korpuszon az Support Vector Machine (SVM) és a Naïve Bayes (NB). Mindkettő a fentiekben leírt klasszifikációs feladatot végzi el, viszont eltérő módon működnek. Az SVM a tanító halmazunk dokumentumait vektorként reprezentálja, ami annyit jelent, hogy hozzájuk rendel egy számsort, amely egy közös térben betöltött pozíciójukat reprezentálja.
+
+![A teszthalmaz dokumentumai egy közös térben reprezentálva](figures/svm1.jpg)
+
+Ezt követően pedig a különféle képpen képpen felcímkézett dokumentumok között egy vonalat (hyperplane) húz meg, amely a lehető legnagyobb távolságra van minden egyes dokumentumtól.
+
+![hyperplane](figures/svm2.jpg)
+
+Innentől kezdve pedig a modellnek nincs más dolga, mint a tanító halmazon kívül eső dokumentumok vektor értékeit is megállapítani, elhelyezni őket ebben a közös térben, és attól függően, hogy a hyperplane mely oldalára kerülnek besorolhatóak.Ezzel szemben az NB a felcímkézett tanító halmazunk szavaihoz egy valószínűségi értéket rendel annak függvényében, hogy az adott szó adott kategóriába tartozó dokumentumokban hányszor jelenik meg, az adott kategória dokumentumainak teljes szószámához képest. Miután a teszt halmazunk dokumentumaiban minden szóhoz hozzárendeltük ezeket a valószínűségi értékeket nincs más dolgunk, mint a teszt halmazunkon kívül eső dokumentumokban felkeresni ugyanezen szavakat, a hozzájuk rendelt valószínűségi értékeket aggregálni és ez alapján minden dokumentumhoz tudunk rendelni több valószínűségi értéket is, amelyek megadják, hogy mekkora eséllyel tartozik a dokumentum a teszt halmazunk egyes kategóriáiba.
 
 ## Osztályozás felügyelt tanulással
 
@@ -23,7 +31,7 @@ Az alábbi fejezetben a CAP magyar média gyűjteményéből a napilap címlapok
 
 [^sml-2]: A kódkönyv regisztrációt követően elérhető az alábbi linken: [https://cap.tk.hu/kozpolitikai-cap](https://cap.tk.hu/kozpolitikai-cap)
 
-Annak érdekében, hogy egyértelműen értékelhessük a gépi tanulás hatékonyságát, a kiválasztott cikkcsoport (azaz a teszthalmaz) esetében is ismerjük a kézi kódolás eredményét („éles“ kutatási helyzetben, ismeretlen kódok esetében ugyanakkor ezt gyakran szintén csak egy kisebb mintán tudjuk kézzel validálni). További fontos lépés, hogy az észszerű futási idő érdekében a gyakorlat során a teljes adatbázisból -- és ezen belül is csak a Népszabadság részhalmazból -- fogunk venni egy 4500 darabos mintát. Ezen a mintán pedigg a már korábban említett kétféle modellt fogjuk futtatni a Naive Bayes-t és az SVM-t. Az ezekkel a módszerekkel létrehozott két modellünk hatékonyságát fogjuk összehasonlítani, valamint azt is megfogjuk nézni, hogy az eredmények megbízhatósága mennyiben közelíti meg a kézikódolási módszerre jellemző 80-90%-os pontosságot.
+Annak érdekében, hogy egyértelműen értékelhessük a gépi tanulás hatékonyságát, a kiválasztott cikkcsoport (azaz a teszthalmaz) esetében is ismerjük a kézi kódolás eredményét („éles“ kutatási helyzetben, ismeretlen kódok esetében ugyanakkor ezt gyakran szintén csak egy kisebb mintán tudjuk kézzel validálni). További fontos lépés, hogy az észszerű futási idő érdekében a gyakorlat során a teljes adatbázisból -- és ezen belül is csak a Népszabadság részhalmazból -- fogunk venni egy 4500 darabos mintát. Ezen a mintán pedigg a már korábban említett kétféle modellt fogjuk futtatni a NB-t és az SVM-t. Az ezekkel a módszerekkel létrehozott két modellünk hatékonyságát fogjuk összehasonlítani, valamint azt is megfogjuk nézni, hogy az eredmények megbízhatósága mennyiben közelíti meg a kézikódolási módszerre jellemző 80-90%-os pontosságot.
 
 Először behívjuk a szükséges csomagokat.  Majd a felügyelet nélküli tanulással foglalkozó fejezethez hasonlóan itt is alkalmazzuk a `set.seed()` funkciót, mivel anélkül nem egyeznének az eredményeink teljes mértékben egy a kódunk egy késöbbi újrafuttatása esetén.
 
@@ -81,50 +89,52 @@ nol_toks <- tokens(nol_corpus, remove_punct = TRUE, remove_number = TRUE) %>%
 A tokeneket pedig egy dfm-é alakítjuk.
 
 ```{r include = TRUE}
-dfmtnol <- dfm(nol_toks)
+nol_dfm <- dfm(nol_toks)
 ``` 
 
 Ezt követően kialakítjunk a tanító és teszt halmazokat a korábban létrehozott változók segítségével. A lenti kód elsősora egy subsetet alakít ki az adattáblánk mindazon soraiból, amelyek id_numeric változója szerepel az id_train számsorban ez lesz a tanító alhalmaz. Majd ennek megfelelően egy másik alhalmazt alakítunk ki a teszteléshez, amely minden olyan sorát fogja tartalmazni adattáblánknak, amely id_numeric változója nem szerepel az id_train számsorban.
 
 ```{r include = TRUE}
-dfmat_training <- dfm_subset(dfmtnol, id_numeric %in% id_train)
-dfmat_test <- dfm_subset(dfmtnol, !id_numeric %in% id_train)
+train_dfm <- dfm_subset(nol_dfm, id_numeric %in% id_train)
+test_dfm <- dfm_subset(nol_dfm, !id_numeric %in% id_train)
 ``` 
 
-Azáltal pedig, hogy kialakítottuk a két alhalmazt el is végeztük az utolsó előkészítési folyamatot is, az így előkészített adatokon tudjuk majd futtatni a következőkben, mind a Naive Bayes és az SVM modellünket.
+Azáltal pedig, hogy kialakítottuk a két alhalmazt el is végeztük az utolsó előkészítési folyamatot is, az így előkészített adatokon tudjuk majd futtatni a következőkben, mind az NB és az SVM modellünket.
 
-### Naive Bayes
+### Naïve Bayes
 
-Először létrehozzuk a modellünket, amely számára meghatározzuk, hogy a label változóhoz kell egy predikciót adnia, majd ezt alakalmazzuk az adatainkra.
+A fejezet Naïve Bayesre vonatkozó kódjai quanteda tutoriál menetét és kódjait követik.[^quanteda_tutorial] Először létrehozzuk a modellünket, amely számára meghatározzuk, hogy a label változóhoz kell egy predikciót adnia, majd ezt alakalmazzuk az adatainkra. A `dfm_match` parancs segítségével eltávolítjuk a vizsgált dokumentumaink szavai közül mindazokat, amelyek nem szerepeltek a teszt halmazunkba. Erre azért van szükség, mivel az NB csak azokat a szavakat képes kezelni, amelyekhez már hozzárendelt egy valószínűségi értéket, tehát csak azokat, amelyek a teszt halmazban is megtalálhatóak.
+
+[^quanteda_tutorial]: [https://tutorials.quanteda.io/machine-learning/nb/](https://tutorials.quanteda.io/machine-learning/nb/)
 
 ```{r include = TRUE}
-tmod_nb <- textmodel_nb(dfmat_training, dfmat_training$label)
-dfmat_matched <- dfm_match(dfmat_test, features = featnames(dfmat_training))
+nol_nb <- textmodel_nb(train_dfm, train_dfm$label)
+dfm_kozos <- dfm_match(test_dfm, features = featnames(train_dfm))
 ``` 
 
 A következő objektumban eltároljuk a kézikódolás eredményeit, amelyeket már ismerünk.
 
 ```{r include = TRUE}
-actual_class <- dfmat_matched$label
+tenyleges_osztaly <- dfm_kozos$label
 ``` 
 
 Majd eltároljuk egy másik objektumban azokat az eredményeket, amelyeket a modellünk generált.
 
 ```{r include = TRUE}
-predicted_class <- predict(tmod_nb, newdata = dfmat_matched)
+becsult_osztaly <- predict(nol_nb, newdata = dfm_kozos)
 ``` 
 
 A két fenti adat segítségével pedig létrehozhatjuk a korábban is említett tévesztési táblát.
 
 ```{r include = TRUE}
-tab_class <- table(actual_class, predicted_class)
-tab_class
+eredmeny_tabla <- table(tenyleges_osztaly, becsult_osztaly)
+eredmeny_tabla
 ``` 
 
 Ezt létrehozhatjuk a  `caret ` csomag funkciójával is, amely a tévesztési tábla mellett sok más hasznos adatot is megad a számunkra.
 
 ```{r include = TRUE}
-confusionMatrix(tab_class, mode = "everything")
+confusionMatrix(eredmeny_tabla, mode = "everything")
 ``` 
 
 Az eredményeken pedig láthatjuk, hogy még az egyszerűség kedvéért lecsökkentett méretű tanítási halmaz ellenére is egy kifejezett magas 84.78%-os pontossági értéket kapunk, amely többé-kevésbé megfeletethető egy kizárólag kézikódolással végzett vizsgálat pontosságának
@@ -134,27 +144,27 @@ Az eredményeken pedig láthatjuk, hogy még az egyszerűség kedvéért lecsök
 A következő kódsorral alkalmazzuk az SVM modellünket, hogy az adatainkon belül a label változóra vonatkozóan készítsen predikciót.
 
 ```{r include = TRUE}
-tmod_svm <- textmodel_svm(dfmat_training, y = dfmat_training$label)
+nol_svm <- textmodel_svm(train_dfm, y = train_dfm$label)
 ``` 
 
 Ismét eltároljuk a kézikódolás eredményeit, amelyeket már ismerünk. Valamint az eredményeket, amelyeket az SVM modellünk generált szintén eltároljuk egy objektumba.
 
 ```{r include = TRUE}
-actual_class_svm <- dfmat_matched$label
-predicted_class_svm <- predict(tmod_svm, newdata = dfmat_matched)
+tenyleges_osztaly_svm <- dfm_kozos$label
+becsult_osztaly_svm <- predict(nol_svm, newdata = dfm_kozos)
 ``` 
 
 Ismét létrehozhatunk egy egyszerű tévesztési táblát. 
 
 ```{r include = TRUE}
-tab_class_svm <- table(actual_class_svm, predicted_class_svm)
-tab_class_svm
+eredmeny_tabla_svm <- table(tenyleges_osztaly_svm, becsult_osztaly_svm)
+eredmeny_tabla_svm
 ``` 
 
 Valamint jelen esetben is használhatjuk a `caret ` csomagban található funkciót, hogy még több információt nyerjünk ki a modellünk működéséről.
 
 ```{r include = TRUE}
-confusionMatrix(tab_class_svm, mode = "everything")
+confusionMatrix(eredmeny_tabla_svm, mode = "everything")
 ``` 
 
 Itt ismét azt találjuk, hogy a csökkentett méretű korpusz ellenére is egy kifejezetten magas pontossági értéket 85.33%-ot kapunk.

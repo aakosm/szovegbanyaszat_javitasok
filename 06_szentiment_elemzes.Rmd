@@ -106,7 +106,7 @@ A `HunMineR` csomag segítségével beolvassuk a *Magyar Nemzet* adatbázis egy 
 glimpse(mn_minta)
 ```
 
-A glimpse függvény segítségével belepillanthatunk a használt corpusba és láthatjuk, hogy az 3 oszlopból áll a dokumentum azonosítójából, amely csak egy sorszám, a dokumentum szövegéből, és a dokumentumhoz tartozó azonosítóból.
+A `glimpse` függvény segítségével belepillanthatunk a használt korpuszba és láthatjuk, hogy az 3 oszlopból áll a dokumentum azonosítójából, amely csak egy sorszám, a dokumentum szövegéből, és a dokumentumhoz tartozó azonosítóból.
 
 Az első szöveget megnézve látjuk, hogy a standard előkészítési lépések mellett a sortörést (`\n`) is ki kell törölnünk.
 
@@ -134,7 +134,7 @@ A szöveg sokkal jobban néz ki, habár észrevehetjük, hogy maradhattak benne 
 mn_tiszta$text[1]
 ```
 
-Miután kész a tisztá(bb) szövegünk, korpuszt hozunk létre a quanteda `corpus()` függvényével. A corpus objektum a szöveg mellett egyéb dokumentum meta adatokat is tud tárolni (dátum, író, hely, stb.) Ezeket mi is hozzáadhatjuk (erre majd látunk példát), illetve amikor létrehozzuk a korpuszt a data frame-ünkből, automatikusan metaadatokként tárolódnak a változóink. Jelen esetben az egyetlen dokumentum változónk a szöveg mellett a dátum lesz. A korpusz dokumentum változóihoz a `docvars()` függvény segítségével tudunk hozzáférni.
+Miután kész a tisztá(bb) szövegünk, korpuszt hozunk létre a quanteda `corpus()` függvényével. A korpusz objektum a szöveg mellett egyéb dokumentum meta adatokat is tud tárolni (dátum, író, hely, stb.) Ezeket mi is hozzáadhatjuk (erre majd látunk példát), illetve amikor létrehozzuk a korpuszt a data frame-ünkből, automatikusan metaadatokként tárolódnak a változóink. Jelen esetben az egyetlen dokumentum változónk a szöveg mellett a dátum lesz. A korpusz dokumentum változóihoz a `docvars()` függvény segítségével tudunk hozzáférni.
 
 ```{r}
 mn_corpus <- corpus(mn_tiszta)
@@ -243,13 +243,13 @@ A munkamenet hasonló az előző példához:
 mnb_pr <- HunMineR::data_mnb_pr
 ```
 
-Adatbázisunk `r nrow(mnb_pr)` megfigyelésből és `r ncol(mnb_pr)` változóból áll. Az egyetlen lényeges dokumentum metaadat itt is a szövegek megjelenési ideje, de a glimpse függvénnyel itt is ellenőrizhetjük hogyan néz ki a corpus felépítése és milyen metaadatokat tartalmaz pontosan.
+Adatbázisunk `r nrow(mnb_pr)` megfigyelésből és `r ncol(mnb_pr)` változóból áll. Az egyetlen lényeges dokumentum metaadat itt is a szövegek megjelenési ideje, de a glimpse függvénnyel itt is ellenőrizhetjük hogyan néz ki a korpusz felépítése és milyen metaadatokat tartalmaz pontosan.
 
 ```{r}
 glimpse(mnb_pr)
 ```
 
-Ez alapján pedig láthatjuk, hogy a corpus a tényleges szövegek mellett tartalmaz még id sorszámot, pontos dátumot és évet is.
+Ez alapján pedig láthatjuk, hogy a korpusz a tényleges szövegek mellett tartalmaz még id sorszámot, pontos dátumot és évet is.
 
 A szövegeket ugyanazokkal a standard eszközökkel kezeljük, mint a *Magyar Nemzet* esetében. Érdemes minden esetben ellenőrizni, hogy az R-kód, amit használunk, tényleg azt csinálja-e, amit szeretnénk. Ez hatványozottan igaz abban az esetben, amikor szövegekkel és reguláris kifejezésekkel dolgozunk.
 

@@ -27,7 +27,7 @@ library(HunMineR)
 
 A skálázási algoritmusokat egy kis korpuszon mutatjuk be. A minta dokumentumok a 2014–2018-as parlamenti ciklusban az Országgyűlésben frakcióvezető politikusok egy-egy véletlenszerűen kiválasztott napirend előtti felszólalásai. Ebben a ciklusban összesen 11 frakcióvezetője volt a két kormánypárti és öt ellenzéki frakciónak. [^skala-1] A dokumentumokon először elvégeztük a szokásos előkészítési lépéseket. 
 
-[^skala-1]: a mintába nem került be Rogán Antal, akinek csak egy darab napirend előtti felszólalása volt.
+[^skala-1]: A mintába nem került be Rogán Antal, akinek csak egy darab napirend előtti felszólalása volt.
 
 ```{r}
 parl_beszedek <- HunMineR::data_parlspeakers_small
@@ -50,7 +50,7 @@ glimpse(parl_beszedek)
 glimpse(beszedek_tiszta)
 ```
 
-A wordfish és wordscores algoritmus is ugyanazt a kiinduló corpus és dfm objektumot használja, amit a szokásos módon a `quanteda` csomag `corpus()` függvényével hozunk létre. 
+A wordfish és wordscores algoritmus is ugyanazt a kiinduló korpuszt és dfm objektumot használja, amit a szokásos módon a `quanteda` csomag `corpus()` függvényével hozunk létre. 
 
 ```{r}
 beszedek_corpus <- corpus(beszedek_tiszta)
@@ -121,7 +121,7 @@ ggplot(szavak_wf, aes(x = beta, y = psi)) +
     )  
 ```
 
-Az így kapott ábrán az egyes pontok mind egy szót reprezentálnak, láthatjuk, hogy tipikusan minél magasabb a $\psi$ értékük annál inkább középen helyezkednek el hiszen a leggyakoribb szavak azok, amelyeket mindenki használ politikai spektrumon való elhelyezkedésüktől függetlenül. Az ábra két szélén lévő szavak azok, amelyek specifikusan a skála egy-egy végpontjához kötődnek. Jelen esetben ezek kevésbé beszédések, mivel a corpus kifejezetten kis méretű és láthatóan további stopszavazás is szükséges.
+Az így kapott ábrán az egyes pontok mind egy szót reprezentálnak, láthatjuk, hogy tipikusan minél magasabb a $\psi$ értékük annál inkább középen helyezkednek el hiszen a leggyakoribb szavak azok, amelyeket mindenki használ politikai spektrumon való elhelyezkedésüktől függetlenül. Az ábra két szélén lévő szavak azok, amelyek specifikusan a skála egy-egy végpontjához kötődnek. Jelen esetben ezek kevésbé beszédések, mivel a korpusz kifejezetten kis méretű és láthatóan további stopszavazás is szükséges.
 
 A dokumentumok szintjén is érdemes megvizsgálni az eredményeket. Ehhez a dokumentum szintű paramétereket fogjuk egy data frame-be gyűjteni: a $\theta$ ideológiai pozíciót, illetve a beszélő nevét. A vizualizáció kedvéért a párttagságot is hozzáadjuk. A data frame összerakása után az alsó és a felső határát is kiszámoljuk a konfidencia intervallumnak és azt is ábrázoljuk (ld. \@ref(fig:eiffel). ábra).
 
