@@ -324,7 +324,7 @@ perp_df <- dplyr::tibble(
 # perp_df <- readRDS("data/temp/temp_df.RDS")
 ```
 
-```{r  zavarossag, eval = TRUE, fig.height = 2, fig.cap="Zavarosság változása a k függvényében", cache=FALSE}
+```{r  zavarossag, eval = TRUE, fig.height = 2, fig.width = 3, fig.cap="Zavarosság változása a k függvényében", cache=FALSE}
 perp_df <- ggplot(perp_df, aes(k, perplexity)) +
   geom_point() +
   geom_line() +
