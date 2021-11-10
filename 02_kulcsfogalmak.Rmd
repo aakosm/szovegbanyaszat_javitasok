@@ -1,4 +1,4 @@
-# Kulcs fogalmak {#alapfogalmak}
+# Kulcsfogalmak {#alapfogalmak}
 
 ```{r include = FALSE}
 library(knitr)

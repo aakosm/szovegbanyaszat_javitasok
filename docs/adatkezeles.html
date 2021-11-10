@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Adatkezelés R-ben | Szövegbányászat és mesterséges intelligencia R-ben</title>
   <meta name="description" content="3 Adatkezelés R-ben | Szövegbányászat és mesterséges intelligencia R-ben" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Adatkezelés R-ben | Szövegbányászat és mesterséges intelligencia R-ben" />
   <meta property="og:type" content="book" />
@@ -32,9 +32,10 @@
   
   
 <link rel="prev" href="alapfogalmak.html"/>
-<link rel="next" href="corpus-ch.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link rel="next" href="corpus_ch.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +51,19 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,9 +182,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#egy-gyakorlati-példa-az-r-programmal-való-szövegbányászatra"><i class="fa fa-check"></i><b>1.4</b> Egy gyakorlati példa az R programmal való szövegbányászatra</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#köszönetnyilvánítás"><i class="fa fa-check"></i><b>1.5</b> Köszönetnyilvánítás</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Alapfogalmak</a>
+<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Kulcsfogalmak</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#elméleti-alapok"><i class="fa fa-check"></i><b>2.1</b> Elméleti alapok</a></li>
+<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#big-data-és-társadalomtudomány"><i class="fa fa-check"></i><b>2.1</b> Big Data és társadalomtudomány</a></li>
 <li class="chapter" data-level="2.2" data-path="alapfogalmak.html"><a href="alapfogalmak.html#fogalmi-alapok"><i class="fa fa-check"></i><b>2.2</b> Fogalmi alapok</a></li>
 <li class="chapter" data-level="2.3" data-path="alapfogalmak.html"><a href="alapfogalmak.html#a-szövegbányászat-alapelvei"><i class="fa fa-check"></i><b>2.3</b> A szövegbányászat alapelvei</a></li>
 </ul></li>
@@ -196,23 +196,23 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="adatkezeles.html"><a href="adatkezeles.html#műveletek-adattáblákkal"><i class="fa fa-check"></i><b>3.4</b> Műveletek adattáblákkal</a></li>
 <li class="chapter" data-level="3.5" data-path="adatkezeles.html"><a href="adatkezeles.html#munka-karakter-vektorokkaladatkezel-4"><i class="fa fa-check"></i><b>3.5</b> Munka karakter vektorokkal</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="corpus-ch.html"><a href="corpus-ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
+<li class="chapter" data-level="4" data-path="corpus_ch.html"><a href="corpus_ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
-<li class="chapter" data-level="4.2" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
+<li class="chapter" data-level="4.1" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
+<li class="chapter" data-level="4.2" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="corpus-ch.html"><a href="corpus-ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
-<li class="chapter" data-level="4.2.2" data-path="corpus-ch.html"><a href="corpus-ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
-<li class="chapter" data-level="4.2.3" data-path="corpus-ch.html"><a href="corpus-ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
+<li class="chapter" data-level="4.2.1" data-path="corpus_ch.html"><a href="corpus_ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
+<li class="chapter" data-level="4.2.2" data-path="corpus_ch.html"><a href="corpus_ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="corpus_ch.html"><a href="corpus_ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="leiro-stat.html"><a href="leiro-stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
+<li class="chapter" data-level="5" data-path="leiro_stat.html"><a href="leiro_stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="leiro-stat.html"><a href="leiro-stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
-<li class="chapter" data-level="5.2" data-path="leiro-stat.html"><a href="leiro-stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
-<li class="chapter" data-level="5.3" data-path="leiro-stat.html"><a href="leiro-stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
-<li class="chapter" data-level="5.4" data-path="leiro-stat.html"><a href="leiro-stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
-<li class="chapter" data-level="5.5" data-path="leiro-stat.html"><a href="leiro-stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
+<li class="chapter" data-level="5.1" data-path="leiro_stat.html"><a href="leiro_stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
+<li class="chapter" data-level="5.2" data-path="leiro_stat.html"><a href="leiro_stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
+<li class="chapter" data-level="5.3" data-path="leiro_stat.html"><a href="leiro_stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
+<li class="chapter" data-level="5.4" data-path="leiro_stat.html"><a href="leiro_stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
+<li class="chapter" data-level="5.5" data-path="leiro_stat.html"><a href="leiro_stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="sentiment.html"><a href="sentiment.html"><i class="fa fa-check"></i><b>6</b> Szótárak és érzelemelemzés</a>
 <ul>
@@ -221,16 +221,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="sentiment.html"><a href="sentiment.html#a-magyar-nemzet-elemzése"><i class="fa fa-check"></i><b>6.3</b> A <em>Magyar Nemzet</em> elemzése</a></li>
 <li class="chapter" data-level="6.4" data-path="sentiment.html"><a href="sentiment.html#mnb-sajtóközlemények"><i class="fa fa-check"></i><b>6.4</b> MNB sajtóközlemények</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lda-ch.html"><a href="lda-ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
+<li class="chapter" data-level="7" data-path="lda_ch.html"><a href="lda_ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lda-ch.html"><a href="lda-ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="7.2" data-path="lda-ch.html"><a href="lda-ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
-<li class="chapter" data-level="7.3" data-path="lda-ch.html"><a href="lda-ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
+<li class="chapter" data-level="7.1" data-path="lda_ch.html"><a href="lda_ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="7.2" data-path="lda_ch.html"><a href="lda_ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
+<li class="chapter" data-level="7.3" data-path="lda_ch.html"><a href="lda_ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="lda-ch.html"><a href="lda-ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lda-ch.html"><a href="lda-ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.1" data-path="lda_ch.html"><a href="lda_ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lda_ch.html"><a href="lda_ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="lda-ch.html"><a href="lda-ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
+<li class="chapter" data-level="7.4" data-path="lda_ch.html"><a href="lda_ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="embedding.html"><a href="embedding.html"><i class="fa fa-check"></i><b>8</b> Szóbeágyazások</a>
 <ul>
@@ -260,12 +260,12 @@ div.csl-indent {
 <li class="chapter" data-level="10.7" data-path="similarity.html"><a href="similarity.html#a-koszinusz-hasonlóság-számítása"><i class="fa fa-check"></i><b>10.7</b> A koszinusz-hasonlóság számítása</a></li>
 <li class="chapter" data-level="10.8" data-path="similarity.html"><a href="similarity.html#az-eredmények-vizualizációja"><i class="fa fa-check"></i><b>10.8</b> Az eredmények vizualizációja</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="nlp-ch.html"><a href="nlp-ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
+<li class="chapter" data-level="11" data-path="nlp_ch.html"><a href="nlp_ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="nlp-ch.html"><a href="nlp-ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="11.2" data-path="nlp-ch.html"><a href="nlp-ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
-<li class="chapter" data-level="11.3" data-path="nlp-ch.html"><a href="nlp-ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
-<li class="chapter" data-level="11.4" data-path="nlp-ch.html"><a href="nlp-ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
+<li class="chapter" data-level="11.1" data-path="nlp_ch.html"><a href="nlp_ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="11.2" data-path="nlp_ch.html"><a href="nlp_ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
+<li class="chapter" data-level="11.3" data-path="nlp_ch.html"><a href="nlp_ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
+<li class="chapter" data-level="11.4" data-path="nlp_ch.html"><a href="nlp_ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="felugyelt.html"><a href="felugyelt.html"><i class="fa fa-check"></i><b>12</b> Osztályozás és felügyelt tanulás</a>
 <ul>
@@ -374,7 +374,7 @@ div.csl-indent {
 <span id="cb21-7"><a href="adatkezeles.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Sweden  Europe     1997    79.4 8897619    25267.</span></span>
 <span id="cb21-8"><a href="adatkezeles.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Sweden  Europe     2002    80.0 8954175    29342.</span></span>
 <span id="cb21-9"><a href="adatkezeles.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Sweden  Europe     2007    80.9 9031088    33860.</span></span></code></pre></div>
-<p>Itt tehát az adattábla azon sorait szeretnénk látni, ahol az ország megegyezik a „Sweden" karakterlánccal, az év pedig 1990 utáni.</p>
+<p>Itt tehát az adattábla azon sorait szeretnénk látni, ahol az ország megegyezik a „Sweden” karakterlánccal, az év pedig 1990 utáni.</p>
 <p>A <code>select()</code> függvény segítségével válogathatunk oszlopokat a data frame-ből. A változók kiválasztására több megoldás is van. A <code>dplyr</code> csomag tartalmaz apróbb kisegítő függvényeket, amik megkönnyítik a nagy adatbázisok esetén a változók kiválogatását a nevük alapján. Ezek a függvények a <code>contains()</code>, <code>starts_with()</code>, <code>ends_with()</code>, <code>matches()</code>, és beszédesen arra szolgálnak, hogy bizonyos nevű változókat ne kelljen egyenként felsorolni. A <code>select()</code>-en belüli változó sorrend egyben az eredmény data frame változójának sorrendjét is megadja. A negatív kiválasztás is lehetséges, ebben az esetben egy <code>-</code> jelet kell tennünk a nem kívánt változó(k) elé (pl.: <code>select(df, year, country, -continent</code>).</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="adatkezeles.html#cb22-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
 <span id="cb22-2"><a href="adatkezeles.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">contains</span>(<span class="st">&quot;ea&quot;</span>), dplyr<span class="sc">::</span><span class="fu">starts_with</span>(<span class="st">&quot;co&quot;</span>), pop)</span>
@@ -425,29 +425,29 @@ div.csl-indent {
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="adatkezeles.html#cb29-1" aria-hidden="true" tabindex="-1"></a>szoveg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gitar&quot;</span>, <span class="st">&quot;ukulele&quot;</span>, <span class="st">&quot;nagybogo&quot;</span>)</span>
 <span id="cb29-2"><a href="adatkezeles.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="adatkezeles.html#cb29-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_view</span>(szoveg, <span class="at">pattern =</span> <span class="st">&quot;ar&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-42666fe0549b06a0d0a7" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42666fe0549b06a0d0a7">{"x":{"html":"<ul>\n  <li>git<span class='match'>ar<\/span><\/li>\n  <li>ukulele<\/li>\n  <li>nagybogo<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6b25343efffe4fe7466e" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6b25343efffe4fe7466e">{"x":{"html":"<ul>\n  <li>git<span class='match'>ar<\/span><\/li>\n  <li>ukulele<\/li>\n  <li>nagybogo<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Reguláris kifejezésekkel rákereshetünk nem csak egyes elemekre (pl.: szavak, szótagok, betűk) hanem olyan konkrét esetekre is, amikor ezek egymás után fordulnak elő. Ilyenkor úgynevezett ngrammokat használunk, amelyek egy karakterláncban szereplő n-számú elem szekvenciája. A lenti példban ezeke működését egy úgynevezett bigrammal tehát egy n=2 értékű ngrammal mutatjuk be. Az ngrammok segítenek kezelni olyan eseteket, amikor két egymást követő elem eltérő jelentéssel bír, egymás mellett, mint külön-külön.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="adatkezeles.html#cb30-1" aria-hidden="true" tabindex="-1"></a>szoveg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;a fehér ház fehérebb mint bármely más ház&quot;</span>)</span>
 <span id="cb30-2"><a href="adatkezeles.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="adatkezeles.html#cb30-3" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_view</span>(szoveg, <span class="at">pattern =</span> <span class="st">&quot;fehér ház&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-b47c5b7b4d579d4af455" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b47c5b7b4d579d4af455">{"x":{"html":"<ul>\n  <li>a <span class='match'>fehér ház<\/span> fehérebb mint bármely más ház<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1fa806775de826a7b5e0" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1fa806775de826a7b5e0">{"x":{"html":"<ul>\n  <li>a <span class='match'>fehér ház<\/span> fehérebb mint bármely más ház<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Az ún. „horgonyokkal“, (<em>anchor</em>) azt lehet megadni, hogy a karakter string elején vagy végén szeretnénk-e egyezést találni. A string eleji anchor a <code>^</code>, a string végi pedig a <code>$</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="adatkezeles.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;^Dr.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-aca7e6479cdcb32ed669" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aca7e6479cdcb32ed669">{"x":{"html":"<ul>\n  <li><span class='match'>Dr.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e84ed63b19b44a171d34" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e84ed63b19b44a171d34">{"x":{"html":"<ul>\n  <li><span class='match'>Dr.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="adatkezeles.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;Dr.$&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-91f6ebe23215a7badffa" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-91f6ebe23215a7badffa">{"x":{"html":"<ul>\n  <li>Dr. Doktor <span class='match'>Dr.<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9a23f0c1819d92008506" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9a23f0c1819d92008506">{"x":{"html":"<ul>\n  <li>Dr. Doktor <span class='match'>Dr.<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Továbbá azt is meghatározhatjuk, hogy egy adott karakter, vagy karakter kombinációt, valamint a mellett elhelyezkedő karaktereket is szeretnénk kijelölni.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="adatkezeles.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.k.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-36674d225b7325909a4b" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-36674d225b7325909a4b">{"x":{"html":"<ul>\n  <li>Dr. D<span class='match'>okt<\/span>or Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c1096c57499d09bea438" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1096c57499d09bea438">{"x":{"html":"<ul>\n  <li>Dr. D<span class='match'>okt<\/span>or Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Egy másik jellemző probléma, hogy olyan speciális karaktert akarunk leírni a regex kifejezésünkkel, ami amúgy a regex szintaxisban használt. Ilyen eset például a <code>.</code>, ami mint írásjel sokszor csak zaj, ám a regex kontextusban a „bármilyen karakter„ megfelelője. Ahhoz, hogy magát az írásjelet jelöljük, a <code>\\</code> -t kell elé rakni.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="adatkezeles.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">&quot;Dr. Doktor Dr.&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>)</span></code></pre></div>
-<div id="htmlwidget-71c51eb5b2580acef369" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-71c51eb5b2580acef369">{"x":{"html":"<ul>\n  <li>Dr<span class='match'>.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-538aacda8bf39583f29f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-538aacda8bf39583f29f">{"x":{"html":"<ul>\n  <li>Dr<span class='match'>.<\/span> Doktor Dr.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>Néhány hasznos regex kifejezés:</p>
 <ul>
 <li><code>[:digit:]</code> - számok (123)</li>
@@ -481,11 +481,10 @@ div.csl-indent {
         </div>
       </div>
 <a href="alapfogalmak.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="corpus-ch.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="corpus_ch.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -525,6 +524,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

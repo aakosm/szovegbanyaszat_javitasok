@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben</title>
-  <meta name="description" content="2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <title>2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben</title>
+  <meta name="description" content="2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
+  <meta property="og:title" content="2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
+  <meta property="og:description" content="2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
+  <meta name="twitter:title" content="2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
   
-  <meta name="twitter:description" content="2 Alapfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
+  <meta name="twitter:description" content="2 Kulcsfogalmak | Szövegbányászat és mesterséges intelligencia R-ben" />
   
 
 <meta name="author" content="Sebők Miklós, Ring Orsolya, Máté Ákos" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="adatkezeles.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +51,19 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,9 +182,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#egy-gyakorlati-példa-az-r-programmal-való-szövegbányászatra"><i class="fa fa-check"></i><b>1.4</b> Egy gyakorlati példa az R programmal való szövegbányászatra</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#köszönetnyilvánítás"><i class="fa fa-check"></i><b>1.5</b> Köszönetnyilvánítás</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Alapfogalmak</a>
+<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Kulcsfogalmak</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#elméleti-alapok"><i class="fa fa-check"></i><b>2.1</b> Elméleti alapok</a></li>
+<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#big-data-és-társadalomtudomány"><i class="fa fa-check"></i><b>2.1</b> Big Data és társadalomtudomány</a></li>
 <li class="chapter" data-level="2.2" data-path="alapfogalmak.html"><a href="alapfogalmak.html#fogalmi-alapok"><i class="fa fa-check"></i><b>2.2</b> Fogalmi alapok</a></li>
 <li class="chapter" data-level="2.3" data-path="alapfogalmak.html"><a href="alapfogalmak.html#a-szövegbányászat-alapelvei"><i class="fa fa-check"></i><b>2.3</b> A szövegbányászat alapelvei</a></li>
 </ul></li>
@@ -196,23 +196,23 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="adatkezeles.html"><a href="adatkezeles.html#műveletek-adattáblákkal"><i class="fa fa-check"></i><b>3.4</b> Műveletek adattáblákkal</a></li>
 <li class="chapter" data-level="3.5" data-path="adatkezeles.html"><a href="adatkezeles.html#munka-karakter-vektorokkaladatkezel-4"><i class="fa fa-check"></i><b>3.5</b> Munka karakter vektorokkal</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="corpus-ch.html"><a href="corpus-ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
+<li class="chapter" data-level="4" data-path="corpus_ch.html"><a href="corpus_ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
-<li class="chapter" data-level="4.2" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
+<li class="chapter" data-level="4.1" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
+<li class="chapter" data-level="4.2" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="corpus-ch.html"><a href="corpus-ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
-<li class="chapter" data-level="4.2.2" data-path="corpus-ch.html"><a href="corpus-ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
-<li class="chapter" data-level="4.2.3" data-path="corpus-ch.html"><a href="corpus-ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
+<li class="chapter" data-level="4.2.1" data-path="corpus_ch.html"><a href="corpus_ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
+<li class="chapter" data-level="4.2.2" data-path="corpus_ch.html"><a href="corpus_ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="corpus_ch.html"><a href="corpus_ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="leiro-stat.html"><a href="leiro-stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
+<li class="chapter" data-level="5" data-path="leiro_stat.html"><a href="leiro_stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="leiro-stat.html"><a href="leiro-stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
-<li class="chapter" data-level="5.2" data-path="leiro-stat.html"><a href="leiro-stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
-<li class="chapter" data-level="5.3" data-path="leiro-stat.html"><a href="leiro-stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
-<li class="chapter" data-level="5.4" data-path="leiro-stat.html"><a href="leiro-stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
-<li class="chapter" data-level="5.5" data-path="leiro-stat.html"><a href="leiro-stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
+<li class="chapter" data-level="5.1" data-path="leiro_stat.html"><a href="leiro_stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
+<li class="chapter" data-level="5.2" data-path="leiro_stat.html"><a href="leiro_stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
+<li class="chapter" data-level="5.3" data-path="leiro_stat.html"><a href="leiro_stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
+<li class="chapter" data-level="5.4" data-path="leiro_stat.html"><a href="leiro_stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
+<li class="chapter" data-level="5.5" data-path="leiro_stat.html"><a href="leiro_stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="sentiment.html"><a href="sentiment.html"><i class="fa fa-check"></i><b>6</b> Szótárak és érzelemelemzés</a>
 <ul>
@@ -221,16 +221,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="sentiment.html"><a href="sentiment.html#a-magyar-nemzet-elemzése"><i class="fa fa-check"></i><b>6.3</b> A <em>Magyar Nemzet</em> elemzése</a></li>
 <li class="chapter" data-level="6.4" data-path="sentiment.html"><a href="sentiment.html#mnb-sajtóközlemények"><i class="fa fa-check"></i><b>6.4</b> MNB sajtóközlemények</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lda-ch.html"><a href="lda-ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
+<li class="chapter" data-level="7" data-path="lda_ch.html"><a href="lda_ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lda-ch.html"><a href="lda-ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="7.2" data-path="lda-ch.html"><a href="lda-ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
-<li class="chapter" data-level="7.3" data-path="lda-ch.html"><a href="lda-ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
+<li class="chapter" data-level="7.1" data-path="lda_ch.html"><a href="lda_ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="7.2" data-path="lda_ch.html"><a href="lda_ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
+<li class="chapter" data-level="7.3" data-path="lda_ch.html"><a href="lda_ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="lda-ch.html"><a href="lda-ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lda-ch.html"><a href="lda-ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.1" data-path="lda_ch.html"><a href="lda_ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lda_ch.html"><a href="lda_ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="lda-ch.html"><a href="lda-ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
+<li class="chapter" data-level="7.4" data-path="lda_ch.html"><a href="lda_ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="embedding.html"><a href="embedding.html"><i class="fa fa-check"></i><b>8</b> Szóbeágyazások</a>
 <ul>
@@ -260,12 +260,12 @@ div.csl-indent {
 <li class="chapter" data-level="10.7" data-path="similarity.html"><a href="similarity.html#a-koszinusz-hasonlóság-számítása"><i class="fa fa-check"></i><b>10.7</b> A koszinusz-hasonlóság számítása</a></li>
 <li class="chapter" data-level="10.8" data-path="similarity.html"><a href="similarity.html#az-eredmények-vizualizációja"><i class="fa fa-check"></i><b>10.8</b> Az eredmények vizualizációja</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="nlp-ch.html"><a href="nlp-ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
+<li class="chapter" data-level="11" data-path="nlp_ch.html"><a href="nlp_ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="nlp-ch.html"><a href="nlp-ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="11.2" data-path="nlp-ch.html"><a href="nlp-ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
-<li class="chapter" data-level="11.3" data-path="nlp-ch.html"><a href="nlp-ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
-<li class="chapter" data-level="11.4" data-path="nlp-ch.html"><a href="nlp-ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
+<li class="chapter" data-level="11.1" data-path="nlp_ch.html"><a href="nlp_ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="11.2" data-path="nlp_ch.html"><a href="nlp_ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
+<li class="chapter" data-level="11.3" data-path="nlp_ch.html"><a href="nlp_ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
+<li class="chapter" data-level="11.4" data-path="nlp_ch.html"><a href="nlp_ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="felugyelt.html"><a href="felugyelt.html"><i class="fa fa-check"></i><b>12</b> Osztályozás és felügyelt tanulás</a>
 <ul>
@@ -313,9 +313,9 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="alapfogalmak" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Alapfogalmak</h1>
-<div id="elméleti-alapok" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Elméleti alapok</h2>
+<h1><span class="header-section-number">2</span> Kulcsfogalmak</h1>
+<div id="big-data-és-társadalomtudomány" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Big Data és társadalomtudomány</h2>
 <p>A szövegek géppel való feldolgozása és elemzése módszertanának számos megnevezése létezik. A szövegelemzés, kvantitatív szövegelemzés, szövegbányászat, természetes nyelvfeldolgozás, automatizált szövegelemzés, automatizált tartalomelemzés és hasonló fogalmak között nincs éles tartalami különbség. Ezek a kifejezések jellemzően ugyanarra az általánosabb kutatási irányra reflektálnak, csupán hangsúlybeli eltolódások vannak köztük, így gyakran szinonimaként is használják őket.</p>
 <p>A szövegek gépi feldolgozásával foglalkozó tudományág a Big Data forradalom részeként kezdett kialakulni, melyet az adatok egyre nagyobb és diverzebb tömegének elérhető és összegyűjthető jellege hívott életre. Ennek megfelelően az adattudomány számos különböző adatforrás, így képek, videók, hanganyagok, internetes keresési adatok, telefonok lokációs adatai és megannyi különböző információ feldolgozásával foglalkozik. A szöveg is egy az adatbányászat érdeklődési körébe tartozó számos adattípus közül, melynek elemzésére külön kutatási irány alakult ki.</p>
 <p>Mivel napjainkban minden másodpercben óriási mennyiségű szöveg keletkezik és válik hozzáférhetővé az interneten, egyre nagyobb az igény az ilyen jellegű források és az emberi nyelv automatizált feldolgozására. Ebből adódóan az elemzési eszköztár is egyre szélesebb körű és egyre szofisztikáltabb, így a tartalomelemzési és szövegbányászati ismeretekkel bíró elemzők számára rengeteg értékes információ kinyerhető. Ezért a szövegbányászat nemcsak a társadalomtudósok számára izgalmas kutatási irány, hanem gyakran hasznosítják üzleti célokra is. Gondoljunk például az online sajtótermékekre, az ezekhez kapcsolódó kommentekre vagy a politikusok beszédéire. Ezek mind-mind hatalmas mennyiségben rendelkezésre állnak, hasznosításukhoz azonban képesnek kell lenni ezeket a szövegeket összegyűjteni, megfelelő módon feldolgozni és kiértékelni. A könyv ebben is segítséget nyújt az Olvasónak. Mielőtt azonban az adatkezelés és az elemzés részleteire rátérnénk, érdemes végigvenni néhány elvi megfontolást, melyek nélkülözhetetlenek a leendő elemző számára az etikus, érvényes és eredményes szövegbányászati kutatások kivitelezéséhez.</p>
@@ -325,11 +325,11 @@ div.csl-indent {
 <div id="fogalmi-alapok" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Fogalmi alapok</h2>
 <p>Miután áttekintettük a szövegbányászatban használatos elméleti megközelítéseket, érdemes tisztázni a fogalmi alapokat is. A szövegbányászat szempontjából a szöveg is egy adat. Az elemzéshez használatos strukturált adathalmazt korpusznak nevezzük. A korpusz az összes szövegünket jelöli, ennek részegységei a dokumentumok. Ha például a <em>Magyar Nemzet</em> cikkeit kívánjuk elemezni, a kiválasztott időszak összes cikke lesz a teljes korpuszunk, az egyes cikkek pedig a dokumentumaink. Az elemzés mindig egy meghatározott tématerületre (<em>domain</em>-re) koncentrál. E tématerület utalhat a nyelvre, amelyen a szövegek íródtak, vagy a specifikus tartalomra, amelyet vizsgálunk, de mindenképpen meghatározza a szöveg szókészletével kapcsolatos várakozásainkat. Más lesz tehát a szóhasználat egy bulvárlap cikkeiben, mint egy tudományos szaklap cikkeiben, aminek elsősorban akkor van jelentősége, ha szótár alapú elemzéseket készítünk. A szótár alapú elemzések során olyan szószedeteket hozunk létre, amelyek segíthetnek a kutatásunk szempontjából érdekes témák vagy tartalmak azonosításában. Így például létrehozhatunk pozitív és negatív szótárakat, vagy a gazdasági és a külpolitikai témákhoz kapcsolódó szótárakat, melyek segíthetnek azonosítani, hogy adott dokumentum inkább gazdasági vagy inkább külpolitikai témákat tárgyal. Léteznek előre elkészített szótárak – angol nyelven például a Bing Liu által fejlesztett szótár egy jól ismert és széles körben alkalmazható példa <span class="citation">(<a href="irodalomjegyzék.html#ref-liuSentimentAnalysisSubjectivity2010" role="doc-biblioref">Liu 2010</a>)</span> –, azonban fontos fejben tartani, hogy a vizsgált téma specifikus nyelvezete jellemzően meghatározza azt, hogy egy-egy szótárba milyen kifejezéseknek kellene kerülniük.</p>
-<p>Már említettük, hogy egy szövegbányászati elemzés során a szöveg is adatként kezelendő. Tehát hasonló módon gondolhatunk az elemzendő szövegeinkre, mint egy statisztikai elemzésre szánt adatbázisra, annak csupán, reprezentációja tér el az utóbbitól. Tehát míg egy statisztikai elemzésre szánt táblázatban elsősorban számokat és adott esetben kategorikus változókat reprezentáló karakterláncokat (stringeket) – például „férfi“/„nő,” „falu“/„város” – találunk, addig a szöveges adatokban első ránézésre nem tűnik ki gépileg értelmezhető struktúra. Ahhoz, hogy a szövegeink a gépi elemzés számára feldolgozhatóvá váljanak, annak reprezentációját kell megváltoztatni, vagyis strukturálatlan adathalmazból strukturált adathalmazt kell létrehozni, melyet jellemzően a szövegek mátrixszá alakításával teszünk meg. A mátrixszá alakítás első hallásra bonyolult eljárás benyomását keltheti, azonban a gyakorlatban egy meglehetősen egyszerű transzformációról van szó, melynek eredményeként a szavakat számokkal reprezentáljuk. A könnyebb megértés érdekében vegyük az alábbi példát: tekintsük a három példamondatot a három elemzendő dokumentumnak, ezek összességét pedig a korpuszunknak.</p>
+<p>Már említettük, hogy egy szövegbányászati elemzés során a szöveg is adatként kezelendő. Tehát hasonló módon gondolhatunk az elemzendő szövegeinkre, mint egy statisztikai elemzésre szánt adatbázisra, annak csupán, reprezentációja tér el az utóbbitól. Tehát míg egy statisztikai elemzésre szánt táblázatban elsősorban számokat és adott esetben kategorikus változókat reprezentáló karakterláncokat (stringeket) – például „férfi”/„nő”, „falu”/„város” – találunk, addig a szöveges adatokban első ránézésre nem tűnik ki gépileg értelmezhető struktúra. Ahhoz, hogy a szövegeink a gépi elemzés számára feldolgozhatóvá váljanak, annak reprezentációját kell megváltoztatni, vagyis strukturálatlan adathalmazból strukturált adathalmazt kell létrehozni, melyet jellemzően a szövegek mátrixszá alakításával teszünk meg. A mátrixszá alakítás első hallásra bonyolult eljárás benyomását keltheti, azonban a gyakorlatban egy meglehetősen egyszerű transzformációról van szó, melynek eredményeként a szavakat számokkal reprezentáljuk. A könnyebb megértés érdekében vegyük az alábbi példát: tekintsük a három példamondatot a három elemzendő dokumentumnak, ezek összességét pedig a korpuszunknak.</p>
 <p><em>1. Az Európai Unió 27 tagországának egyike Magyarország.</em></p>
 <p><em>2. Magyarország 2004-ben csatlakozott az Európai Unióhoz.</em></p>
 <p><em>3. Szlovákia, akárcsak Magyarország, 2004-ben lett ez Európai Unió tagja.</em></p>
-<p>A példamondatok dokumentum-kifejezés mátrixsza az alábbi táblázat szerint fog kinézni. Vegyük észre azt is, hogy több olyan kifejezés van, melyek csak ragozásukban térnek el: Unió, Unióhoz; tagja, tagjának. Ezeket a kifejezéseket a kutatói szándék függvényében azonos alakúra hozhatjuk, hogy egy egységként jelenjenek meg. Az elemzések többségében a szövegelőkészítés egyik kiinduló lépése a szótövesítés vagy a lemmatizálás, előbbi a szavak toldalékainak levágását jelöli, utóbbi a szavak szótári alakra való visszaalakítását. A ragozás eltávolítását illetően elöljáróban annyit érdemes megjegyezni, hogy az agglutináló, vagyis ragasztó nyelvek esetén, mint amilyen a magyar is, a toldalékok eltávolítása gyakran igen komoly kihívást jelent. Nem csak a toldalékok formája lehet igen sokféle, de az is előfordulhat, hogy a tőszó nem egyezik meg a toldalék levágásával keletkező szótővel. Ilyen például a vödröt kifejezés, melynek szótöve a „vödr“, de a nyelvtanilag helyes tőszó a „vödör.” Hasonlóan a majmok kifejezés esetén a szótő a „majm” lesz, míg a nyelvtanilag helyes tőszó a „majom”. Emiatt a toldalékok levágását a magyar nyelvű szövegek esetén megfelelő körültekintéssel kell végezni.</p>
+<p>A példamondatok dokumentum-kifejezés mátrixsza az alábbi táblázat szerint fog kinézni. Vegyük észre azt is, hogy több olyan kifejezés van, melyek csak ragozásukban térnek el: Unió, Unióhoz; tagja, tagjának. Ezeket a kifejezéseket a kutatói szándék függvényében azonos alakúra hozhatjuk, hogy egy egységként jelenjenek meg. Az elemzések többségében a szövegelőkészítés egyik kiinduló lépése a szótövesítés vagy a lemmatizálás, előbbi a szavak toldalékainak levágását jelöli, utóbbi a szavak szótári alakra való visszaalakítását. A ragozás eltávolítását illetően elöljáróban annyit érdemes megjegyezni, hogy az agglutináló, vagyis ragasztó nyelvek esetén, mint amilyen a magyar is, a toldalékok eltávolítása gyakran igen komoly kihívást jelent. Nem csak a toldalékok formája lehet igen sokféle, de az is előfordulhat, hogy a tőszó nem egyezik meg a toldalék levágásával keletkező szótővel. Ilyen például a vödröt kifejezés, melynek szótöve a „vödr”, de a nyelvtanilag helyes tőszó a „vödör”. Hasonlóan a majmok kifejezés esetén a szótő a „majm” lesz, míg a nyelvtanilag helyes tőszó a „majom”. Emiatt a toldalékok levágását a magyar nyelvű szövegek esetén megfelelő körültekintéssel kell végezni.</p>
 <table class=" lightable-paper lightable-hover" style="font-size: 9px; font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:unnamed-chunk-19">Táblázat 2.1: </span>Dokumentum-kifejezés mátrix a példamondatokból
@@ -519,7 +519,7 @@ Unióhoz
 </div>
 <div id="a-szövegbányászat-alapelvei" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> A szövegbányászat alapelvei</h2>
-<p>A módszertani fogalmak tisztázásást követően néhány elméleti megfontolást osztanánk meg a Grimmer és Steward <span class="citation">(<a href="irodalomjegyzék.html#ref-grimmer2013text" role="doc-biblioref">2013</a>)</span> által megfogalmazott alapelvek nyomán, melyek hasznos útravalóul szolgálhatnak a szövegbányászattal ismerkedő kutatók számára.</p>
+<p>A módszertani fogalmak tisztázásást követően néhány elméleti megfontolást osztanánk meg a Grimmer és Stewart <span class="citation">(<a href="irodalomjegyzék.html#ref-grimmer2013text" role="doc-biblioref">2013</a>)</span> által megfogalmazott alapelvek nyomán, melyek hasznos útravalóul szolgálhatnak a szövegbányászattal ismerkedő kutatók számára.</p>
 <p><em>1. A szövegbányászat rossz, de hasznos</em></p>
 <p>Az emberi nyelv egy meglehetősen bonyolult rendszer, így egy szöveg jelentésének, érzelmi telítettségének különböző olvasók általi értelmezése meglehetősen eltérő lehet, így nem meglepő, hogy egy gép sok esetben csak korlátozott eredményeket képes felmutatni ezen feladatok teljesítésében. Ettől függetlenül nem elvitatható a szövegbányászati modellek hasznossága, hiszen olyan mennyiségű szöveg válik feldolgozhatóvá, ami gépi támogatás nélkül elképzelhetetlen lenne, mindemellett azonban nem lehet megfeledkezni a módszertan korlátairól sem.</p>
 <p><em>2. A kvantitatív modellek kiegészítik az embert, nem helyettesítik azt</em></p>
@@ -541,7 +541,6 @@ Unióhoz
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -581,6 +580,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

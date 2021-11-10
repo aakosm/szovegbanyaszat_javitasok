@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Szóbeágyazások | Szövegbányászat és mesterséges intelligencia R-ben</title>
   <meta name="description" content="8 Szóbeágyazások | Szövegbányászat és mesterséges intelligencia R-ben" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Szóbeágyazások | Szövegbányászat és mesterséges intelligencia R-ben" />
   <meta property="og:type" content="book" />
@@ -31,10 +31,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lda-ch.html"/>
+<link rel="prev" href="lda_ch.html"/>
 <link rel="next" href="scaling.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +51,19 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,9 +182,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#egy-gyakorlati-példa-az-r-programmal-való-szövegbányászatra"><i class="fa fa-check"></i><b>1.4</b> Egy gyakorlati példa az R programmal való szövegbányászatra</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#köszönetnyilvánítás"><i class="fa fa-check"></i><b>1.5</b> Köszönetnyilvánítás</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Alapfogalmak</a>
+<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Kulcsfogalmak</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#elméleti-alapok"><i class="fa fa-check"></i><b>2.1</b> Elméleti alapok</a></li>
+<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#big-data-és-társadalomtudomány"><i class="fa fa-check"></i><b>2.1</b> Big Data és társadalomtudomány</a></li>
 <li class="chapter" data-level="2.2" data-path="alapfogalmak.html"><a href="alapfogalmak.html#fogalmi-alapok"><i class="fa fa-check"></i><b>2.2</b> Fogalmi alapok</a></li>
 <li class="chapter" data-level="2.3" data-path="alapfogalmak.html"><a href="alapfogalmak.html#a-szövegbányászat-alapelvei"><i class="fa fa-check"></i><b>2.3</b> A szövegbányászat alapelvei</a></li>
 </ul></li>
@@ -196,23 +196,23 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="adatkezeles.html"><a href="adatkezeles.html#műveletek-adattáblákkal"><i class="fa fa-check"></i><b>3.4</b> Műveletek adattáblákkal</a></li>
 <li class="chapter" data-level="3.5" data-path="adatkezeles.html"><a href="adatkezeles.html#munka-karakter-vektorokkaladatkezel-4"><i class="fa fa-check"></i><b>3.5</b> Munka karakter vektorokkal</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="corpus-ch.html"><a href="corpus-ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
+<li class="chapter" data-level="4" data-path="corpus_ch.html"><a href="corpus_ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
-<li class="chapter" data-level="4.2" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
+<li class="chapter" data-level="4.1" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
+<li class="chapter" data-level="4.2" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="corpus-ch.html"><a href="corpus-ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
-<li class="chapter" data-level="4.2.2" data-path="corpus-ch.html"><a href="corpus-ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
-<li class="chapter" data-level="4.2.3" data-path="corpus-ch.html"><a href="corpus-ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
+<li class="chapter" data-level="4.2.1" data-path="corpus_ch.html"><a href="corpus_ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
+<li class="chapter" data-level="4.2.2" data-path="corpus_ch.html"><a href="corpus_ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="corpus_ch.html"><a href="corpus_ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="leiro-stat.html"><a href="leiro-stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
+<li class="chapter" data-level="5" data-path="leiro_stat.html"><a href="leiro_stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="leiro-stat.html"><a href="leiro-stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
-<li class="chapter" data-level="5.2" data-path="leiro-stat.html"><a href="leiro-stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
-<li class="chapter" data-level="5.3" data-path="leiro-stat.html"><a href="leiro-stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
-<li class="chapter" data-level="5.4" data-path="leiro-stat.html"><a href="leiro-stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
-<li class="chapter" data-level="5.5" data-path="leiro-stat.html"><a href="leiro-stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
+<li class="chapter" data-level="5.1" data-path="leiro_stat.html"><a href="leiro_stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
+<li class="chapter" data-level="5.2" data-path="leiro_stat.html"><a href="leiro_stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
+<li class="chapter" data-level="5.3" data-path="leiro_stat.html"><a href="leiro_stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
+<li class="chapter" data-level="5.4" data-path="leiro_stat.html"><a href="leiro_stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
+<li class="chapter" data-level="5.5" data-path="leiro_stat.html"><a href="leiro_stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="sentiment.html"><a href="sentiment.html"><i class="fa fa-check"></i><b>6</b> Szótárak és érzelemelemzés</a>
 <ul>
@@ -221,16 +221,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="sentiment.html"><a href="sentiment.html#a-magyar-nemzet-elemzése"><i class="fa fa-check"></i><b>6.3</b> A <em>Magyar Nemzet</em> elemzése</a></li>
 <li class="chapter" data-level="6.4" data-path="sentiment.html"><a href="sentiment.html#mnb-sajtóközlemények"><i class="fa fa-check"></i><b>6.4</b> MNB sajtóközlemények</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lda-ch.html"><a href="lda-ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
+<li class="chapter" data-level="7" data-path="lda_ch.html"><a href="lda_ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lda-ch.html"><a href="lda-ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="7.2" data-path="lda-ch.html"><a href="lda-ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
-<li class="chapter" data-level="7.3" data-path="lda-ch.html"><a href="lda-ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
+<li class="chapter" data-level="7.1" data-path="lda_ch.html"><a href="lda_ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="7.2" data-path="lda_ch.html"><a href="lda_ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
+<li class="chapter" data-level="7.3" data-path="lda_ch.html"><a href="lda_ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="lda-ch.html"><a href="lda-ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lda-ch.html"><a href="lda-ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.1" data-path="lda_ch.html"><a href="lda_ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lda_ch.html"><a href="lda_ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="lda-ch.html"><a href="lda-ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
+<li class="chapter" data-level="7.4" data-path="lda_ch.html"><a href="lda_ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="embedding.html"><a href="embedding.html"><i class="fa fa-check"></i><b>8</b> Szóbeágyazások</a>
 <ul>
@@ -260,12 +260,12 @@ div.csl-indent {
 <li class="chapter" data-level="10.7" data-path="similarity.html"><a href="similarity.html#a-koszinusz-hasonlóság-számítása"><i class="fa fa-check"></i><b>10.7</b> A koszinusz-hasonlóság számítása</a></li>
 <li class="chapter" data-level="10.8" data-path="similarity.html"><a href="similarity.html#az-eredmények-vizualizációja"><i class="fa fa-check"></i><b>10.8</b> Az eredmények vizualizációja</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="nlp-ch.html"><a href="nlp-ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
+<li class="chapter" data-level="11" data-path="nlp_ch.html"><a href="nlp_ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="nlp-ch.html"><a href="nlp-ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="11.2" data-path="nlp-ch.html"><a href="nlp-ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
-<li class="chapter" data-level="11.3" data-path="nlp-ch.html"><a href="nlp-ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
-<li class="chapter" data-level="11.4" data-path="nlp-ch.html"><a href="nlp-ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
+<li class="chapter" data-level="11.1" data-path="nlp_ch.html"><a href="nlp_ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="11.2" data-path="nlp_ch.html"><a href="nlp_ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
+<li class="chapter" data-level="11.3" data-path="nlp_ch.html"><a href="nlp_ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
+<li class="chapter" data-level="11.4" data-path="nlp_ch.html"><a href="nlp_ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="felugyelt.html"><a href="felugyelt.html"><i class="fa fa-check"></i><b>12</b> Osztályozás és felügyelt tanulás</a>
 <ul>
@@ -355,13 +355,13 @@ div.csl-indent {
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="embedding.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mn)</span>
 <span id="cb147-2"><a href="embedding.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 35,021</span></span>
 <span id="cb147-3"><a href="embedding.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 2</span></span>
-<span id="cb147-4"><a href="embedding.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ doc_id &lt;chr&gt; &quot;mn_2002_05_27_00.txt&quot;, &quot;mn_2002_05_27_01.txt&quot;, &quot;mn_2002~</span></span>
-<span id="cb147-5"><a href="embedding.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ text   &lt;chr&gt; &quot;Csere szerb módra\nNagy vihart kavart Szerbiában a korm~</span></span>
+<span id="cb147-4"><a href="embedding.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ doc_id &lt;chr&gt; &quot;mn_2002_05_27_00.txt&quot;, &quot;mn_2002_05_27_01.txt&quot;, &quot;mn_2~</span></span>
+<span id="cb147-5"><a href="embedding.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ text   &lt;chr&gt; &quot;Csere szerb módra\nNagy vihart kavart Szerbiában a k~</span></span>
 <span id="cb147-6"><a href="embedding.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mn_clean)</span>
 <span id="cb147-7"><a href="embedding.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 35,021</span></span>
 <span id="cb147-8"><a href="embedding.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 2</span></span>
-<span id="cb147-9"><a href="embedding.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ doc_id &lt;chr&gt; &quot;mn_2002_05_27_00.txt&quot;, &quot;mn_2002_05_27_01.txt&quot;, &quot;mn_2002~</span></span>
-<span id="cb147-10"><a href="embedding.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ text   &lt;chr&gt; &quot;csere szerb módranagy vihart kavart szerbiában a kormán~</span></span></code></pre></div>
+<span id="cb147-9"><a href="embedding.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ doc_id &lt;chr&gt; &quot;mn_2002_05_27_00.txt&quot;, &quot;mn_2002_05_27_01.txt&quot;, &quot;mn_2~</span></span>
+<span id="cb147-10"><a href="embedding.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ text   &lt;chr&gt; &quot;csere szerb módranagy vihart kavart szerbiában a kor~</span></span></code></pre></div>
 <p>Fontos különbség, hogy az eddigi munkafolyamatokkal ellentétben a GloVe algoritmus nem egy dokumentum-kifejezés mátrixon dolgozik, hanem egy kifejezések együttes előfordulását tartalmazó mátrixot (<em>feature co-occurence matrix</em>) kell készíteni inputként. Ezt a <code>quanteda</code> <code>fcm()</code> függvényével tudjuk előállítani, ami a tokenekből készíti el a mátrixot. A tokenek sorrendiségét úgy tudjuk megőrizni, hogy egy <code>dfm</code> objektumból csak a kifejezéseket tartjuk meg a <code>featnames()</code> függvény segítségével, majd a teljes token halmazból a <code>tokens_select()</code> függvénnyel kiválasztjuk őket.</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="embedding.html#cb148-1" aria-hidden="true" tabindex="-1"></a>mn_corpus <span class="ot">&lt;-</span> <span class="fu">corpus</span>(mn_clean)</span>
 <span id="cb148-2"><a href="embedding.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -374,22 +374,21 @@ div.csl-indent {
 <span id="cb148-9"><a href="embedding.html#cb148-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb148-10"><a href="embedding.html#cb148-10" aria-hidden="true" tabindex="-1"></a>mn_tokens <span class="ot">&lt;-</span> <span class="fu">tokens_select</span>(mn_tokens, features, <span class="at">padding =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Az <code>fcm</code> megalkotása során a célkifejezéstől való távolság függvényében súlyozzuk a tokeneket.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="embedding.html#cb149-1" aria-hidden="true" tabindex="-1"></a>mn_fcm <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">fcm</span>(mn_tokens, <span class="at">context =</span> <span class="st">&quot;window&quot;</span>, <span class="at">count =</span> <span class="st">&quot;weighted&quot;</span>, <span class="at">weights =</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), </span>
-<span id="cb149-2"><a href="embedding.html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">tri =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>A tényleges szóbeágyazás a <code>text2vec</code> csomaggal történik. A <code>GlobalVector</code> egy új „környezetet" (<em>environment</em>) hoz létre. Itt adhatjuk meg az alapvető paramétereket. A <code>rank</code> a vektor dimenziót adja meg (a szakirodalomban a 300–500 dimenzió a megszokott). A többi paraméterrel is lehet kísérletezni, hogy mennyire változtatja meg a kapott szóbeágyazásokat. A <code>fit_transform</code> pedig a tényleges becslést végzi. Itt az iterációk számát (a gépi tanulásos irodalomban <em>epoch</em>-nak is hívják a tanulási köröket) és a korai leállás (<em>early stopping</em>) kritériumát a <code>convergence_tol</code> megadásával állíthatjuk be. Minél több dimenziót szeretnénk és minél több iterációt, annál tovább fog tartani a szóbeágyazás futtatása.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="embedding.html#cb149-1" aria-hidden="true" tabindex="-1"></a>mn_fcm <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">fcm</span>(mn_tokens, <span class="at">context =</span> <span class="st">&quot;window&quot;</span>, <span class="at">count =</span> <span class="st">&quot;weighted&quot;</span>, <span class="at">weights =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">tri =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>A tényleges szóbeágyazás a <code>text2vec</code> csomaggal történik. A <code>GlobalVector</code> egy új „környezetet” (<em>environment</em>) hoz létre. Itt adhatjuk meg az alapvető paramétereket. A <code>rank</code> a vektor dimenziót adja meg (a szakirodalomban a 300–500 dimenzió a megszokott). A többi paraméterrel is lehet kísérletezni, hogy mennyire változtatja meg a kapott szóbeágyazásokat. A <code>fit_transform</code> pedig a tényleges becslést végzi. Itt az iterációk számát (a gépi tanulásos irodalomban <em>epoch</em>-nak is hívják a tanulási köröket) és a korai leállás (<em>early stopping</em>) kritériumát a <code>convergence_tol</code> megadásával állíthatjuk be. Minél több dimenziót szeretnénk és minél több iterációt, annál tovább fog tartani a szóbeágyazás futtatása.</p>
 <p>Az egyszerűség és a gyorsaság miatt a lenti kód 10 körös tanulást ad meg, ami a relatíve kicsi <em>Magyar Nemzet</em> korpuszon ~3 perc alatt fut le.<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a> Természetesen minél nagyobb korpuszon, minél több iterációt futtatunk, annál pontosabb eredményt fogunk kapni. A <code>text2vec</code> csomag képes a számítások párhuzamosítására, így alapbeállításként a rendelkezésre álló összes CPU magot teljesen kihasználja a számításhoz. Ennek ellenére egy százezres, milliós korpusz esetén több óra is lehet a tanítás.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="embedding.html#cb150-1" aria-hidden="true" tabindex="-1"></a>glove <span class="ot">&lt;-</span> GlobalVectors<span class="sc">$</span><span class="fu">new</span>(<span class="at">rank =</span> <span class="dv">300</span>, <span class="at">x_max =</span> <span class="dv">10</span>, <span class="at">learning_rate =</span> <span class="fl">0.1</span>)</span>
 <span id="cb150-2"><a href="embedding.html#cb150-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb150-3"><a href="embedding.html#cb150-3" aria-hidden="true" tabindex="-1"></a>mn_main <span class="ot">&lt;-</span> glove<span class="sc">$</span><span class="fu">fit_transform</span>(mn_fcm, <span class="at">n_iter =</span> <span class="dv">10</span>, <span class="at">convergence_tol =</span> <span class="fl">0.1</span>)</span>
-<span id="cb150-4"><a href="embedding.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:46:17.852] epoch 1, loss 0.2295 </span></span>
-<span id="cb150-5"><a href="embedding.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:46:36.729] epoch 2, loss 0.0963 </span></span>
-<span id="cb150-6"><a href="embedding.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:46:55.305] epoch 3, loss 0.0706 </span></span>
-<span id="cb150-7"><a href="embedding.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:47:13.803] epoch 4, loss 0.0490 </span></span>
-<span id="cb150-8"><a href="embedding.html#cb150-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:47:32.669] epoch 5, loss 0.0411 </span></span>
-<span id="cb150-9"><a href="embedding.html#cb150-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:47:51.207] epoch 6, loss 0.0361 </span></span>
-<span id="cb150-10"><a href="embedding.html#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:48:09.700] epoch 7, loss 0.0326 </span></span>
-<span id="cb150-11"><a href="embedding.html#cb150-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:48:28.293] epoch 8, loss 0.0298 </span></span>
-<span id="cb150-12"><a href="embedding.html#cb150-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [11:48:28.294] Success: early stopping. Improvement at iterartion 8 is less then convergence_tol</span></span></code></pre></div>
+<span id="cb150-4"><a href="embedding.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:31:46.136] epoch 1, loss 0.2295 </span></span>
+<span id="cb150-5"><a href="embedding.html#cb150-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:32:08.468] epoch 2, loss 0.0963 </span></span>
+<span id="cb150-6"><a href="embedding.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:32:30.136] epoch 3, loss 0.0706 </span></span>
+<span id="cb150-7"><a href="embedding.html#cb150-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:32:53.723] epoch 4, loss 0.0490 </span></span>
+<span id="cb150-8"><a href="embedding.html#cb150-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:33:15.566] epoch 5, loss 0.0411 </span></span>
+<span id="cb150-9"><a href="embedding.html#cb150-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:33:40.096] epoch 6, loss 0.0362 </span></span>
+<span id="cb150-10"><a href="embedding.html#cb150-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:34:08.383] epoch 7, loss 0.0326 </span></span>
+<span id="cb150-11"><a href="embedding.html#cb150-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:34:31.161] epoch 8, loss 0.0298 </span></span>
+<span id="cb150-12"><a href="embedding.html#cb150-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO  [22:34:31.163] Success: early stopping. Improvement at iterartion 8 is less then convergence_tol</span></span></code></pre></div>
 <p>A végleges szóvektorokat a becslés során elkészült két mátrix összegeként kapjuk.</p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="embedding.html#cb151-1" aria-hidden="true" tabindex="-1"></a>mn_context <span class="ot">&lt;-</span> glove<span class="sc">$</span>components</span>
 <span id="cb151-2"><a href="embedding.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -401,7 +400,7 @@ div.csl-indent {
 <span id="cb152-4"><a href="embedding.html#cb152-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb152-5"><a href="embedding.html#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(cos_sim_rom[, <span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span>
 <span id="cb152-6"><a href="embedding.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; polgármester        mszps  szocialista     fideszes    politikus </span></span>
-<span id="cb152-7"><a href="embedding.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        1.000        0.518        0.508        0.463        0.408</span></span></code></pre></div>
+<span id="cb152-7"><a href="embedding.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        1.000        0.518        0.509        0.463        0.407</span></span></code></pre></div>
 <p>A lenti <code>show_vector()</code> függvényt definiálva a kapott eredmény egy data frame lesz, és az <code>n</code> változtatásával a kapcsolódó szavak számát is könnyen változtathatjuk.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="embedding.html#cb153-1" aria-hidden="true" tabindex="-1"></a>show_vector <span class="ot">&lt;-</span> <span class="cf">function</span>(vectors, pattern, <span class="at">n =</span> <span class="dv">5</span>) {</span>
 <span id="cb153-2"><a href="embedding.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  term <span class="ot">&lt;-</span> mn_word_vectors[pattern, , drop <span class="ot">=</span> F]</span>
@@ -416,11 +415,11 @@ div.csl-indent {
 <span id="cb154-3"><a href="embedding.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   term          dist</span></span>
 <span id="cb154-4"><a href="embedding.html#cb154-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;</span></span>
 <span id="cb154-5"><a href="embedding.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 barack       1    </span></span>
-<span id="cb154-6"><a href="embedding.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 obama        0.725</span></span>
-<span id="cb154-7"><a href="embedding.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 amerikai     0.428</span></span>
+<span id="cb154-6"><a href="embedding.html#cb154-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 obama        0.726</span></span>
+<span id="cb154-7"><a href="embedding.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 amerikai     0.427</span></span>
 <span id="cb154-8"><a href="embedding.html#cb154-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 elnök        0.394</span></span>
 <span id="cb154-9"><a href="embedding.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 demokrata    0.385</span></span>
-<span id="cb154-10"><a href="embedding.html#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 republikánus 0.279</span></span>
+<span id="cb154-10"><a href="embedding.html#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 republikánus 0.280</span></span>
 <span id="cb154-11"><a href="embedding.html#cb154-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
 <p>Ugyanez működik magyar vezetőkkel is.</p>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="embedding.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_vector</span>(mn_word_vectors, <span class="st">&quot;orbán&quot;</span>, <span class="dv">10</span>)</span>
@@ -428,11 +427,11 @@ div.csl-indent {
 <span id="cb155-3"><a href="embedding.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   term            dist</span></span>
 <span id="cb155-4"><a href="embedding.html#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
 <span id="cb155-5"><a href="embedding.html#cb155-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 orbán          1    </span></span>
-<span id="cb155-6"><a href="embedding.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 viktor         0.931</span></span>
+<span id="cb155-6"><a href="embedding.html#cb155-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 viktor         0.930</span></span>
 <span id="cb155-7"><a href="embedding.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 miniszterelnök 0.764</span></span>
-<span id="cb155-8"><a href="embedding.html#cb155-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 mondta         0.697</span></span>
-<span id="cb155-9"><a href="embedding.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 kormányfo      0.684</span></span>
-<span id="cb155-10"><a href="embedding.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 fidesz         0.678</span></span>
+<span id="cb155-8"><a href="embedding.html#cb155-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 mondta         0.698</span></span>
+<span id="cb155-9"><a href="embedding.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 kormányfo      0.685</span></span>
+<span id="cb155-10"><a href="embedding.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 fidesz         0.679</span></span>
 <span id="cb155-11"><a href="embedding.html#cb155-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ... with 4 more rows</span></span></code></pre></div>
 <p>A szakirodalomban klasszikus vektorműveletes példákat is reprokuálni tudjuk a <em>Magyar Nemzet</em> korpuszon készített szóbeágyazásainkkal. A <code>budapest - magyarország + német + németország</code> eredményét úgy kapjuk meg, hogy az egyes szavakhoz tartozó vektorokat kivonjuk egymásból, illetve hozzáadjuk őket, ezután pedig a kapott mátrixon a <code>quanteda</code> csomag <code>textstat_simil()</code> függvényével kiszámítjuk az új hasonlósági értékeket.</p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="embedding.html#cb156-1" aria-hidden="true" tabindex="-1"></a>budapest <span class="ot">&lt;-</span> mn_word_vectors[<span class="st">&quot;budapest&quot;</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">-</span> mn_word_vectors[<span class="st">&quot;magyarország&quot;</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span> mn_word_vectors[<span class="st">&quot;német&quot;</span>, , drop <span class="ot">=</span> <span class="cn">FALSE</span>] <span class="sc">+</span></span>
@@ -442,7 +441,7 @@ div.csl-indent {
 <span id="cb156-5"><a href="embedding.html#cb156-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb156-6"><a href="embedding.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">sort</span>(cos_sim[, <span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="dv">5</span>)</span>
 <span id="cb156-7"><a href="embedding.html#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    budapest németország       német     airport   kancellár </span></span>
-<span id="cb156-8"><a href="embedding.html#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       0.603       0.557       0.544       0.424       0.394</span></span></code></pre></div>
+<span id="cb156-8"><a href="embedding.html#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       0.602       0.558       0.545       0.424       0.396</span></span></code></pre></div>
 <p>A szavak egymástól való távolságát vizuálisan is tudjuk ábrázolni. Az egyik ezzel kapcsolatban felmerülő probléma, hogy egy 2 dimenziós ábrán akarunk egy 3–500 dimenziós mátrixot ábrázolni. Több lehetséges megoldás is van, mi ezek közül a lehető legegyszerűbbet mutatjuk be.<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a> Első lépésben egy data frame-et készítünk a szóbeágyazás eredményeként kapott mátrixból, megtartva a szavakat az első oszlopban a <code>tibble</code> csomag <code>rownames_to_column()</code> függvényével. Mivel csak 2 dimenziót tudunk ábrázolni egy tradícionális statikus ábrán, ezért a <code>V1</code> és <code>V2</code> oszlopokat tartjuk csak meg, amik az első és második dimenziót reprezentálják.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="embedding.html#cb157-1" aria-hidden="true" tabindex="-1"></a>mn_embedding_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(mn_word_vectors[, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]) <span class="sc">%&gt;%</span> </span>
 <span id="cb157-2"><a href="embedding.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">&quot;words&quot;</span>)</span></code></pre></div>
@@ -465,9 +464,9 @@ div.csl-indent {
 <span id="cb159-3"><a href="embedding.html#cb159-3" aria-hidden="true" tabindex="-1"></a>embedded <span class="ot">&lt;-</span> <span class="fu">embedding_plot</span>(<span class="at">data =</span> mn_embedding_df, <span class="at">keywords =</span> words_selected)</span>
 <span id="cb159-4"><a href="embedding.html#cb159-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb159-5"><a href="embedding.html#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(embedded)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:embedding"></span>
-<div id="htmlwidget-e52a37deb96f0d78e726" style="width:90%;height:600px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e52a37deb96f0d78e726">{"x":{"data":[{"x":[-0.28334657142729,-0.261610032674685,0.0166707253120911,-0.0626829151393153],"y":[-0.236392196541078,0.00283214985945426,0.0741635308518593,-0.143037059469975],"text":["washington","budapest","moszkva","debrecen"],"hovertext":["V1: -0.2833<br />V2: -0.23639<br />words: washington","V1: -0.2616<br />V2:  0.00283<br />words: budapest","V1:  0.0167<br />V2:  0.07416<br />words: moszkva","V1: -0.0627<br />V2: -0.14304<br />words: debrecen"],"textfont":{"size":14.6645669291339,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":41.5707762557078,"r":7.30593607305936,"b":55.5251141552512,"l":48.9497716894977},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["-1.0","-0.5","0.0","0.5","1.0"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["-1.0","-0.5","0.0","0.5","1.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"Elso dimenzió","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["-1.0","-0.5","0.0","0.5","1.0"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["-1.0","-0.5","0.0","0.5","1.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"Második dimenzió","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"276853dd192c":{"x":{},"y":{},"label":{},"type":"scatter"}},"cur_data":"276853dd192c","visdat":{"276853dd192c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:embedding"></span>
+<div id="htmlwidget-364d97abacc170cb2f9d" style="width:90%;height:600px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-364d97abacc170cb2f9d">{"x":{"data":[{"x":[-0.281292132104577,-0.258113438077766,0.0194133661181397,-0.0553629351807789],"y":[-0.232995259973607,0.00463136113747747,0.0734162919502149,-0.141965268155675],"text":["washington","budapest","moszkva","debrecen"],"hovertext":["V1: -0.2813<br />V2: -0.23300<br />words: washington","V1: -0.2581<br />V2:  0.00463<br />words: budapest","V1:  0.0194<br />V2:  0.07342<br />words: moszkva","V1: -0.0554<br />V2: -0.14197<br />words: debrecen"],"textfont":{"size":14.6645669291339,"color":"rgba(0,0,0,1)"},"type":"scatter","mode":"text","hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":41.5707762557078,"r":7.30593607305936,"b":55.5251141552512,"l":48.9497716894977},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["-1.0","-0.5","0.0","0.5","1.0"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["-1.0","-0.5","0.0","0.5","1.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"Elso dimenzió","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1,1.1],"tickmode":"array","ticktext":["-1.0","-0.5","0.0","0.5","1.0"],"tickvals":[-1,-0.5,0,0.5,1],"categoryorder":"array","categoryarray":["-1.0","-0.5","0.0","0.5","1.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"Második dimenzió","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1ebc7f135fc":{"x":{},"y":{},"label":{},"type":"scatter"}},"cur_data":"1ebc7f135fc","visdat":{"1ebc7f135fc":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Ábra 8.1: Kiválasztott szavak két dimenzós térben
 </p>
@@ -490,12 +489,11 @@ div.csl-indent {
           </div>
         </div>
       </div>
-<a href="lda-ch.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lda_ch.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="scaling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -535,6 +533,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

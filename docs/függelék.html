@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13 Függelék | Szövegbányászat és mesterséges intelligencia R-ben</title>
   <meta name="description" content="13 Függelék | Szövegbányászat és mesterséges intelligencia R-ben" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13 Függelék | Szövegbányászat és mesterséges intelligencia R-ben" />
   <meta property="og:type" content="book" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="felugyelt.html"/>
 <link rel="next" href="irodalomjegyzék.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +51,19 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -182,9 +182,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#egy-gyakorlati-példa-az-r-programmal-való-szövegbányászatra"><i class="fa fa-check"></i><b>1.4</b> Egy gyakorlati példa az R programmal való szövegbányászatra</a></li>
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#köszönetnyilvánítás"><i class="fa fa-check"></i><b>1.5</b> Köszönetnyilvánítás</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Alapfogalmak</a>
+<li class="chapter" data-level="2" data-path="alapfogalmak.html"><a href="alapfogalmak.html"><i class="fa fa-check"></i><b>2</b> Kulcsfogalmak</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#elméleti-alapok"><i class="fa fa-check"></i><b>2.1</b> Elméleti alapok</a></li>
+<li class="chapter" data-level="2.1" data-path="alapfogalmak.html"><a href="alapfogalmak.html#big-data-és-társadalomtudomány"><i class="fa fa-check"></i><b>2.1</b> Big Data és társadalomtudomány</a></li>
 <li class="chapter" data-level="2.2" data-path="alapfogalmak.html"><a href="alapfogalmak.html#fogalmi-alapok"><i class="fa fa-check"></i><b>2.2</b> Fogalmi alapok</a></li>
 <li class="chapter" data-level="2.3" data-path="alapfogalmak.html"><a href="alapfogalmak.html#a-szövegbányászat-alapelvei"><i class="fa fa-check"></i><b>2.3</b> A szövegbányászat alapelvei</a></li>
 </ul></li>
@@ -196,23 +196,23 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="adatkezeles.html"><a href="adatkezeles.html#műveletek-adattáblákkal"><i class="fa fa-check"></i><b>3.4</b> Műveletek adattáblákkal</a></li>
 <li class="chapter" data-level="3.5" data-path="adatkezeles.html"><a href="adatkezeles.html#munka-karakter-vektorokkaladatkezel-4"><i class="fa fa-check"></i><b>3.5</b> Munka karakter vektorokkal</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="corpus-ch.html"><a href="corpus-ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
+<li class="chapter" data-level="4" data-path="corpus_ch.html"><a href="corpus_ch.html"><i class="fa fa-check"></i><b>4</b> Korpuszépítés és szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
-<li class="chapter" data-level="4.2" data-path="corpus-ch.html"><a href="corpus-ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
+<li class="chapter" data-level="4.1" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegbeszerzés"><i class="fa fa-check"></i><b>4.1</b> Szövegbeszerzés</a></li>
+<li class="chapter" data-level="4.2" data-path="corpus_ch.html"><a href="corpus_ch.html#szövegelőkészítés"><i class="fa fa-check"></i><b>4.2</b> Szövegelőkészítés</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="corpus-ch.html"><a href="corpus-ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
-<li class="chapter" data-level="4.2.2" data-path="corpus-ch.html"><a href="corpus-ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
-<li class="chapter" data-level="4.2.3" data-path="corpus-ch.html"><a href="corpus-ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
+<li class="chapter" data-level="4.2.1" data-path="corpus_ch.html"><a href="corpus_ch.html#tokenizálás-szótövezés-kisbetűsítés-és-a-tiltólistás-szavak-eltávolítása"><i class="fa fa-check"></i><b>4.2.1</b> Tokenizálás, szótövezés, kisbetűsítés és a tiltólistás szavak eltávolítása</a></li>
+<li class="chapter" data-level="4.2.2" data-path="corpus_ch.html"><a href="corpus_ch.html#dokumentum-kifejezés-mátrix-dtm-dfm"><i class="fa fa-check"></i><b>4.2.2</b> Dokumentum kifejezés mátrix (dtm, dfm)</a></li>
+<li class="chapter" data-level="4.2.3" data-path="corpus_ch.html"><a href="corpus_ch.html#súlyozás"><i class="fa fa-check"></i><b>4.2.3</b> Súlyozás</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="leiro-stat.html"><a href="leiro-stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
+<li class="chapter" data-level="5" data-path="leiro_stat.html"><a href="leiro_stat.html"><i class="fa fa-check"></i><b>5</b> Leíró statisztika</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="leiro-stat.html"><a href="leiro-stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
-<li class="chapter" data-level="5.2" data-path="leiro-stat.html"><a href="leiro-stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
-<li class="chapter" data-level="5.3" data-path="leiro-stat.html"><a href="leiro-stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
-<li class="chapter" data-level="5.4" data-path="leiro-stat.html"><a href="leiro-stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
-<li class="chapter" data-level="5.5" data-path="leiro-stat.html"><a href="leiro-stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
+<li class="chapter" data-level="5.1" data-path="leiro_stat.html"><a href="leiro_stat.html#szövegek-a-vektortérben"><i class="fa fa-check"></i><b>5.1</b> Szövegek a vektortérben</a></li>
+<li class="chapter" data-level="5.2" data-path="leiro_stat.html"><a href="leiro_stat.html#leíró-statisztika"><i class="fa fa-check"></i><b>5.2</b> Leíró statisztika</a></li>
+<li class="chapter" data-level="5.3" data-path="leiro_stat.html"><a href="leiro_stat.html#a-szövegek-lexikai-diverzitása"><i class="fa fa-check"></i><b>5.3</b> A szövegek lexikai diverzitása</a></li>
+<li class="chapter" data-level="5.4" data-path="leiro_stat.html"><a href="leiro_stat.html#összehasonlításleiro-5"><i class="fa fa-check"></i><b>5.4</b> Összehasonlítás</a></li>
+<li class="chapter" data-level="5.5" data-path="leiro_stat.html"><a href="leiro_stat.html#a-kulcsszavak-kontextusa"><i class="fa fa-check"></i><b>5.5</b> A kulcsszavak kontextusa</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="sentiment.html"><a href="sentiment.html"><i class="fa fa-check"></i><b>6</b> Szótárak és érzelemelemzés</a>
 <ul>
@@ -221,16 +221,16 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="sentiment.html"><a href="sentiment.html#a-magyar-nemzet-elemzése"><i class="fa fa-check"></i><b>6.3</b> A <em>Magyar Nemzet</em> elemzése</a></li>
 <li class="chapter" data-level="6.4" data-path="sentiment.html"><a href="sentiment.html#mnb-sajtóközlemények"><i class="fa fa-check"></i><b>6.4</b> MNB sajtóközlemények</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lda-ch.html"><a href="lda-ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
+<li class="chapter" data-level="7" data-path="lda_ch.html"><a href="lda_ch.html"><i class="fa fa-check"></i><b>7</b> Felügyelet nélküli tanulás - Topikmodellezés</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="lda-ch.html"><a href="lda-ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="7.2" data-path="lda-ch.html"><a href="lda-ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
-<li class="chapter" data-level="7.3" data-path="lda-ch.html"><a href="lda-ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
+<li class="chapter" data-level="7.1" data-path="lda_ch.html"><a href="lda_ch.html#fogalmi-alapok-2"><i class="fa fa-check"></i><b>7.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="7.2" data-path="lda_ch.html"><a href="lda_ch.html#k-közép-klaszterezés"><i class="fa fa-check"></i><b>7.2</b> K-közép klaszterezés</a></li>
+<li class="chapter" data-level="7.3" data-path="lda_ch.html"><a href="lda_ch.html#lda-topikmodelleklda1"><i class="fa fa-check"></i><b>7.3</b> LDA topikmodellek</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="lda-ch.html"><a href="lda-ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
-<li class="chapter" data-level="7.3.2" data-path="lda-ch.html"><a href="lda-ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.1" data-path="lda_ch.html"><a href="lda_ch.html#a-vem-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.1</b> A VEM módszer alkalmazása a magyar törvények korpuszán</a></li>
+<li class="chapter" data-level="7.3.2" data-path="lda_ch.html"><a href="lda_ch.html#az-lda-gibbs-módszer-alkalmazása-a-magyar-törvények-korpuszán"><i class="fa fa-check"></i><b>7.3.2</b> Az LDA Gibbs módszer alkalmazása a magyar törvények korpuszán</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="lda-ch.html"><a href="lda-ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
+<li class="chapter" data-level="7.4" data-path="lda_ch.html"><a href="lda_ch.html#strukturális-topikmodellek"><i class="fa fa-check"></i><b>7.4</b> Strukturális topikmodellek</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="embedding.html"><a href="embedding.html"><i class="fa fa-check"></i><b>8</b> Szóbeágyazások</a>
 <ul>
@@ -260,12 +260,12 @@ div.csl-indent {
 <li class="chapter" data-level="10.7" data-path="similarity.html"><a href="similarity.html#a-koszinusz-hasonlóság-számítása"><i class="fa fa-check"></i><b>10.7</b> A koszinusz-hasonlóság számítása</a></li>
 <li class="chapter" data-level="10.8" data-path="similarity.html"><a href="similarity.html#az-eredmények-vizualizációja"><i class="fa fa-check"></i><b>10.8</b> Az eredmények vizualizációja</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="nlp-ch.html"><a href="nlp-ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
+<li class="chapter" data-level="11" data-path="nlp_ch.html"><a href="nlp_ch.html"><i class="fa fa-check"></i><b>11</b> NLP és névelemfelismerés</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="nlp-ch.html"><a href="nlp-ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
-<li class="chapter" data-level="11.2" data-path="nlp-ch.html"><a href="nlp-ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
-<li class="chapter" data-level="11.3" data-path="nlp-ch.html"><a href="nlp-ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
-<li class="chapter" data-level="11.4" data-path="nlp-ch.html"><a href="nlp-ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
+<li class="chapter" data-level="11.1" data-path="nlp_ch.html"><a href="nlp_ch.html#fogalmi-alapok-4"><i class="fa fa-check"></i><b>11.1</b> Fogalmi alapok</a></li>
+<li class="chapter" data-level="11.2" data-path="nlp_ch.html"><a href="nlp_ch.html#a-magyarlanc"><i class="fa fa-check"></i><b>11.2</b> A <code>magyarlanc</code></a></li>
+<li class="chapter" data-level="11.3" data-path="nlp_ch.html"><a href="nlp_ch.html#a-szeged-ner"><i class="fa fa-check"></i><b>11.3</b> A <code>szeged ner</code></a></li>
+<li class="chapter" data-level="11.4" data-path="nlp_ch.html"><a href="nlp_ch.html#angol-nyelvű-szövegek-névelemfelismerése"><i class="fa fa-check"></i><b>11.4</b> Angol nyelvű szövegek névelemfelismerése</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="felugyelt.html"><a href="felugyelt.html"><i class="fa fa-check"></i><b>12</b> Osztályozás és felügyelt tanulás</a>
 <ul>
@@ -317,11 +317,11 @@ div.csl-indent {
 <div id="az-r-és-az-rstudio-használata" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> Az R és az RStudio használata</h2>
 <p>Az R egy programozási nyelv, amely alkalmas statisztikai számítások elvégzésére és ezek eredményeinek grafikus megjelenítésére. Az R ingyenes, nyílt forráskódú szoftver, mely telepíthető mind Windows, mind Linux, mind MacOS operációs rendszerek alatt az alábbi oldalról: <a href="https://cran.r-project.org/">https://cran.r-project.org/</a> Az RStudio az R integrált fejlesztői környezete (<em>integrated development environment, IDE</em>), mely egy olyan felhasználóbarát felületet biztosít, ami egyszerűbb és átláthatóbb munkát tesz lehetővé. Az RStudio az alábbi oldalról tölthető le: <a href="https://rstudio.com/products/rstudio/download/">https://rstudio.com/products/rstudio/download/</a></p>
-<p>A <em>„point and click"</em> szoftverekkel szemben az R használata során scripteket kell írni, ami bizonyos programozási jártasságot feltételez, de a későbbiekben lehetővé teszi azt adott kutatási kérdéshez maximálisan illeszkedő kódok összeállítását, melyek segítségével az elemzések mások számára is megbízhatóan reprodukálhatók lesznek. Ugyancsak az R használata mellett szól, hogy komoly fejlesztői és felhasználói közösséggel rendelkezik, így a használat során felmerülő problémákra általában gyorsan megoldást találhatunk.</p>
+<p>A <em>„point and click”</em> szoftverekkel szemben az R használata során scripteket kell írni, ami bizonyos programozási jártasságot feltételez, de a későbbiekben lehetővé teszi azt adott kutatási kérdéshez maximálisan illeszkedő kódok összeállítását, melyek segítségével az elemzések mások számára is megbízhatóan reprodukálhatók lesznek. Ugyancsak az R használata mellett szól, hogy komoly fejlesztői és felhasználói közösséggel rendelkezik, így a használat során felmerülő problémákra általában gyorsan megoldást találhatunk.</p>
 <div id="az-rstudio-kezdőfelülete" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Az RStudio kezdőfelülete</h3>
 <p>Az RStudio kezdőfelülete négy panelből, eszközsorból és menüsorból áll:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-247"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-247"></span>
 <p class="caption">
 Ábra 13.1: RStudio felhasználói felület
 </p>
@@ -332,7 +332,7 @@ div.csl-indent {
 <div id="projektmunka" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> A projektalapú munka</h3>
 <p>Bár nem kötelező, de javasolt, hogy az RStudio-ban projekt alapon dolgozzunk, mivel így az összes – az adott projekttel kapcsolatos fájlt – egy mappában tárolhatjuk. Új projekt beállítását a <code>File-&gt;New Project</code> menüben tehetjük meg, ahol a saját gépünk egy könyvtárát kell kiválasztani, ahová az R a scripteket, az adat- és előzményfájlokat menti. Ezenkívül a <code>Tools-&gt;Global Options-&gt;General</code> menüpont alatt le kell tiltani a <em>„Restore most recently opened project at startup”</em> és a <em>„Restore .RData ino workspace at startup”</em> beállítást, valamint <em>„Save workspace to .RData on exit”</em> legördülő menüjében be kell állítani a <em>„Never”</em> értéket.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-248"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-248"></span>
 <p class="caption">
 Ábra 13.2: RStudio projekt beállítások
 </p>
@@ -346,7 +346,7 @@ div.csl-indent {
 A scriptbeli utasítások az azokat tartalmazó sorokra állva vagy több sort kijelölve a <code>Run</code> feliratra kattintva vagy a <code>Ctrl+Enter</code> billentyűparanccsal futtathatók le. A lefuttatott parancsok és azok eredményei ezután a bal alsó sarokban lévő <strong>console</strong> ablakban jelennek meg és ugyanitt kapunk hibaüzenetet is, ha valamilyen hibát vétettünk a script írása közben.</p>
 <p>A munkafolyamat során létrehozott állományok (ábrák, fájlok) az ún. munkakönyvtárba (<em>working directory</em>) mentődnek. Az aktuális munkakönyvtár neve, elérési útja a <code>getwd()</code> utasítással jeleníthető meg. A könyvtárban található állományok listázására a <code>list.files()</code> utasítással van lehetőségünk. Ha a korábbiaktól eltérő munkakönyvtárat akarunk megadni, azt a <code>setwd()</code> függvénnyel tehetjük meg, ahol a <code>()</code>-ben az adott mappa elérési útját kell megadnunk. Az elérési útban a meghajtó azonosítóját, majd a mappák, almappák nevét vagy egy normál irányú perjel (<code>/</code>), vagy két fordított perjel (<code>\\</code>) választja el, mivel az elérési út karakterlánc, ezért azt idézőjelek vagy aposztrófok közé kell tennünk.
 Az aktuális munkakönyvtárba beléphetünk a jobb alsó ablak file lapján a <code>„More -&gt; Go To Working Directory”</code> segítségével. Ugyanitt a <code>„Set Working Directory”</code>-val munkakönyvtárnak állíthatjuk be az a mappát, amelyben épp benne vagyunk.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-249"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-249"></span>
 <p class="caption">
 Ábra 13.3: Working directory beállítások
 </p>
@@ -366,7 +366,7 @@ Az R súgórendszere a <code>help.start()</code> utasítással indítható el. E
 <div id="packages" class="section level3" number="13.1.4">
 <h3><span class="header-section-number">13.1.4</span> R csomagok</h3>
 <p>Az <code>R</code>-ben telepíthetők kiegészítő csomagok (packages), amelyek alapértelmezetten el nem érhető algoritmusokat, függvényeket tartalmaznak. A csomagok saját dokumentációval rendelkeznek, amelyeket fel kell tüntetni a használatukkal készült publikációink hivatkozáslistájában. A csomagok telepítésre több lehetőségünk is van: használhatjuk a menüsor <code>Tools -&gt; Install Packages</code> menüpontját, vagy a jobb alsó ablak <strong>packages</strong> fül <code>Install</code> menüpontját, illetve az <strong>editor</strong> ablakban az <code>install.packages()</code> parancsot futtatva, ahol a <code>()</code>-be a telepíteni kívánt csomag nevét kell beírnunk (pl.: <code>install.packages("dplyr")</code>). Ahhoz, hogy egy csomag funkcióit használjuk azt be kell töltetnünk a <code>library()</code> parancs segítségével, itt megintcsak a használni kívánt csomag nevét kell a zárójelek közé helyeznünk, viszont ebben az esetben nem szükséges idézőjelek közé helyeznünk zat (pl.: <code>library(dplyr)</code>) ameddig ezt a parancsot nem futattjuk le az adott csomag funkció nem lesznek elérhetőek számunkra.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-250"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-250"></span>
 <p class="caption">
 Ábra 13.4: Packages fül
 </p>
@@ -437,14 +437,14 @@ Az R súgórendszere a <code>help.start()</code> utasítással indítható el. E
 <span id="cb256-3"><a href="függelék.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Levels: Asia Europe North America South America</span></span>
 <span id="cb256-4"><a href="függelék.html#cb256-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb256-5"><a href="függelék.html#cb256-5" aria-hidden="true" tabindex="-1"></a>orszag_adatok<span class="sc">$</span>orszag</span>
-<span id="cb256-6"><a href="függelék.html#cb256-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thailand&quot;    &quot;Norway&quot;      &quot;North Korea&quot; &quot;Canada&quot;      &quot;Slovenia&quot;   </span></span>
-<span id="cb256-7"><a href="függelék.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;France&quot;      &quot;Venezuela&quot;</span></span></code></pre></div>
+<span id="cb256-6"><a href="függelék.html#cb256-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Thailand&quot;    &quot;Norway&quot;      &quot;North Korea&quot; &quot;Canada&quot;     </span></span>
+<span id="cb256-7"><a href="függelék.html#cb256-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;Slovenia&quot;    &quot;France&quot;      &quot;Venezuela&quot;</span></span></code></pre></div>
 </div>
 </div>
 <div id="munka-saját-adatokkal" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> Munka saját adatokkal</h2>
-<p>Saját adatainkat legegyszerűbben a munkakönyvtárból (<em>working directory</em>) hívhatjuk be. A munkakönyvtár egy olyan mappa a számítógépünkön, amely közvetlenül kapcsolatban van az éppen megnyitott R scripttel vagy projekttel. Amennyiben nem határozzuk meg , hogy adatokat honnan szeretnénk behívni, akkor azokat mindig innen fogja megpróbálni betölteni az R. A <code>getwd()</code> parancs segítségével bármikor megtekinthetjük az aktuális munkakönyvtárunk helyét a számítógépünkön. Amennyiben szeretnénk beállítani egy új helyet a munkakönyvtárunknak akkor azt megtehetjük a <code>setwd()</code> paranccsal (pl.: setwd(C:/ User /Documents) illetve a menü rendszeren keresztül is van rá lehetőségünk <code>Session -&gt; Set Working Directory -&gt;  Choose Direcotry…</code>. A projekt alapú munka egyik előnye, hogy a a munkakönyvtár mindig ugyanabban a mappában található, ahol az R projekt fájl is, amely megkönnyíti a saját adatokkal való munkát.</p>
-<p>Az egyes fájl formátumokat különböző parancsokkal tudjuk beolvasni. Egy txt esetében használhatjuk a <code>read.txt()</code> parancsot , ehhez a funkcióhoz nem kell csomagot betöltenünk, mivel az R alapverziója tartalmazza. Akárhányszor adatokat olvasunk be meg kell, hogy határozzuk az objektum nevét, amely tartalmazni fogja az adott fájl adatait (pl.: proba&lt;-read.txt (proba.txt)). A csv (<em>comma separated values</em>) formátumú fájlok esetében használhatjuk a <code>read.csv</code> parancsot, amelyet szintén tartalmaz az R alapverziója, illetve használhatjuk a <code>read_csv</code> parancsot is, amelyet a <code>readr</code> csomag tartalmaz (pl.: <code>proba &lt;- read.csv(proba.csv)</code>). Utóbbi használata ajánlott magyar nyelvű szöveget tartalmazó adatok esetében, mivel tapasztalataink szerint ez a parancs kezeli legjobban a különböző kódolási problémákat. Amennyiben Excel táblázatokkal dolgozunk érdemes azokat csv formátumban elmenteni és azután betölteni, viszont van lehetőségünk a <code>tidyverse</code> csomag <code>read_excel()</code> parancsának segítségével is Excel fájlokat betölteni. A <code>read_excel</code> parancs működik, mind az xlsx és az xls formátumú fájlok esetében is. Mivel az excel fájlok több munkalappal is rendelkeznek ezért a <code>read_excel</code> használatokar azt is meghatározhatjuk, hogy melyik munkalapot szeretnénk betölteni, amennyiben nem határozzuk meg az első lapot használja alpértelmezett módon (pl.: <code>proba &lt;- read_excel(proba.xlsx, Sheet = 2)</code>.</p>
+<p>Saját adatainkat legegyszerűbben a munkakönyvtárból (<em>working directory</em>) hívhatjuk be. A munkakönyvtár egy olyan mappa a számítógépünkön, amely közvetlenül kapcsolatban van az éppen megnyitott R scripttel vagy projekttel. Amennyiben nem határozzuk meg , hogy adatokat honnan szeretnénk behívni, akkor azokat mindig innen fogja megpróbálni betölteni az R. A <code>getwd()</code> parancs segítségével bármikor megtekinthetjük az aktuális munkakönyvtárunk helyét a számítógépünkön. Amennyiben szeretnénk beállítani egy új helyet a munkakönyvtárunknak akkor azt megtehetjük a <code>setwd()</code> paranccsal (pl.: setwd(C:/ User /Documents) illetve a menü rendszeren keresztül is van rá lehetőségünk <code>Session -&gt; Set Working Directory -&gt;  Choose Direcotry…</code>. Az R-ben praktikus úgynevezett projektalapú munkával dolgozni. Létrehozhatunk egy új projektet a menü rendszerben <code>File -&gt; New Project…</code> itt meg kell határoznunk a projekt fájl helyét. A projekt alapú munka előnye, hogy a a munkakönyvtár mindig ugyanabban a mappában található, ahol az R projekt fájl is, amely megkönnyíti a saját adatokkal való munkát.</p>
+<p>Az egyes fájl formátumokat különböző parancsokkal tudjuk beolvasni. Egy txt esetében használhatjuk a <code>read.txt()</code> parancsot , ehhez a funkcióhoz nem kell csomagot betöltenünk, mivel az R alapverziója tartalmazza. Akárhányszor adatokat olvasunk be meg kell, hogy határozzuk az objektum nevét, amely tartalmazni fogja az adott fájl adatait (pl.: <code>proba&lt;-read.txt (proba.txt)</code>). A csv (<em>comma separated values</em>) formátumú fájlok esetében használhatjuk a <code>read.csv</code> parancsot, amelyet szintén tartalmaz az R alapverziója, illetve használhatjuk a <code>read_csv</code> parancsot is, amelyet a <code>readr</code> csomag tartalmaz (pl.: <code>proba &lt;- read.csv(proba.csv)</code>). Utóbbi használata ajánlott magyar nyelvű szöveget tartalmazó adatok esetében, mivel tapasztalataink szerint ez a parancs kezeli legjobban a különböző kódolási problémákat. Amennyiben Excel táblázatokkal dolgozunk érdemes azokat csv formátumban elmenteni és azután betölteni, viszont van lehetőségünk a <code>tidyverse</code> csomag <code>read_excel()</code> parancsának segítségével is Excel fájlokat betölteni. A <code>read_excel</code> parancs működik, mind az xlsx és az xls formátumú fájlok esetében is. Mivel az excel fájlok több munkalappal is rendelkeznek ezért a <code>read_excel</code> használatokar azt is meghatározhatjuk, hogy melyik munkalapot szeretnénk betölteni, amennyiben nem határozzuk meg az első lapot használja alpértelmezett módon (pl.: <code>proba &lt;- read_excel(proba.xlsx, Sheet = 2)</code>.</p>
 </div>
 <div id="vizualizáció" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Vizualizáció</h2>
@@ -581,8 +581,8 @@ Arra is van lehetőségünk, hogy egyszerre több változót is ábrázoljunk.</
 <span id="cb270-5"><a href="függelék.html#cb270-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
 <p>Majd ennek az obejktumnak a nevét helyezzük be a <code>ggplotly</code> parancsba, és futtassuk azt.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="függelék.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(ggplotabra)</span></code></pre></div>
-<div id="htmlwidget-eafd814676bf652b6fef" style="width:90%;height:600px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eafd814676bf652b6fef">{"x":{"data":[{"orientation":"v","width":[3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494827,3906.27472494827,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,3906.27472494828,7812.54944989655,11718.8241748448,15625.0988997931,19531.3736247414,23437.6483496897,27343.9230746379,31250.1977995862,35156.4725245345,39062.7472494828,42969.021974431,46875.2966993793,50781.5714243276,54687.8461492759,58594.1208742241,62500.3955991724,66406.6703241207,70312.9450490689,74219.2197740172,78125.4944989655,82031.7692239138,85938.0439488621,89844.3186738103,93750.5933987586,97656.8681237069,101563.142848655,105469.417573603,109375.692298552,113281.9670235],"y":[630,448,223,125,66,69,48,34,23,21,5,3,2,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,2,1],"text":["count: 630<br />gdpPercap:      0","count: 448<br />gdpPercap:   3906","count: 223<br />gdpPercap:   7813","count: 125<br />gdpPercap:  11719","count:  66<br />gdpPercap:  15625","count:  69<br />gdpPercap:  19531","count:  48<br />gdpPercap:  23438","count:  34<br />gdpPercap:  27344","count:  23<br />gdpPercap:  31250","count:  21<br />gdpPercap:  35156","count:   5<br />gdpPercap:  39063","count:   3<br />gdpPercap:  42969","count:   2<br />gdpPercap:  46875","count:   1<br />gdpPercap:  50782","count:   0<br />gdpPercap:  54688","count:   1<br />gdpPercap:  58594","count:   0<br />gdpPercap:  62500","count:   0<br />gdpPercap:  66407","count:   0<br />gdpPercap:  70313","count:   0<br />gdpPercap:  74219","count:   0<br />gdpPercap:  78125","count:   1<br />gdpPercap:  82032","count:   0<br />gdpPercap:  85938","count:   0<br />gdpPercap:  89844","count:   1<br />gdpPercap:  93751","count:   0<br />gdpPercap:  97657","count:   0<br />gdpPercap: 101563","count:   0<br />gdpPercap: 105469","count:   2<br />gdpPercap: 109376","count:   1<br />gdpPercap: 113282"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":41.5707762557078,"r":7.30593607305936,"b":55.5251141552512,"l":43.1050228310502},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7812.54944989655,121094.516473397],"tickmode":"array","ticktext":["0","30000","60000","90000","120000"],"tickvals":[0,30000,60000,90000,120000],"categoryorder":"array","categoryarray":["0","30000","60000","90000","120000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-31.5,661.5],"tickmode":"array","ticktext":["0","200","400","600"],"tickvals":[0,200,400,600],"categoryorder":"array","categoryarray":["0","200","400","600"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2f7815d36da6":{"x":{},"type":"bar"}},"cur_data":"2f7815d36da6","visdat":{"2f7815d36da6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-259632ea39a09ab36107" style="width:90%;height:600px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-259632ea39a09ab36107">{"x":{"data":[{"orientation":"v","width":[3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494827,3906.27472494827,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828,3906.27472494828],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[0,3906.27472494828,7812.54944989655,11718.8241748448,15625.0988997931,19531.3736247414,23437.6483496897,27343.9230746379,31250.1977995862,35156.4725245345,39062.7472494828,42969.021974431,46875.2966993793,50781.5714243276,54687.8461492759,58594.1208742241,62500.3955991724,66406.6703241207,70312.9450490689,74219.2197740172,78125.4944989655,82031.7692239138,85938.0439488621,89844.3186738103,93750.5933987586,97656.8681237069,101563.142848655,105469.417573603,109375.692298552,113281.9670235],"y":[630,448,223,125,66,69,48,34,23,21,5,3,2,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,2,1],"text":["count: 630<br />gdpPercap:      0","count: 448<br />gdpPercap:   3906","count: 223<br />gdpPercap:   7813","count: 125<br />gdpPercap:  11719","count:  66<br />gdpPercap:  15625","count:  69<br />gdpPercap:  19531","count:  48<br />gdpPercap:  23438","count:  34<br />gdpPercap:  27344","count:  23<br />gdpPercap:  31250","count:  21<br />gdpPercap:  35156","count:   5<br />gdpPercap:  39063","count:   3<br />gdpPercap:  42969","count:   2<br />gdpPercap:  46875","count:   1<br />gdpPercap:  50782","count:   0<br />gdpPercap:  54688","count:   1<br />gdpPercap:  58594","count:   0<br />gdpPercap:  62500","count:   0<br />gdpPercap:  66407","count:   0<br />gdpPercap:  70313","count:   0<br />gdpPercap:  74219","count:   0<br />gdpPercap:  78125","count:   1<br />gdpPercap:  82032","count:   0<br />gdpPercap:  85938","count:   0<br />gdpPercap:  89844","count:   1<br />gdpPercap:  93751","count:   0<br />gdpPercap:  97657","count:   0<br />gdpPercap: 101563","count:   0<br />gdpPercap: 105469","count:   2<br />gdpPercap: 109376","count:   1<br />gdpPercap: 113282"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":41.5707762557078,"r":7.30593607305936,"b":55.5251141552512,"l":43.1050228310502},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-7812.54944989655,121094.516473397],"tickmode":"array","ticktext":["0","30000","60000","90000","120000"],"tickvals":[0,30000,60000,90000,120000],"categoryorder":"array","categoryarray":["0","30000","60000","90000","120000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-31.5,661.5],"tickmode":"array","ticktext":["0","200","400","600"],"tickvals":[0,200,400,600],"categoryorder":"array","categoryarray":["0","200","400","600"],"nticks":null,"ticks":"outside","tickcolor":"rgba(179,179,179,1)","ticklen":3.65296803652968,"tickwidth":0.33208800332088,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(222,222,222,1)","gridwidth":0.33208800332088,"zeroline":false,"anchor":"x","title":{"text":"count","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(179,179,179,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1ebc6d9055eb":{"x":{},"type":"bar"}},"cur_data":"1ebc6d9055eb","visdat":{"1ebc6d9055eb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -596,7 +596,6 @@ Arra is van lehetőségünk, hogy egyszerre több változót is ábrázoljunk.</
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -636,6 +635,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

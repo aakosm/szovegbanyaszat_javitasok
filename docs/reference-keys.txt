@@ -47,7 +47,7 @@ a-hunminer-használata
 egy-gyakorlati-példa-az-r-programmal-való-szövegbányászatra
 köszönetnyilvánítás
 alapfogalmak
-elméleti-alapok
+big-data-és-társadalomtudomány
 fogalmi-alapok
 a-szövegbányászat-alapelvei
 adatkezeles
